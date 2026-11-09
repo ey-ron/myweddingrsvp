@@ -7,8 +7,11 @@
     border-color: #EAE2D8;
   }
 
-  html, body {
+  html, body, #root {
     height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
     background-color: #FAF8F5;
     color: #2A2725;
