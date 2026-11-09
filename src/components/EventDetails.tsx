@@ -8,7 +8,7 @@ interface EventDetailsProps {
 
 export const EventDetails: React.FC<EventDetailsProps> = () => {
   return (
-    <section id="schedule" className="relative w-full h-full flex flex-col items-center justify-start pt-1 sm:pt-2 pb-2 sm:pb-3 px-3.5 xs:px-4 sm:px-6 lg:px-8 bg-subtle-linen overflow-y-auto overflow-x-hidden">
+    <section id="schedule" className="relative w-full h-full flex flex-col items-center justify-start pt-1 sm:pt-2 pb-2 sm:pb-3 px-3.5 xs:px-4 sm:px-6 lg:px-8 bg-subtle-linen overflow-hidden">
       
       {/* Section Header - Perfectly aligned in position and scale with Hero */}
       <div className="text-center max-w-3xl mx-auto mb-1 sm:mb-2 flex-shrink-0">
@@ -24,7 +24,7 @@ export const EventDetails: React.FC<EventDetailsProps> = () => {
       </div>
 
       {/* Main Content Area - Centered in remaining vertical space */}
-      <div className="max-w-5xl w-full mx-auto flex-1 flex flex-col justify-center">
+      <div className="max-w-5xl w-full mx-auto flex-1 min-h-0 flex flex-col justify-center">
         
         {/* 3 Schedule Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 xs:gap-3 sm:gap-5 md:gap-6 mb-2.5 xs:mb-3 sm:mb-5 xl:mb-3">

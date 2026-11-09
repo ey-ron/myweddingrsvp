@@ -79,8 +79,21 @@ function App() {
     };
   }, []);
 
+  // Dynamically measure actual visible viewport height (accounts for mobile browser chrome)
+  useEffect(() => {
+    const setAppHeight = () => {
+      document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
+    };
+    setAppHeight();
+    window.addEventListener('resize', setAppHeight);
+    window.addEventListener('orientationchange', () => setTimeout(setAppHeight, 150));
+    return () => {
+      window.removeEventListener('resize', setAppHeight);
+    };
+  }, []);
+
   return (
-    <div className="bg-[#FAF8F5] text-[#2A2725] w-screen h-screen h-[100svh] max-h-[100svh] overflow-hidden relative font-sans select-none">
+    <div className="bg-[#FAF8F5] text-[#2A2725] w-screen overflow-hidden relative font-sans select-none" style={{ height: 'var(--app-height, 100vh)' }}>
       {/* Discreet Page Indicator Dots - Positioned vertically at the top right of the header */}
       <nav aria-label="Page navigation" className="fixed top-2.5 right-3 sm:top-3 sm:right-6 z-50 flex flex-col items-center gap-1.5 sm:gap-2 px-1.5 py-2 rounded-full bg-white/70 backdrop-blur-md border border-[#EAE2D8] shadow-xs">
         {[

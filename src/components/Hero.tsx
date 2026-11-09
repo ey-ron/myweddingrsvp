@@ -23,7 +23,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   };
 
   return (
-    <section id="hero" className="relative w-full h-full flex flex-col items-center justify-start pt-1 sm:pt-2 pb-2 sm:pb-3 px-3.5 xs:px-4 sm:px-6 lg:px-8 bg-subtle-linen overflow-y-auto overflow-x-hidden">
+    <section id="hero" className="relative w-full h-full flex flex-col items-center justify-start pt-1 sm:pt-2 pb-2 sm:pb-3 px-3.5 xs:px-4 sm:px-6 lg:px-8 bg-subtle-linen overflow-hidden">
       {/* Decorative luxury background elements */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[600px] h-[340px] sm:h-[600px] bg-[#EDE4D4]/30 rounded-full blur-3xl pointer-events-none -z-10" />
 
@@ -38,7 +38,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
       </div>
 
       {/* Centered Arch Border Container */}
-      <div className="w-full flex-1 flex flex-col justify-center items-center">
+      <div className="w-full flex-1 min-h-0 flex flex-col justify-center items-center">
         {/* Elegant Arch Border Frame */}
         <div className="relative max-w-sm xs:max-w-lg sm:max-w-2xl xl:max-w-5xl w-full mx-auto py-4 xs:py-5 sm:py-7 xl:py-4 px-4 xs:px-7 sm:px-10 xl:px-8 rounded-[2rem] sm:rounded-[2.5rem] border border-[#EAE2D8] bg-[#FAF8F5]/80 backdrop-blur-sm shadow-luxury transition-all">
 

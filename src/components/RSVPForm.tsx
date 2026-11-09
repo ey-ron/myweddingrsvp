@@ -114,7 +114,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = () => {
   };
 
   return (
-    <section id="rsvp" className="relative w-full h-full flex flex-col items-center justify-start pt-1 sm:pt-2 pb-2 sm:pb-3 px-3.5 xs:px-4 sm:px-6 lg:px-8 bg-subtle-linen overflow-y-auto overflow-x-hidden">
+    <section id="rsvp" className="relative w-full h-full flex flex-col items-center justify-start pt-1 sm:pt-2 pb-2 sm:pb-3 px-3.5 xs:px-4 sm:px-6 lg:px-8 bg-subtle-linen overflow-hidden">
       
       {/* Section Header - Perfectly aligned with Page 1 and Page 2 */}
       <div className="text-center max-w-3xl mx-auto mb-1 sm:mb-2 flex-shrink-0">
@@ -130,7 +130,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = () => {
       </div>
 
       {/* Main Content Area - Centered in remaining vertical space */}
-      <div className="max-w-xl xs:max-w-2xl sm:max-w-3xl xl:max-w-5xl w-full mx-auto flex-1 flex flex-col xl:grid xl:grid-cols-2 xl:gap-8 xl:items-center justify-center">
+      <div className="max-w-xl xs:max-w-2xl sm:max-w-3xl xl:max-w-5xl w-full mx-auto flex-1 min-h-0 flex flex-col xl:grid xl:grid-cols-2 xl:gap-8 xl:items-center justify-center">
         <div className="bg-white rounded-2xl sm:rounded-3xl border border-[#EAE2D8] shadow-luxury p-3.5 xs:p-5 sm:p-7 md:p-8 xl:p-6 transition-all">
           
           {/* Card Header Badge */}
