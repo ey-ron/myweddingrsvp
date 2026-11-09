@@ -1,158 +1,302 @@
 import React from 'react';
-import { Clock, MapPin, Shirt, ExternalLink } from 'lucide-react';
+import { Clock, MapPin, Shirt, ExternalLink, ChevronDown } from 'lucide-react';
 import { WEDDING_CONFIG } from '../config/wedding';
 
 interface EventDetailsProps {
   onNavigate?: (pageIndex: number) => void;
+  isActive?: boolean;
 }
 
-export const EventDetails: React.FC<EventDetailsProps> = () => {
+export const EventDetails: React.FC<EventDetailsProps> = ({ onNavigate, isActive = true }) => {
+  const cascadeClasses = ['animate-cascade-1', 'animate-cascade-2', 'animate-cascade-3'];
+
   return (
-    <section id="schedule" className="relative w-full h-full flex flex-col items-center justify-start pt-1 sm:pt-2 pb-2 sm:pb-3 px-3.5 xs:px-4 sm:px-6 lg:px-8 bg-subtle-linen overflow-hidden">
+    <section id="schedule" className="relative w-full h-full flex flex-col items-center justify-between pt-3.5 xs:pt-4.5 sm:pt-6 pb-1 xs:pb-1.5 sm:pb-2.5 px-3 xs:px-4 sm:px-6 lg:px-8 bg-subtle-linen overflow-hidden">
       
-      {/* Section Header - Perfectly aligned in position and scale with Hero */}
-      <div className="text-center max-w-3xl mx-auto mb-1 sm:mb-2 flex-shrink-0">
-        <span className="text-xs xs:text-sm uppercase tracking-[0.35em] font-semibold text-[#8C7A5E]">
+      {/* Section Header - Aligned with Hero */}
+      <div className="text-center max-w-3xl mx-auto mt-0.5 xs:mt-1 sm:mt-1.5 mb-2 xs:mb-3 tall:mb-4 sm:mb-4.5 flex-shrink-0">
+        <span
+          key={`pill-${isActive ? 'active' : 'inactive'}`}
+          className={`text-[10px] xs:text-xs tall:text-sm sm:text-sm uppercase tracking-[0.35em] font-semibold text-[#8C7A5E] inline-block ${
+            isActive ? 'animate-header-pill' : 'opacity-0'
+          }`}
+        >
           Celebration Schedule
         </span>
-        <h2 className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl font-serif text-[#2A2725] mt-0.5 leading-tight tracking-tight">
-          The Wedding Day
+        {/* Elegant Cursive Handwriting Headline */}
+        <h2 className="text-script-headline text-[#2A2725] mt-0.5 leading-tight tracking-wide whitespace-nowrap overflow-hidden">
+          <span
+            key={isActive ? 'active' : 'inactive'}
+            className={`${isActive ? 'animate-cursive-write' : 'opacity-0'} inline-block`}
+          >
+            The Wedding Day
+          </span>
         </h2>
-        <p className="font-serif italic text-xs xs:text-sm sm:text-base text-[#736B63]">
+        <p
+          key={`date-${isActive ? 'active' : 'inactive'}`}
+          className={`font-serif italic text-[11px] xs:text-xs tall:text-sm sm:text-sm text-[#736B63] ${
+            isActive ? 'animate-header-sub' : 'opacity-0'
+          }`}
+        >
           {WEDDING_CONFIG.date.display}
         </p>
       </div>
 
-      {/* Main Content Area - Centered in remaining vertical space */}
-      <div className="max-w-5xl w-full mx-auto flex-1 min-h-0 flex flex-col justify-center">
+      {/* Main Content Area - Anchored neatly with generous space below */}
+      <div className="max-w-5xl w-full mx-auto flex-1 min-h-0 flex flex-col justify-start pt-0.5 xs:pt-1 tall:pt-2.5">
         
-        {/* 3 Schedule Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 xs:gap-3 sm:gap-5 md:gap-6 mb-2.5 xs:mb-3 sm:mb-5 xl:mb-3">
+        {/* 3 Schedule Cards - Staggered sequential entrance */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 xs:gap-2 tall:gap-2.5 sm:gap-4 md:gap-5 mb-1.5 xs:mb-2 tall:mb-3 sm:mb-3.5">
           {WEDDING_CONFIG.schedule.map((item, index) => (
             <div
-              key={index}
-              className="bg-white rounded-xl sm:rounded-2xl p-3 xs:p-3.5 sm:p-5 md:p-6 xl:p-4.5 border border-[#EAE2D8] shadow-card hover:shadow-luxury transition-all relative flex flex-col justify-between"
+              key={`${index}-${isActive ? 'active' : 'inactive'}`}
+              className={`bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl px-2.5 py-2 xs:px-3 xs:py-2.5 sm:p-4.5 md:p-5 border border-[#EAE2D8] shadow-card hover:shadow-luxury transition-all relative group flex flex-col justify-between ${
+                isActive ? cascadeClasses[index] : 'opacity-0'
+              }`}
             >
-              <div>
-                <div className="flex items-center justify-between mb-1 sm:mb-2">
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#F7F3EB] text-[#7E633C] text-xs xs:text-sm sm:text-sm md:text-base font-semibold tracking-wider">
-                    <Clock className="w-3.5 h-3.5 xs:w-4 xs:h-4 text-[#B89B6D]" />
-                    {item.time}
-                  </span>
-                  <span className="text-xs xs:text-sm sm:text-base font-serif text-[#DFD0B7]">
-                    0{index + 1}
-                  </span>
+              <div className="flex items-start justify-between gap-2 xs:gap-2.5">
+                {/* Left Side: Time, Title, Description */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-1.5 mb-1 sm:mb-1.5">
+                    <span className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 py-0.5 xs:py-1 sm:px-3 sm:py-1 rounded-full bg-[#F7F3EB] text-[#7E633C] text-[11px] xs:text-[12.5px] sm:text-sm font-semibold tracking-wider">
+                      <Clock className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-4 sm:h-4 text-[#B89B6D]" />
+                      {item.time}
+                    </span>
+                    <span className="text-xs xs:text-sm font-serif text-[#DFD0B7]">
+                      0{index + 1}
+                    </span>
+                  </div>
+
+                  <h3 className="font-serif text-[15px] xs:text-[17px] sm:text-xl font-medium text-[#2A2725] leading-snug mb-0.5 xs:mb-1">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-[11px] xs:text-[12.5px] sm:text-sm text-[#736B63] leading-snug sm:leading-relaxed">
+                    {item.description}
+                  </p>
+
+                  {/* Desktop Location link */}
+                  <a
+                    href={item.mapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hidden sm:inline-flex items-center gap-1.5 text-xs sm:text-sm text-[#B89B6D] hover:text-[#9E8052] font-medium transition-colors mt-2"
+                  >
+                    <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
+                    <span className="underline-offset-2 hover:underline">{item.location}</span>
+                    <ExternalLink className="w-3 h-3 opacity-60" />
+                  </a>
                 </div>
-                <h3 className="font-serif text-base xs:text-lg sm:text-xl md:text-2xl font-medium text-[#2A2725] mt-1 sm:mt-1.5 mb-0.5 sm:mb-1">
-                  {item.title}
-                </h3>
-                <p className="text-xs xs:text-sm sm:text-sm md:text-base text-[#736B63] leading-snug sm:leading-relaxed">
-                  {item.description}
-                </p>
+
+                {/* Right Side: Small Photo ABOVE the location link */}
+                <div className="flex flex-col items-end flex-shrink-0">
+                  {/* Small Venue Photo */}
+                  <div className="w-[76px] h-[43px] xs:w-[86px] xs:h-[48px] sm:w-[96px] sm:h-[56px] rounded-lg overflow-hidden border border-[#DFD0B7]/60 shadow-2xs bg-[#EDE4D4]/30 relative mb-1 group-hover:border-[#B89B6D] transition-colors">
+                    <img
+                      src={item.image}
+                      alt={item.location}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  {/* Mobile Location link directly under the photo */}
+                  <a
+                    href={item.mapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex sm:hidden items-center gap-1 text-[10.5px] xs:text-[11.5px] text-[#B89B6D] hover:text-[#9E8052] font-medium transition-colors"
+                  >
+                    <MapPin className="w-3 h-3 flex-shrink-0" />
+                    <span className="underline-offset-2 underline">{item.location}</span>
+                    <ExternalLink className="w-2.5 h-2.5 opacity-60" />
+                  </a>
+                </div>
               </div>
-              <a
-                href={item.mapUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pt-2 mt-2 sm:pt-3 sm:mt-3 border-t border-[#F3EDE2] flex items-center justify-between gap-1 text-xs xs:text-sm sm:text-base text-[#B89B6D] hover:text-[#9E8052] font-medium transition-colors group/loc"
-              >
-                <div className="flex items-center gap-1.5 sm:gap-2">
-                  <MapPin className="w-3.5 h-3.5 xs:w-4 xs:h-4 flex-shrink-0" />
-                  <span className="underline-offset-2 group-hover/loc:underline">{item.location}</span>
-                </div>
-                <ExternalLink className="w-3.5 h-3.5 xs:w-4 xs:h-4 opacity-60 group-hover/loc:opacity-100" />
-              </a>
             </div>
           ))}
         </div>
 
-        {/* Attire Banner (Side-by-side full card layout) */}
-        <div className="bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 xs:p-3.5 sm:p-5 md:p-6 border border-[#EAE2D8] shadow-card max-w-5xl mx-auto w-full">
-          <div className="flex items-center justify-center gap-2 mb-2 xs:mb-2.5 sm:mb-3.5">
-            <span className="text-xs xs:text-sm sm:text-base uppercase tracking-[0.28em] font-semibold text-[#8C7A5E]">
+        {/* Expanded Attire Section (Ninong & Ninang + Guests) - Staggered sequential entrance */}
+        <div
+          key={`attire-${isActive ? 'active' : 'inactive'}`}
+          className={`bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-2 xs:p-2.5 sm:p-4 border border-[#EAE2D8] shadow-card max-w-5xl mx-auto w-full ${
+            isActive ? 'animate-cascade-4' : 'opacity-0'
+          }`}
+        >
+          <div className="flex items-center justify-center gap-2 mb-1.5 xs:mb-2 sm:mb-2.5">
+            <span className="text-[10px] xs:text-xs sm:text-sm uppercase tracking-[0.25em] font-semibold text-[#8C7A5E]">
               Wedding Attire Guidance
             </span>
           </div>
 
-          <div className="grid grid-cols-2 gap-2.5 xs:gap-3.5 sm:gap-5">
-            {/* Gentlemen */}
-            <div className="p-2.5 xs:p-3 sm:p-4.5 rounded-xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col items-center text-center">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white border border-[#DFD0B7] flex items-center justify-center mb-1 sm:mb-2 shadow-sm">
-                <Shirt className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#B89B6D]" />
-              </div>
-              <span className="text-xs xs:text-sm sm:text-base uppercase tracking-wider font-semibold text-[#2A2725] mb-1 sm:mb-1.5">
-                Gentlemen
-              </span>
-
-              {/* Color Swatches */}
-              <div className="flex items-center justify-center gap-2.5 xs:gap-3.5 sm:gap-6 mt-1 mb-2 sm:mb-2.5">
-                {/* Top: White or Beige */}
-                <div className="flex flex-col items-center gap-1 sm:gap-1.5">
-                  <div className="flex items-center gap-1.5 sm:gap-2">
-                    <span
-                      title="White"
-                      className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white border border-[#DFD0B7] shadow-sm flex-shrink-0 inline-block"
-                    />
-                    <span
-                      title="Beige"
-                      className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#EADCC2] border border-[#DFD0B7] shadow-sm flex-shrink-0 inline-block"
-                    />
-                  </div>
-                  <div className="text-[10px] xs:text-xs sm:text-sm uppercase tracking-wider text-[#736B63] font-medium text-center leading-tight">
-                    <div>White / Beige</div>
-                    <div>Top</div>
-                  </div>
-                </div>
-
-                <div className="h-8 sm:h-10 w-px bg-[#EAE2D8] self-center" />
-
-                {/* Pants: Black */}
-                <div className="flex flex-col items-center gap-1 sm:gap-1.5">
-                  <span
-                    title="Black"
-                    className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#1A1817] border border-black shadow-sm flex-shrink-0 inline-block"
-                  />
-                  <div className="text-[10px] xs:text-xs sm:text-sm uppercase tracking-wider text-[#736B63] font-medium text-center leading-tight">
-                    <div>Black</div>
-                    <div>Pants</div>
-                  </div>
-                </div>
-              </div>
-              <p className="hidden md:block text-xs xs:text-sm sm:text-base text-[#736B63] leading-snug sm:leading-relaxed text-center">
-                White or beige polo / shirt with black pants
-              </p>
-            </div>
-
-            {/* Ladies */}
-            <div className="p-2.5 xs:p-3 sm:p-4.5 rounded-xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col items-center text-center">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white border border-[#DFD0B7] flex items-center justify-center mb-1 sm:mb-2 shadow-sm">
-                <svg className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#B89B6D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M9 3 L15 3 L17 8 L14 10 L16 21 L8 21 L10 10 L7 8 Z" />
-                  <path d="M10 3 C10 5, 14 5, 14 3" />
-                </svg>
-              </div>
-              <span className="text-xs xs:text-sm sm:text-base uppercase tracking-wider font-semibold text-[#2A2725] mb-1 sm:mb-1.5">
-                Ladies
-              </span>
-
-              {/* Color Swatch */}
-              <div className="flex flex-col items-center gap-0.5 sm:gap-1 mt-1 mb-2 sm:mb-2.5">
-                <span
-                  title="Light Green"
-                  className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#B2D3B4] border border-[#8FB891] shadow-sm flex-shrink-0 inline-block"
-                />
-                <span className="text-[10px] xs:text-xs sm:text-sm uppercase tracking-wider text-[#736B63] font-medium whitespace-nowrap">
-                  Light Green
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 xs:gap-2 sm:gap-3.5">
+            
+            {/* Part 1: Ninong & Ninang (Principal Sponsors) */}
+            <div className="p-2 xs:p-2.5 sm:p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between">
+              <div className="flex items-center justify-between pb-1 mb-1 border-b border-[#EAE2D8]/80">
+                <span className="text-[10px] xs:text-[11px] sm:text-xs uppercase tracking-wider font-bold text-[#8C7A5E]">
+                  Ninong & Ninang
+                </span>
+                <span className="text-[8.5px] xs:text-[9.5px] sm:text-[10.5px] text-[#A69781] italic">
+                  Principal Sponsors
                 </span>
               </div>
-              <p className="hidden md:block text-xs xs:text-sm sm:text-base text-[#736B63] leading-snug sm:leading-relaxed text-center">
-                Light green dress or formal gown
-              </p>
+
+              <div className="grid grid-cols-2 gap-2">
+                {/* Ninong / Gents */}
+                <div className="flex flex-col items-center text-center px-1">
+                  <div className="flex items-center gap-1 mb-0.5">
+                    <Shirt className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#B89B6D]" />
+                    <span className="text-[10px] xs:text-[11px] sm:text-xs font-semibold text-[#2A2725]">
+                      Gents
+                    </span>
+                  </div>
+                  <p className="text-[8.5px] xs:text-[9.5px] sm:text-[11px] text-[#736B63] leading-tight">
+                    White Barong & Black Pants
+                  </p>
+                  <div className="flex items-center gap-1.5 mt-1 sm:mt-1.5">
+                    <span
+                      title="White Barong"
+                      className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 rounded-full bg-white border border-[#DFD0B7] shadow-xs inline-block"
+                    />
+                    <span
+                      title="Black Pants"
+                      className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 rounded-full bg-[#1A1817] border border-black shadow-xs inline-block"
+                    />
+                  </div>
+                  <span className="text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] text-[#8C7A5E] mt-0.5 font-medium">
+                    White · Black
+                  </span>
+                </div>
+
+                {/* Ninang / Ladies */}
+                <div className="flex flex-col items-center text-center px-1 border-l border-[#EAE2D8]">
+                  <div className="flex items-center gap-1 mb-0.5">
+                    <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#B89B6D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M9 3 L15 3 L17 8 L14 10 L16 21 L8 21 L10 10 L7 8 Z" />
+                      <path d="M10 3 C10 5, 14 5, 14 3" />
+                    </svg>
+                    <span className="text-[10px] xs:text-[11px] sm:text-xs font-semibold text-[#2A2725]">
+                      Ladies
+                    </span>
+                  </div>
+                  <p className="text-[8.5px] xs:text-[9.5px] sm:text-[11px] text-[#736B63] leading-tight">
+                    Long Gown
+                  </p>
+                  <div className="flex items-center gap-1.5 mt-1 sm:mt-1.5">
+                    <span
+                      title="Champagne"
+                      className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 rounded-full bg-[#EDE3D0] border border-[#DFD0B7] shadow-xs inline-block"
+                    />
+                    <span
+                      title="Warm Taupe"
+                      className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 rounded-full bg-[#CBB79F] border border-[#BFA88F] shadow-xs inline-block"
+                    />
+                    <span
+                      title="Soft Mocha"
+                      className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 rounded-full bg-[#9E8B79] border border-[#8C7A68] shadow-xs inline-block"
+                    />
+                  </div>
+                  <span className="text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] text-[#8C7A5E] mt-0.5 font-medium">
+                    3 Neutral Tones
+                  </span>
+                </div>
+              </div>
             </div>
+
+            {/* Part 2: Guests */}
+            <div className="p-2 xs:p-2.5 sm:p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between">
+              <div className="flex items-center justify-between pb-1 mb-1 border-b border-[#EAE2D8]/80">
+                <span className="text-[10px] xs:text-[11px] sm:text-xs uppercase tracking-wider font-bold text-[#8C7A5E]">
+                  Guests
+                </span>
+                <span className="text-[8.5px] xs:text-[9.5px] sm:text-[10.5px] text-[#A69781] italic">
+                  Friends & Family
+                </span>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2">
+                {/* Gentlemen */}
+                <div className="flex flex-col items-center text-center px-1">
+                  <div className="flex items-center gap-1 mb-0.5">
+                    <Shirt className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#B89B6D]" />
+                    <span className="text-[10px] xs:text-[11px] sm:text-xs font-semibold text-[#2A2725]">
+                      Gentlemen
+                    </span>
+                  </div>
+                  <p className="text-[8.5px] xs:text-[9.5px] sm:text-[11px] text-[#736B63] leading-tight">
+                    Polo / Long Sleeves & Black Pants
+                  </p>
+                  <div className="flex items-center gap-1.5 mt-1 sm:mt-1.5">
+                    <span
+                      title="White Top"
+                      className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 rounded-full bg-white border border-[#DFD0B7] shadow-xs inline-block"
+                    />
+                    <span
+                      title="Black Pants"
+                      className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 rounded-full bg-[#1A1817] border border-black shadow-xs inline-block"
+                    />
+                  </div>
+                  <span className="text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] text-[#8C7A5E] mt-0.5 font-medium">
+                    White · Black
+                  </span>
+                </div>
+
+                {/* Ladies */}
+                <div className="flex flex-col items-center text-center px-1 border-l border-[#EAE2D8]">
+                  <div className="flex items-center gap-1 mb-0.5">
+                    <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#B89B6D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M9 3 L15 3 L17 8 L14 10 L16 21 L8 21 L10 10 L7 8 Z" />
+                      <path d="M10 3 C10 5, 14 5, 14 3" />
+                    </svg>
+                    <span className="text-[10px] xs:text-[11px] sm:text-xs font-semibold text-[#2A2725]">
+                      Ladies
+                    </span>
+                  </div>
+                  <p className="text-[8.5px] xs:text-[9.5px] sm:text-[11px] text-[#736B63] leading-tight">
+                    Formal Dress
+                  </p>
+                  <div className="flex items-center gap-1.5 mt-1 sm:mt-1.5">
+                    <span
+                      title="Champagne"
+                      className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 rounded-full bg-[#EDE3D0] border border-[#DFD0B7] shadow-xs inline-block"
+                    />
+                    <span
+                      title="Warm Taupe"
+                      className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 rounded-full bg-[#CBB79F] border border-[#BFA88F] shadow-xs inline-block"
+                    />
+                    <span
+                      title="Soft Mocha"
+                      className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 rounded-full bg-[#9E8B79] border border-[#8C7A68] shadow-xs inline-block"
+                    />
+                  </div>
+                  <span className="text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] text-[#8C7A5E] mt-0.5 font-medium">
+                    3 Neutral Tones
+                  </span>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
       </div>
+
+      {/* Scroll Down Cue - Animated entrance with dynamic responsive clearance */}
+      <button
+        key={`scroll-${isActive ? 'active' : 'inactive'}`}
+        onClick={() => onNavigate ? onNavigate(2) : undefined}
+        aria-label="Scroll down to RSVP"
+        className={`mt-auto mb-0.5 xs:mb-1 flex flex-col items-center text-[#8C7A5E] hover:text-[#2A2725] transition-all focus:outline-none flex-shrink-0 cursor-pointer pt-1 pb-0.5 ${
+          isActive ? 'animate-scroll-cue' : 'opacity-0'
+        }`}
+      >
+        <span className="text-[9px] xs:text-[10px] uppercase tracking-[0.25em] font-medium leading-none mb-0.5">
+          Scroll Down
+        </span>
+        <ChevronDown className="w-3.5 h-3.5 xs:w-4 xs:h-4 animate-bounce text-[#B89B6D]" />
+      </button>
     </section>
   );
 };

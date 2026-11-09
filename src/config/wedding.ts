@@ -22,10 +22,11 @@ export const WEDDING_CONFIG = {
   schedule: [
     {
       time: "01:00 PM",
-      title: "Pre-Wedding Pictorial",
+      title: "Pre-Wedding",
       location: "Rio Villa",
       mapUrl: "https://maps.app.goo.gl/ZLPgkDo3a6gscz1B9",
-      description: "Pictorial for groomsmen and bridesmaids.",
+      description: "Groomsmen and Bridesmaids moments.",
+      image: "./riovilla.jpeg",
     },
     {
       time: "01:30 PM",
@@ -33,6 +34,7 @@ export const WEDDING_CONFIG = {
       location: "Mt. Carmel Parish Church",
       mapUrl: "https://maps.app.goo.gl/p5YX9vzFD33irEPB8",
       description: "Exchange of vows and blessing.",
+      image: "./mtcarmel.jpeg",
     },
     {
       time: "02:00 PM",
@@ -40,6 +42,7 @@ export const WEDDING_CONFIG = {
       location: "The Chapters",
       mapUrl: "https://maps.app.goo.gl/Er1iJFEG5BsBR24R9",
       description: "Celebration, dining, and toasts.",
+      image: "./thechapter.jpeg",
     },
   ],
   dressCode: {
@@ -56,11 +59,13 @@ export const WEDDING_CONFIG = {
       name: "The Greenery",
       description: "Lighthouse & scenic green fields",
       mapUrl: "https://maps.app.goo.gl/yJkWaJY4kYRdtiJZ6",
+      image: "./greenery.jpeg",
     },
     {
-      name: "River Adventure Resort",
+      name: "River Safari Resort",
       description: "Bali-inspired scenic river resort",
       mapUrl: "https://maps.app.goo.gl/yJkWaJY4kYRdtiJZ6",
+      image: "./river safari.jpeg",
     },
   ],
 };

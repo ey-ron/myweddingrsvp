@@ -52,3 +52,160 @@ input, textarea, select {
 ::-webkit-scrollbar-thumb:hover {
   background: #CEB894;
 }
+
+/* Elegant cursive handwriting animation */
+@keyframes cursiveWrite {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0.85;
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+.animate-cursive-write {
+  display: inline-block;
+  animation: cursiveWrite 3.8s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+
+/* Responsive Luxury Cursive Headline */
+.text-script-headline {
+  font-family: 'Alex Brush', cursive;
+  font-size: clamp(26px, 7vw, 30px);
+  line-height: 1.15;
+}
+
+@media (min-width: 390px) {
+  .text-script-headline {
+    font-size: clamp(29px, 7.5vw, 33px);
+  }
+}
+
+@media (min-width: 640px) {
+  .text-script-headline {
+    font-size: clamp(44px, 5vw, 58px);
+  }
+}
+
+/* Luxury Gold-Foil Shimmer Sweep (Single Slow Elegant Gleam - Never Disappears) */
+@keyframes goldShimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gold-shimmer {
+  background: linear-gradient(
+    110deg,
+    #B89B6D 0%,
+    #B89B6D 35%,
+    #FFF8EE 50%,
+    #B89B6D 65%,
+    #B89B6D 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldShimmer 4.5s cubic-bezier(0.25, 1, 0.5, 1) 0.2s forwards;
+}
+
+/* Staggered Entrance Animations */
+@keyframes luxuryEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-luxury-card {
+  animation: luxuryEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Cascading Reveal for Sequential Cards */
+@keyframes cascadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-cascade-1 {
+  animation: cascadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.animate-cascade-2 {
+  animation: cascadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+}
+
+.animate-cascade-3 {
+  animation: cascadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.49s both;
+}
+
+.animate-cascade-4 {
+  animation: cascadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.68s both;
+}
+
+/* Subtle Header Pill / Subtitle Entrance */
+@keyframes softFadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes softFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-header-pill {
+  animation: softFadeDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+}
+
+.animate-header-sub {
+  animation: softFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+}
+
+/* Scroll Down Cue & Footer Entrance (delayed smooth reveal) */
+@keyframes scrollCueEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-scroll-cue {
+  animation: scrollCueEntrance 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.85s both;
+}
+
+
+
+

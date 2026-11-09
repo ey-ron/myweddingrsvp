@@ -2,8 +2,10 @@ import { useState, useEffect, useRef } from 'react';
 import { Hero } from './components/Hero';
 import { EventDetails } from './components/EventDetails';
 import { RSVPForm } from './components/RSVPForm';
+import { EnvelopeSplashScreen } from './components/EnvelopeSplashScreen';
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
   const [currentPage, setCurrentPage] = useState(0); // 0: Hero, 1: Schedule, 2: RSVP
   const isTransitioning = useRef(false);
   const touchStartY = useRef<number | null>(null);
@@ -93,7 +95,12 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-[#FAF8F5] text-[#2A2725] w-screen overflow-hidden relative font-sans select-none" style={{ height: 'var(--app-height, 100vh)' }}>
+    <div className="bg-[#FAF8F5] text-[#2A2725] w-screen h-[100dvh] overflow-hidden relative font-sans select-none" style={{ height: 'var(--app-height, 100dvh)' }}>
+      {/* Wedding Envelope Splash Screen */}
+      {showSplash && (
+        <EnvelopeSplashScreen onComplete={() => setShowSplash(false)} />
+      )}
+
       {/* Discreet Page Indicator Dots - Positioned vertically at the top right of the header */}
       <nav aria-label="Page navigation" className="fixed top-2.5 right-3 sm:top-3 sm:right-6 z-50 flex flex-col items-center gap-1.5 sm:gap-2 px-1.5 py-2 rounded-full bg-white/70 backdrop-blur-md border border-[#EAE2D8] shadow-xs">
         {[
@@ -120,21 +127,21 @@ function App() {
           style={{ display: currentPage === 0 ? 'flex' : 'none' }} 
           className="w-full h-full flex-col animate-in fade-in duration-200"
         >
-          <Hero onNavigate={setCurrentPage} />
+          <Hero onNavigate={setCurrentPage} isReady={!showSplash && currentPage === 0} />
         </div>
 
         <div 
           style={{ display: currentPage === 1 ? 'flex' : 'none' }} 
           className="w-full h-full flex-col animate-in fade-in duration-200"
         >
-          <EventDetails onNavigate={setCurrentPage} />
+          <EventDetails onNavigate={setCurrentPage} isActive={currentPage === 1} />
         </div>
 
         <div 
           style={{ display: currentPage === 2 ? 'flex' : 'none' }} 
           className="w-full h-full flex-col animate-in fade-in duration-200"
         >
-          <RSVPForm onNavigate={setCurrentPage} />
+          <RSVPForm onNavigate={setCurrentPage} isActive={currentPage === 2} />
         </div>
       </main>
     </div>
