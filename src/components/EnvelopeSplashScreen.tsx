@@ -55,10 +55,10 @@ export const EnvelopeSplashScreen: React.FC<EnvelopeSplashScreenProps> = ({ onCo
 
       {/* Top Header */}
       <div className="text-center transition-all duration-700 flex-shrink-0 z-10 mt-1 xs:mt-2">
-        <span className="text-[10px] xs:text-xs uppercase tracking-[0.35em] text-[#8C7A5E] font-semibold block mb-0.5">
+        <span className="text-[9px] xs:text-[10px] uppercase tracking-[0.28em] text-[#8C7A5E] font-semibold block mb-0.5">
           A Special Invitation
         </span>
-        <h2 className="font-serif italic text-xl xs:text-2xl sm:text-4xl text-[#2A2725]">
+        <h2 className="font-serif italic text-lg xs:text-xl sm:text-3xl text-[#2A2725]">
           For Our Wedding Celebration
         </h2>
       </div>
@@ -81,17 +81,17 @@ export const EnvelopeSplashScreen: React.FC<EnvelopeSplashScreenProps> = ({ onCo
           }}
         >
           <div className="w-full h-full border border-[#DFD0B7] rounded-lg p-1.5 xs:p-2 flex flex-col items-center justify-center bg-[#FAF8F5]">
-            <span className="text-[8.5px] xs:text-[9.5px] uppercase tracking-[0.3em] font-semibold text-[#8C7A5E]">
+            <span className="text-[8px] xs:text-[9px] uppercase tracking-[0.28em] font-semibold text-[#8C7A5E]">
               Save The Date
             </span>
-            <div className="font-script text-xl xs:text-2xl sm:text-4xl text-[#B89B6D] my-0.5 leading-tight">
+            <div className="font-script text-lg xs:text-xl sm:text-3xl text-[#B89B6D] my-0.5 leading-tight">
               {WEDDING_CONFIG.couple.partner1} & {WEDDING_CONFIG.couple.partner2}
             </div>
             <div className="h-px w-12 bg-[#DFD0B7] my-0.5 xs:my-1" />
-            <div className="font-serif text-[10px] xs:text-xs sm:text-sm font-semibold text-[#2A2725]">
+            <div className="font-serif text-[9.5px] xs:text-[11px] sm:text-sm font-semibold text-[#2A2725]">
               {WEDDING_CONFIG.date.display}
             </div>
-            <div className="text-[8.5px] xs:text-[9.5px] sm:text-xs text-[#736B63] mt-0.5">
+            <div className="text-[8px] xs:text-[9px] sm:text-xs text-[#736B63] mt-0.5">
               {WEDDING_CONFIG.venue.name}
             </div>
           </div>
@@ -170,7 +170,7 @@ export const EnvelopeSplashScreen: React.FC<EnvelopeSplashScreenProps> = ({ onCo
 
       {/* Tap Prompt */}
       <div className="text-center flex-shrink-0">
-        <span className={`inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/80 backdrop-blur-md border border-[#EAE2D8] text-xs uppercase tracking-[0.25em] text-[#8C7A5E] font-semibold shadow-sm transition-opacity duration-300 ${
+        <span className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-[#EAE2D8] text-[9.5px] xs:text-[10.5px] uppercase tracking-[0.22em] text-[#8C7A5E] font-semibold shadow-sm transition-opacity duration-300 ${
           stage === 'closed' ? 'opacity-100 animate-bounce' : 'opacity-0'
         }`}>
           Tap to open invitation

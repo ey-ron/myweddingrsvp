@@ -56,10 +56,10 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[600px] h-[340px] sm:h-[600px] bg-[#EDE4D4]/30 rounded-full blur-3xl pointer-events-none -z-10" />
 
       {/* Top Header (Outside the Border) */}
-      <div className="text-center max-w-3xl mx-auto mt-1 xs:mt-1.5 sm:mt-2 mb-1 xs:mb-1.5 tall:mb-2.5 sm:mb-2 flex-shrink-0">
+      <div className="text-center max-w-3xl mx-auto mt-0.5 xs:mt-1 sm:mt-1.5 mb-0.5 xs:mb-1 tall:mb-1.5 sm:mb-1.5 flex-shrink-0">
         <span
           key={`std-${isReady ? 'ready' : 'hidden'}`}
-          className={`text-[11px] xs:text-xs tall:text-sm sm:text-sm uppercase tracking-[0.35em] font-semibold text-[#8C7A5E] inline-block ${
+          className={`text-[9px] xs:text-[10px] tall:text-[10.5px] sm:text-[11px] uppercase tracking-[0.28em] font-semibold text-[#8C7A5E] inline-block ${
             isReady ? 'animate-header-pill' : 'opacity-0'
           }`}
         >
@@ -79,7 +79,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
       {/* Centered Arch Border Container - Scaled up to fill the viewport */}
       <div className={`w-full flex-1 flex flex-col justify-center items-center my-auto min-h-0 ${isReady ? 'animate-luxury-card' : 'opacity-0'}`}>
         {/* Elegant Arch Border Frame */}
-        <div className="relative max-w-[345px] xs:max-w-[380px] sm:max-w-2xl xl:max-w-5xl w-full mx-auto py-3.5 xs:py-4.5 tall:py-6 sm:py-7 xl:py-6 px-4 xs:px-6 sm:px-10 xl:px-8 rounded-[1.85rem] xs:rounded-[2.25rem] tall:rounded-[2.5rem] sm:rounded-[2.5rem] border border-[#EAE2D8] bg-[#FAF8F5]/85 backdrop-blur-sm shadow-luxury transition-all xl:flex xl:flex-row xl:items-stretch xl:gap-8">
+        <div className="relative max-w-[325px] xs:max-w-[350px] sm:max-w-2xl xl:max-w-5xl w-full mx-auto py-2.5 xs:py-3.5 tall:py-4.5 sm:py-5 xl:py-4 px-3.5 xs:px-4.5 sm:px-8 xl:px-6 rounded-[1.5rem] xs:rounded-[1.75rem] tall:rounded-[2rem] sm:rounded-[2.25rem] border border-[#EAE2D8] bg-[#FAF8F5]/85 backdrop-blur-sm shadow-luxury transition-all xl:flex xl:flex-row xl:items-stretch xl:gap-8">
 
           {/* Full Height Video (XL Screen View - Left Side) */}
           <div className="hidden xl:block xl:w-[46%] rounded-2xl overflow-hidden border border-[#DFD0B7] shadow-card relative flex-shrink-0 bg-[#EDE4D4]/30 self-stretch">
@@ -97,7 +97,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
           {/* Right Side Content on XL (Full Width on Mobile/Tablet) */}
           <div className="w-full xl:w-[54%] flex flex-col justify-center items-center">
             {/* 2:1 Widescreen Looping Video (XS and SM / Small Screens) */}
-            <div className="xl:hidden w-full max-w-[310px] xs:max-w-[340px] tall:max-w-[360px] sm:max-w-[460px] aspect-[2/1] mx-auto mb-2.5 xs:mb-3 tall:mb-4 sm:mb-5 rounded-xl xs:rounded-2xl overflow-hidden border border-[#DFD0B7] shadow-card relative flex-shrink-0 bg-[#EDE4D4]/30">
+            <div className="xl:hidden w-full max-w-[270px] xs:max-w-[295px] tall:max-w-[315px] sm:max-w-[380px] aspect-[2/1] mx-auto mb-2 xs:mb-2 tall:mb-3 sm:mb-3.5 rounded-xl xs:rounded-2xl overflow-hidden border border-[#DFD0B7] shadow-card relative flex-shrink-0 bg-[#EDE4D4]/30">
               <video
                 ref={mobileVideoRef}
                 src="/mobile.mov"
@@ -110,16 +110,16 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
             </div>
 
             {/* Live Countdown Timer */}
-            <div className="flex items-center justify-center gap-1.5 xs:gap-2.5 sm:gap-4 mb-2.5 xs:mb-3 sm:mb-5 xl:mb-3">
+            <div className="flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 mb-2 xs:mb-2 sm:mb-3.5 xl:mb-2">
               {timeBlocks.map((block) => (
                 <div
                   key={block.label}
-                  className="bg-white/90 backdrop-blur-sm border border-[#EAE2D8] rounded-xl sm:rounded-2xl px-2.5 xs:px-3.5 sm:px-5 py-1.5 xs:py-2 sm:py-3 xl:px-4 xl:py-2.5 shadow-xs text-center min-w-[58px] xs:min-w-[66px] sm:min-w-[80px]"
+                  className="bg-white/90 backdrop-blur-sm border border-[#EAE2D8] rounded-xl sm:rounded-2xl px-1.5 xs:px-2.5 sm:px-3.5 py-1 xs:py-1 sm:py-2 xl:px-3 xl:py-1.5 shadow-xs text-center min-w-[46px] xs:min-w-[52px] sm:min-w-[64px]"
                 >
-                  <div className="font-serif text-lg xs:text-2xl sm:text-3xl xl:text-2xl font-light text-[#2A2725] tabular-nums leading-none">
+                  <div className="font-serif text-sm xs:text-base sm:text-xl xl:text-lg font-light text-[#2A2725] tabular-nums leading-none">
                     {String(block.value).padStart(2, '0')}
                   </div>
-                  <div className="text-[8px] xs:text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-[#8C7A5E] font-medium mt-0.5 sm:mt-1">
+                  <div className="text-[6.5px] xs:text-[7.5px] sm:text-[8.5px] uppercase tracking-[0.16em] text-[#8C7A5E] font-medium mt-0.5 sm:mt-1">
                     {block.label}
                   </div>
                 </div>
@@ -127,15 +127,15 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
             </div>
 
             {/* Couple Names - Grand, Stacked Script Typography with Gold Foil Shimmer */}
-            <div className="my-2 xs:my-2.5 tall:my-3 sm:my-4 xl:my-2.5 flex flex-col justify-center">
+            <div className="my-1.5 xs:my-2 tall:my-2.5 sm:my-3 xl:my-2 flex flex-col justify-center">
               <h2
                 key={`names-${isReady ? 'ready' : 'hidden'}`}
-                className={`flex flex-col items-center justify-center font-script text-[50px] xs:text-[58px] tall:text-[66px] sm:text-7xl xl:text-[56px] font-normal leading-[1.08] ${
+                className={`flex flex-col items-center justify-center font-script text-[32px] xs:text-[38px] tall:text-[44px] sm:text-[50px] xl:text-[44px] font-normal leading-[1.08] ${
                   isReady ? 'animate-gold-shimmer' : 'text-[#B89B6D]'
                 }`}
               >
                 <span>{WEDDING_CONFIG.couple.partner1}</span>
-                <span className="text-2xl xs:text-3xl sm:text-4xl xl:text-[38px] leading-none inline-flex items-center justify-center my-0.5 sm:my-1.5">
+                <span className="text-base xs:text-lg sm:text-2xl xl:text-xl leading-none inline-flex items-center justify-center my-0 xs:my-0.5 sm:my-1">
                   &
                 </span>
                 <span>{WEDDING_CONFIG.couple.partner2}</span>
@@ -143,17 +143,17 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
             </div>
 
             {/* Divider Flourish */}
-            <div className="flex items-center justify-center gap-2 sm:gap-3 my-2 xs:my-2.5 sm:my-4 xl:my-2.5">
-              <div className="h-px w-10 sm:w-20 bg-[#DFD0B7]" />
+            <div className="flex items-center justify-center gap-2 sm:gap-3 my-1.5 xs:my-2 sm:my-2.5 xl:my-2">
+              <div className="h-px w-8 sm:w-16 bg-[#DFD0B7]" />
               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#B89B6D]" />
-              <div className="h-px w-10 sm:w-20 bg-[#DFD0B7]" />
+              <div className="h-px w-8 sm:w-16 bg-[#DFD0B7]" />
             </div>
 
             {/* Date & Location Badges */}
-            <div className="flex flex-col items-center justify-center gap-1.5 xs:gap-2.5 sm:gap-3 xl:gap-2 text-xs xs:text-sm sm:text-base xl:text-sm text-[#5A544F] mb-3 xs:mb-4 sm:mb-6 xl:mb-4 font-medium">
+            <div className="flex flex-col items-center justify-center gap-1 xs:gap-1.5 sm:gap-2 xl:gap-1.5 text-[10px] xs:text-[11px] sm:text-xs xl:text-[11px] text-[#5A544F] mb-2 xs:mb-2.5 sm:mb-3.5 xl:mb-2.5 font-medium">
               {/* Row 1: Date */}
-              <div className="flex items-center gap-1.5 sm:gap-2.5">
-                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-[#B89B6D] flex-shrink-0" />
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <Calendar className="w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 text-[#B89B6D] flex-shrink-0" />
                 <span>{WEDDING_CONFIG.date.display}</span>
               </div>
 
@@ -162,24 +162,24 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
                 href={WEDDING_CONFIG.venue.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 sm:gap-2.5 hover:text-[#B89B6D] transition-colors"
+                className="flex items-center gap-1.5 sm:gap-2 hover:text-[#B89B6D] transition-colors"
               >
-                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-[#B89B6D] flex-shrink-0" />
+                <MapPin className="w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 text-[#B89B6D] flex-shrink-0" />
                 <span>{WEDDING_CONFIG.venue.name}{WEDDING_CONFIG.venue.city ? `, ${WEDDING_CONFIG.venue.city}` : ''}</span>
               </a>
             </div>
 
             {/* Action Buttons - Scaled up with generous touch targets */}
-            <div className="flex flex-row items-center justify-center gap-2.5 xs:gap-3 sm:gap-4 w-full sm:w-auto">
+            <div className="flex flex-row items-center justify-center gap-2 xs:gap-2.5 sm:gap-3 w-full sm:w-auto">
               <button
                 onClick={() => onNavigate ? onNavigate(3) : scrollTo('rsvp')}
-                className="flex-1 sm:flex-initial px-4 xs:px-6 sm:px-8 py-2.5 xs:py-3.5 sm:py-3.5 rounded-full bg-[#2A2725] text-white hover:bg-[#B89B6D] text-[11px] xs:text-xs uppercase tracking-[0.18em] sm:tracking-[0.2em] font-semibold transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0"
+                className="flex-1 sm:flex-initial px-3 xs:px-4 sm:px-6 py-1.5 xs:py-2 sm:py-2.5 rounded-full bg-[#2A2725] text-white hover:bg-[#B89B6D] text-[9.5px] xs:text-[10px] sm:text-[11px] uppercase tracking-[0.15em] font-semibold transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0"
               >
                 RSVP Attendance
               </button>
               <button
                 onClick={() => onNavigate ? onNavigate(1) : scrollTo('schedule')}
-                className="flex-1 sm:flex-initial px-4 xs:px-6 sm:px-8 py-2.5 xs:py-3.5 sm:py-3.5 rounded-full border border-[#DFD0B7] hover:border-[#B89B6D] text-[#2A2725] hover:text-[#B89B6D] text-[11px] xs:text-xs uppercase tracking-[0.18em] sm:tracking-[0.2em] font-semibold transition-all bg-white/50"
+                className="flex-1 sm:flex-initial px-3 xs:px-4 sm:px-6 py-1.5 xs:py-2 sm:py-2.5 rounded-full border border-[#DFD0B7] hover:border-[#B89B6D] text-[#2A2725] hover:text-[#B89B6D] text-[9.5px] xs:text-[10px] sm:text-[11px] uppercase tracking-[0.15em] font-semibold transition-all bg-white/50"
               >
                 Event Details
               </button>
@@ -198,10 +198,10 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
           isReady ? 'animate-scroll-cue' : 'opacity-0'
         }`}
       >
-        <span className="text-[9px] xs:text-[10px] uppercase tracking-[0.25em] font-medium leading-none mb-0.5">
+        <span className="text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.2em] font-medium leading-none mb-0.5">
           Scroll Down
         </span>
-        <ChevronDown className="w-3.5 h-3.5 xs:w-4 xs:h-4 animate-bounce text-[#B89B6D]" />
+        <ChevronDown className="w-3 h-3 xs:w-3.5 xs:h-3.5 animate-bounce text-[#B89B6D]" />
       </button>
     </section>
   );

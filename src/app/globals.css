@@ -78,19 +78,20 @@ input, textarea, select {
 /* Responsive Luxury Cursive Headline */
 .text-script-headline {
   font-family: 'Alex Brush', cursive;
-  font-size: clamp(26px, 7vw, 30px);
-  line-height: 1.15;
+  font-size: clamp(24px, 6.5vw, 28px);
+  line-height: 1.25;
+  padding-bottom: 2px;
 }
 
-@media (min-width: 390px) {
+@media (min-width: 380px) {
   .text-script-headline {
-    font-size: clamp(29px, 7.5vw, 33px);
+    font-size: clamp(29px, 7.8vw, 35px);
   }
 }
 
 @media (min-width: 640px) {
   .text-script-headline {
-    font-size: clamp(44px, 5vw, 58px);
+    font-size: clamp(42px, 5.5vw, 52px);
   }
 }
 
