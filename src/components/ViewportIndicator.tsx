@@ -67,57 +67,69 @@ export const ViewportIndicator: React.FC = () => {
   );
 
   return (
-    <div
-      onClick={() => setExpanded(!expanded)}
-      className="fixed top-2.5 left-2.5 z-[9999] cursor-pointer select-none font-mono text-[11px] leading-tight transition-all"
-    >
-      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-neutral-900/95 text-white shadow-xl border border-white/20 backdrop-blur-md">
-        <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-        <span className="font-bold text-[#E5C388] uppercase">DEV</span>
-        <span className="text-neutral-500">·</span>
-        <span className="font-semibold text-emerald-300">
-          {getWidthBreakpoint(info.width)}
-        </span>
-        <span className="text-neutral-500">·</span>
-        <span className="font-semibold text-cyan-300">
-          {getHeightTier(info.height).split(' ')[0]}
-        </span>
-        <span className="text-neutral-500">·</span>
-        <span className="text-neutral-200">{info.width}×{info.height}</span>
-      </div>
+    <div className="fixed top-2.5 left-2.5 z-[9999] select-none font-mono">
+      {!expanded ? (
+        /* Discreet circle black dot with glowing yellow circle inside */
+        <button
+          onClick={() => setExpanded(true)}
+          aria-label="Open Viewport Debug Info"
+          title="Tap to view viewport debug info"
+          className="w-6 h-6 rounded-full bg-black hover:bg-neutral-900 border-2 border-white shadow-2xl flex items-center justify-center cursor-pointer transition-transform hover:scale-110 active:scale-90 group focus:outline-none"
+        >
+          <span className="w-2.5 h-2.5 rounded-full bg-amber-400 group-hover:bg-amber-300 animate-pulse" />
+        </button>
+      ) : (
+        /* Expanded High-Contrast Debug Panel */
+        <div className="relative animate-in fade-in zoom-in-95 duration-150">
+          {/* Header pill button to collapse */}
+          <button
+            onClick={() => setExpanded(false)}
+            aria-label="Close Viewport Debug Info"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black text-white shadow-2xl border-2 border-amber-400 cursor-pointer hover:bg-neutral-900 transition-all focus:outline-none mb-1.5"
+          >
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+            <span className="font-extrabold text-amber-300 text-xs tracking-wider uppercase">VIEWPORT DEBUG</span>
+            <span className="text-white font-bold text-xs ml-1 bg-neutral-800 px-1.5 py-0.2 rounded-full">✕</span>
+          </button>
 
-      {expanded && (
-        <div className="mt-1.5 p-2.5 rounded-xl bg-neutral-900/95 text-neutral-200 border border-white/20 shadow-2xl space-y-1 text-[10px] min-w-[220px]">
-          <div className="flex justify-between border-b border-neutral-700 pb-1 font-bold text-[#E5C388]">
-            <span>Viewport Debug</span>
-            <span>Dev Only</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-neutral-400">Width Breakpoint:</span>
-            <span className="font-semibold text-emerald-300">{getWidthBreakpoint(info.width)} ({info.width}px)</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-neutral-400">Height Tier:</span>
-            <span className="font-semibold text-cyan-300">{getHeightTier(info.height)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-neutral-400">Viewport Dimensions:</span>
-            <span className="font-semibold">{info.width} × {info.height} px</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-neutral-400">Screen Dimensions:</span>
-            <span>{info.screenWidth} × {info.screenHeight} px</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-neutral-400">Pixel Ratio:</span>
-            <span>{info.dpr}x</span>
-          </div>
-          <div className="flex justify-between border-t border-neutral-800 pt-1">
-            <span className="text-neutral-400">Hero Video (21.5dvh):</span>
-            <span className="font-semibold text-amber-300">~{videoCalcHeight}px</span>
-          </div>
-          <div className="pt-1 text-[9px] text-neutral-400 italic text-center border-t border-neutral-800">
-            Tap to close · Automatically hidden in prod
+          {/* Detailed high-contrast metrics card */}
+          <div
+            onClick={() => setExpanded(false)}
+            className="p-3.5 rounded-2xl bg-black text-white border-2 border-amber-400 shadow-2xl space-y-2 text-xs min-w-[240px] cursor-pointer"
+          >
+            <div className="flex justify-between items-center border-b border-neutral-700 pb-1.5">
+              <span className="text-white font-bold uppercase tracking-wider text-[11px]">Dimensions:</span>
+              <span className="text-emerald-400 font-extrabold text-sm">{info.width} × {info.height} px</span>
+            </div>
+
+            <div className="flex justify-between items-center">
+              <span className="text-white font-medium">Width Breakpoint:</span>
+              <span className="text-emerald-300 font-bold">{getWidthBreakpoint(info.width)} ({info.width}px)</span>
+            </div>
+
+            <div className="flex justify-between items-center">
+              <span className="text-white font-medium">Height Tier:</span>
+              <span className="text-cyan-300 font-bold">{getHeightTier(info.height)}</span>
+            </div>
+
+            <div className="flex justify-between items-center">
+              <span className="text-white font-medium">Screen Resolution:</span>
+              <span className="text-yellow-300 font-bold">{info.screenWidth} × {info.screenHeight} px</span>
+            </div>
+
+            <div className="flex justify-between items-center">
+              <span className="text-white font-medium">Device Pixel Ratio:</span>
+              <span className="text-amber-300 font-bold">{info.dpr}x</span>
+            </div>
+
+            <div className="flex justify-between items-center border-t border-neutral-800 pt-1.5">
+              <span className="text-white font-medium">Hero Video Calc:</span>
+              <span className="text-amber-400 font-extrabold text-sm">~{videoCalcHeight}px</span>
+            </div>
+
+            <div className="pt-1.5 text-[10px] text-amber-300/90 font-semibold text-center border-t border-neutral-800">
+              Tap anywhere to close · Dev only
+            </div>
           </div>
         </div>
       )}

@@ -51,6 +51,7 @@ module.exports = {
         serif: ['"Playfair Display"', 'Georgia', 'serif'],
         script: ['"Alex Brush"', 'cursive'],
         sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+        cormorant: ['"Cormorant Garamond"', '"Playfair Display"', 'Georgia', 'serif'],
       },
       boxShadow: {
         'luxury': '0 20px 40px -15px rgba(184, 155, 109, 0.12), 0 0 1px 1px rgba(184, 155, 109, 0.1)',
