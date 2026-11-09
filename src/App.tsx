@@ -4,6 +4,7 @@ import { EventDetails } from './components/EventDetails';
 import { WeddingParty } from './components/WeddingParty';
 import { RSVPForm } from './components/RSVPForm';
 import { EnvelopeSplashScreen } from './components/EnvelopeSplashScreen';
+import { ViewportIndicator } from './components/ViewportIndicator';
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
@@ -105,6 +106,9 @@ function App() {
 
   return (
     <div className="bg-[#FAF8F5] text-[#2A2725] w-screen h-[100dvh] overflow-hidden relative font-sans select-none" style={{ height: 'var(--app-height, 100dvh)' }}>
+      {/* Floating Viewport Debug Indicator */}
+      <ViewportIndicator />
+
       {/* Wedding Envelope Splash Screen */}
       {showSplash && (
         <EnvelopeSplashScreen onComplete={() => setShowSplash(false)} />
