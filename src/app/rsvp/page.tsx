@@ -9,59 +9,13 @@ import {
   ArrowLeft, 
   RefreshCw, 
   Search, 
-  Heart, 
   Sparkles, 
-  Calendar, 
-  Clock, 
   MessageSquare,
-  HelpCircle,
-  ChevronDown,
-  ChevronUp,
   UserCheck,
   UserX
 } from 'lucide-react';
 import { supabase, isSupabaseConfigured, RSVPResponse } from '../../lib/supabase';
 import { WEDDING_CONFIG } from '../../config/wedding';
-
-// Mock sample data for preview if database has not recorded responses yet
-const SAMPLE_RSVPS: RSVPResponse[] = [
-  {
-    id: 'demo-1',
-    first_name: 'Marcus',
-    surname: 'Vance',
-    attending: true,
-    additional_guests: 2,
-    notes: 'So happy for both of you! Cannot wait to celebrate.',
-    created_at: '2026-11-09T18:30:00Z',
-  },
-  {
-    id: 'demo-2',
-    first_name: 'Sophia',
-    surname: 'Chen',
-    attending: true,
-    additional_guests: 1,
-    notes: 'Congratulations Aaron & Eileen!',
-    created_at: '2026-11-09T19:15:00Z',
-  },
-  {
-    id: 'demo-3',
-    first_name: 'David',
-    surname: 'Miller',
-    attending: false,
-    additional_guests: 0,
-    notes: 'Sending all our love and blessings from overseas!',
-    created_at: '2026-11-09T20:05:00Z',
-  },
-  {
-    id: 'demo-4',
-    first_name: 'Elena',
-    surname: 'Rostova',
-    attending: true,
-    additional_guests: 0,
-    notes: '',
-    created_at: '2026-11-09T21:40:00Z',
-  },
-];
 
 export default function RSVPAdminPage() {
   const [responses, setResponses] = useState<RSVPResponse[]>([]);
@@ -69,16 +23,6 @@ export default function RSVPAdminPage() {
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<'all' | 'attending' | 'declined'>('all');
-  const [useSampleData, setUseSampleData] = useState(false);
-  const [showSqlHelp, setShowSqlHelp] = useState(true);
-  const [copiedSql, setCopiedSql] = useState(false);
-
-  const copySqlToClipboard = () => {
-    const sql = `DROP POLICY IF EXISTS "Allow authenticated users to view RSVPs" ON public.rsvp_responses;\nDROP POLICY IF EXISTS "Allow public to view RSVPs" ON public.rsvp_responses;\nCREATE POLICY "Allow public to view RSVPs"\nON public.rsvp_responses\nFOR SELECT\nTO anon, authenticated\nUSING (true);`;
-    navigator.clipboard.writeText(sql);
-    setCopiedSql(true);
-    setTimeout(() => setCopiedSql(false), 2500);
-  };
   const [lastRefreshed, setLastRefreshed] = useState<Date>(new Date());
 
   const fetchRSVPs = async () => {
@@ -86,8 +30,7 @@ export default function RSVPAdminPage() {
     setError(null);
     try {
       if (!isSupabaseConfigured) {
-        setResponses(SAMPLE_RSVPS);
-        setUseSampleData(true);
+        setResponses([]);
         setIsLoading(false);
         return;
       }
@@ -101,13 +44,7 @@ export default function RSVPAdminPage() {
         throw new Error(fetchError.message);
       }
 
-      if (data && data.length > 0) {
-        setResponses(data);
-        setUseSampleData(false);
-      } else {
-        // No rows returned (could be empty table or RLS SELECT policy pending)
-        setResponses([]);
-      }
+      setResponses(data || []);
     } catch (err: any) {
       console.error('Error fetching RSVPs:', err);
       setError(err?.message || 'Could not fetch RSVPs from database.');
@@ -121,8 +58,7 @@ export default function RSVPAdminPage() {
     fetchRSVPs();
   }, []);
 
-  // Display list (switches to sample data when user explicitly toggles it)
-  const displayList = useSampleData && responses.length === 0 ? SAMPLE_RSVPS : responses;
+  const displayList = responses;
 
   // Filtered responses based on search query & attendance tab
   const filteredResponses = useMemo(() => {
@@ -349,84 +285,18 @@ export default function RSVPAdminPage() {
           </div>
         </div>
 
-        {/* Notice Banner: Demo Mode or Supabase RLS Helper */}
-        {useSampleData && (
-          <div className="mb-5 p-3 sm:p-4 rounded-xl bg-amber-50/80 border border-amber-200 text-amber-900 text-xs flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-amber-600 flex-shrink-0" />
-              <span>Showing sample preview data because no responses exist yet or Supabase is being configured.</span>
-            </div>
-            <button
-              onClick={() => setUseSampleData(false)}
-              className="text-[11px] font-bold text-amber-800 underline hover:text-amber-950 ml-2 whitespace-nowrap cursor-pointer"
-            >
-              Hide Sample
-            </button>
-          </div>
-        )}
-
-        {/* Empty State / RLS Help Card */}
-        {!isLoading && responses.length === 0 && !useSampleData && (
-          <div className="bg-white rounded-2xl border border-[#DFD0B7] p-5 sm:p-8 text-center my-4 sm:my-6 shadow-card">
+        {/* Empty State */}
+        {!isLoading && responses.length === 0 && (
+          <div className="bg-white rounded-2xl border border-[#DFD0B7] p-8 sm:p-12 text-center my-6 shadow-card">
             <div className="w-12 h-12 rounded-full bg-[#EDE4D4]/60 text-[#B89B6D] flex items-center justify-center mx-auto mb-3">
               <Users className="w-6 h-6" />
             </div>
             <h3 className="font-serif text-lg sm:text-xl text-[#2A2725] mb-1">
-              Why are no RSVPs showing up?
+              No RSVPs Recorded Yet
             </h3>
-            <p className="text-xs text-[#7A726A] max-w-lg mx-auto mb-4">
-              Your RSVPs <strong>are safely recorded in your Supabase database</strong>, but Supabase Row-Level Security (RLS) restricts public reading by default until you grant read permission to the public anon key.
+            <p className="text-xs text-[#7A726A] max-w-sm mx-auto">
+              Guest responses and confirmed seat counts will appear here as they are submitted.
             </p>
-
-            <div className="flex flex-wrap items-center justify-center gap-2 mb-5">
-              <button
-                onClick={() => setUseSampleData(true)}
-                className="px-4 py-2 rounded-xl bg-[#2A2725] text-white hover:bg-[#B89B6D] text-xs font-semibold uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer"
-              >
-                Preview With Sample Data
-              </button>
-              <button
-                onClick={copySqlToClipboard}
-                className="px-3.5 py-2 rounded-xl border border-[#DFD0B7] bg-[#FAF8F5] hover:bg-white text-xs font-semibold text-[#2A2725] transition-all flex items-center gap-1.5 shadow-xs cursor-pointer"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-[#B89B6D]" />
-                <span>{copiedSql ? '✓ Copied SQL!' : 'Copy 1-Line Fix SQL'}</span>
-              </button>
-            </div>
-
-            {/* Supabase SQL Helper Card */}
-            <div className="p-4 sm:p-5 rounded-xl bg-[#FAF8F5] border border-[#EAE2D8] text-left text-xs max-w-2xl mx-auto space-y-2.5">
-              <div className="flex items-center justify-between gap-2">
-                <span className="font-semibold text-[#2A2725] text-xs sm:text-sm">
-                  1-Step Fix in Supabase Dashboard:
-                </span>
-                <span className="text-[10px] text-[#8C7A5E] bg-white px-2 py-0.5 rounded-full border border-[#DFD0B7]">
-                  Takes 30 seconds
-                </span>
-              </div>
-              <p className="text-[#5A544F] text-[11px] sm:text-xs leading-relaxed">
-                Open your <a href="https://supabase.com/dashboard/project/hujbqwkuyggrmaossgay/sql" target="_blank" rel="noopener noreferrer" className="text-[#B89B6D] font-bold underline hover:text-[#9E8052]">Supabase SQL Editor</a>, paste the SQL below, and click <strong>RUN</strong>:
-              </p>
-              <div className="bg-[#1A1817] text-[#DFD0B7] p-3 rounded-xl font-mono text-[10.5px] sm:text-[11.5px] leading-relaxed overflow-x-auto relative group">
-                <button
-                  onClick={copySqlToClipboard}
-                  className="absolute top-2 right-2 px-2 py-1 rounded bg-[#2A2725] hover:bg-[#B89B6D] text-white text-[10px] font-sans font-semibold transition-all cursor-pointer"
-                >
-                  {copiedSql ? '✓ Copied' : 'Copy SQL'}
-                </button>
-                DROP POLICY IF EXISTS &quot;Allow authenticated users to view RSVPs&quot; ON public.rsvp_responses;<br />
-                DROP POLICY IF EXISTS &quot;Allow public to view RSVPs&quot; ON public.rsvp_responses;<br />
-                <br />
-                CREATE POLICY &quot;Allow public to view RSVPs&quot;<br />
-                ON public.rsvp_responses<br />
-                FOR SELECT<br />
-                TO anon, authenticated<br />
-                USING (true);
-              </div>
-              <p className="text-[11px] text-[#7A726A] pt-1">
-                Once run, click <strong>Refresh</strong> at the top right of this page and all your saved guests and total seat counts will instantly appear!
-              </p>
-            </div>
           </div>
         )}
 

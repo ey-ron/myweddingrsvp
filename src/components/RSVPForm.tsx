@@ -213,19 +213,13 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center justify-center gap-2 pt-0.5">
+              <div className="flex items-center justify-center pt-0.5">
                 <button
                   onClick={handleReset}
                   className="px-3.5 py-1 rounded-full border border-[#DFD0B7] text-[#2A2725] hover:bg-[#FAF8F5] text-[8.5px] xs:text-[9px] uppercase tracking-[0.16em] font-semibold transition-all cursor-pointer"
                 >
                   Submit Another RSVP
                 </button>
-                <a
-                  href="/rsvp"
-                  className="px-3.5 py-1 rounded-full bg-[#2A2725] text-white hover:bg-[#B89B6D] text-[8.5px] xs:text-[9px] uppercase tracking-[0.16em] font-semibold transition-all shadow-xs"
-                >
-                  View Guest List
-                </a>
               </div>
             </div>
           ) : (
