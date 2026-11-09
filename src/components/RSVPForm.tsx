@@ -89,8 +89,10 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
           .insert([payload]);
 
         if (error) {
+          console.error('Supabase RSVP insert error:', error);
           throw new Error(error.message || 'Failed to record RSVP in Supabase.');
         }
+        console.log('RSVP successfully saved to Supabase:', payload);
       } else {
         // Mock delay for realistic feel when testing without credentials
         await new Promise((resolve) => setTimeout(resolve, 800));
@@ -99,6 +101,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
       setSubmittedData(payload);
       triggerCelebration();
     } catch (err: unknown) {
+      console.error('RSVP form submission failed:', err);
       const message = err instanceof Error ? err.message : 'An unexpected error occurred. Please try again.';
       setErrorMessage(message);
     } finally {
@@ -210,13 +213,19 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center justify-center pt-0.5">
+              <div className="flex items-center justify-center gap-2 pt-0.5">
                 <button
                   onClick={handleReset}
-                  className="px-3.5 py-1 rounded-full border border-[#DFD0B7] text-[#2A2725] hover:bg-[#FAF8F5] text-[8.5px] xs:text-[9px] uppercase tracking-[0.16em] font-semibold transition-all"
+                  className="px-3.5 py-1 rounded-full border border-[#DFD0B7] text-[#2A2725] hover:bg-[#FAF8F5] text-[8.5px] xs:text-[9px] uppercase tracking-[0.16em] font-semibold transition-all cursor-pointer"
                 >
                   Submit Another RSVP
                 </button>
+                <a
+                  href="/rsvp"
+                  className="px-3.5 py-1 rounded-full bg-[#2A2725] text-white hover:bg-[#B89B6D] text-[8.5px] xs:text-[9px] uppercase tracking-[0.16em] font-semibold transition-all shadow-xs"
+                >
+                  View Guest List
+                </a>
               </div>
             </div>
           ) : (

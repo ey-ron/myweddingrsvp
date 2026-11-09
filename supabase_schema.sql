@@ -36,12 +36,13 @@ WITH CHECK (
     additional_guests >= 0
 );
 
--- 5. Policy: Restrict reading to authenticated dashboard users (keeps guest info private)
+-- 5. Policy: Allow reading RSVPs so the /rsvp guest list page can display seat counts
 DROP POLICY IF EXISTS "Allow authenticated users to view RSVPs" ON public.rsvp_responses;
-CREATE POLICY "Allow authenticated users to view RSVPs"
+DROP POLICY IF EXISTS "Allow public to view RSVPs" ON public.rsvp_responses;
+CREATE POLICY "Allow public to view RSVPs"
 ON public.rsvp_responses
 FOR SELECT
-TO authenticated
+TO anon, authenticated
 USING (true);
 
 -- (Optional: If you want guests to verify their own submission or read total count,

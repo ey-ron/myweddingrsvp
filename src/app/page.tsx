@@ -150,7 +150,18 @@ export default function Home() {
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (showSplashRef.current) return;
-      if (['ArrowDown', 'PageDown', ' '].includes(e.key)) {
+
+      // Do NOT intercept keys when user is typing in any input, textarea, or select
+      const activeElement = document.activeElement;
+      if (
+        activeElement &&
+        ['INPUT', 'TEXTAREA', 'SELECT'].includes(activeElement.tagName)
+      ) {
+        return;
+      }
+
+      // Only navigate on deliberate navigation keys (arrow keys, page up/down)
+      if (['ArrowDown', 'PageDown'].includes(e.key)) {
         e.preventDefault();
         setCurrentPage((prev) => Math.min(3, prev + 1));
       } else if (['ArrowUp', 'PageUp'].includes(e.key)) {
