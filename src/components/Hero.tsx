@@ -3,7 +3,11 @@ import { Calendar, MapPin, ChevronDown } from 'lucide-react';
 import { WEDDING_CONFIG } from '../config/wedding';
 import { useCountdown } from '../hooks/useCountdown';
 
-export const Hero: React.FC = () => {
+interface HeroProps {
+  onNavigate?: (pageIndex: number) => void;
+}
+
+export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   const { timeLeft } = useCountdown();
 
   const timeBlocks = [
@@ -19,16 +23,16 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section id="hero" className="relative h-[100dvh] min-h-[100dvh] snap-start snap-always flex flex-col items-center justify-start pt-10 xs:pt-14 sm:pt-18 xl:pt-6 pb-4 xs:pb-5 sm:pb-8 xl:pb-4 px-3.5 xs:px-4 sm:px-6 lg:px-8 bg-subtle-linen overflow-hidden">
+    <section id="hero" className="relative w-full h-full flex flex-col items-center justify-start pt-1 sm:pt-2 pb-2 sm:pb-3 px-3.5 xs:px-4 sm:px-6 lg:px-8 bg-subtle-linen overflow-hidden">
       {/* Decorative luxury background elements */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[600px] h-[340px] sm:h-[600px] bg-[#EDE4D4]/30 rounded-full blur-3xl pointer-events-none -z-10" />
 
       {/* Top Header (Outside the Border) */}
-      <div className="text-center max-w-3xl mx-auto mb-2.5 xs:mb-3.5 sm:mb-6 xl:mb-3 flex-shrink-0">
+      <div className="text-center max-w-3xl mx-auto mb-1 sm:mb-2 flex-shrink-0">
         <span className="text-xs xs:text-sm uppercase tracking-[0.35em] font-semibold text-[#8C7A5E]">
           Save The Date
         </span>
-        <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-serif text-[#2A2725] mt-1.5 xs:mt-2 xl:mt-1 leading-tight tracking-tight">
+        <h1 className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl font-serif text-[#2A2725] mt-0.5 leading-tight tracking-tight">
           We Are Getting Married
         </h1>
       </div>
@@ -123,13 +127,13 @@ export const Hero: React.FC = () => {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
           <button
-            onClick={() => scrollTo('rsvp')}
+            onClick={() => onNavigate ? onNavigate(2) : scrollTo('rsvp')}
             className="w-full sm:w-auto px-7 py-3 sm:px-8 sm:py-3.5 rounded-full bg-[#2A2725] text-white hover:bg-[#B89B6D] text-xs uppercase tracking-[0.2em] font-semibold transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5"
           >
             RSVP Your Attendance
           </button>
           <button
-            onClick={() => scrollTo('schedule')}
+            onClick={() => onNavigate ? onNavigate(1) : scrollTo('schedule')}
             className="w-full sm:w-auto px-7 py-3 sm:px-8 sm:py-3.5 rounded-full border border-[#DFD0B7] hover:border-[#B89B6D] text-[#2A2725] hover:text-[#B89B6D] text-xs uppercase tracking-[0.2em] font-semibold transition-all bg-white/50"
           >
             View Event Details
@@ -141,10 +145,10 @@ export const Hero: React.FC = () => {
 
       {/* Scroll down cue */}
       <button
-        onClick={() => scrollTo('schedule')}
-        className="hidden sm:flex mt-4 sm:mt-6 flex-col items-center text-xs tracking-widest uppercase text-[#8C7A5E] hover:text-[#2A2725] transition-colors focus:outline-none xl:hidden"
+        onClick={() => onNavigate ? onNavigate(1) : scrollTo('schedule')}
+        className="hidden sm:flex mt-1 flex-col items-center text-xs tracking-widest uppercase text-[#8C7A5E] hover:text-[#2A2725] transition-colors focus:outline-none xl:hidden"
       >
-        <span className="mb-1 text-[10px]">Scroll</span>
+        <span className="mb-0.5 text-[10px]">Next</span>
         <ChevronDown className="w-4 h-4 animate-bounce" />
       </button>
     </section>

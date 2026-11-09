@@ -2,19 +2,23 @@ import React from 'react';
 import { Clock, MapPin, Shirt, ExternalLink } from 'lucide-react';
 import { WEDDING_CONFIG } from '../config/wedding';
 
-export const EventDetails: React.FC = () => {
+interface EventDetailsProps {
+  onNavigate?: (pageIndex: number) => void;
+}
+
+export const EventDetails: React.FC<EventDetailsProps> = () => {
   return (
-    <section id="schedule" className="relative h-[100dvh] min-h-[100dvh] snap-start snap-always flex flex-col items-center justify-start pt-10 xs:pt-14 sm:pt-18 xl:pt-6 pb-4 xs:pb-5 sm:pb-8 xl:pb-4 px-3.5 xs:px-4 sm:px-6 lg:px-8 bg-subtle-linen w-full overflow-hidden">
+    <section id="schedule" className="relative w-full h-full flex flex-col items-center justify-start pt-1 sm:pt-2 pb-2 sm:pb-3 px-3.5 xs:px-4 sm:px-6 lg:px-8 bg-subtle-linen overflow-hidden">
       
       {/* Section Header - Perfectly aligned in position and scale with Hero */}
-      <div className="text-center max-w-3xl mx-auto mb-2.5 xs:mb-3.5 sm:mb-6 xl:mb-3 flex-shrink-0">
+      <div className="text-center max-w-3xl mx-auto mb-1 sm:mb-2 flex-shrink-0">
         <span className="text-xs xs:text-sm uppercase tracking-[0.35em] font-semibold text-[#8C7A5E]">
           Celebration Schedule
         </span>
-        <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-serif text-[#2A2725] mt-1.5 xs:mt-2 xl:mt-1 leading-tight tracking-tight">
+        <h2 className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl font-serif text-[#2A2725] mt-0.5 leading-tight tracking-tight">
           The Wedding Day
         </h2>
-        <p className="font-serif italic text-xs xs:text-sm sm:text-base text-[#736B63] mt-0.5 sm:mt-1">
+        <p className="font-serif italic text-xs xs:text-sm sm:text-base text-[#736B63]">
           {WEDDING_CONFIG.date.display}
         </p>
       </div>
@@ -114,7 +118,7 @@ export const EventDetails: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <p className="text-xs xs:text-sm sm:text-base text-[#736B63] leading-snug sm:leading-relaxed text-center">
+              <p className="hidden md:block text-xs xs:text-sm sm:text-base text-[#736B63] leading-snug sm:leading-relaxed text-center">
                 White or beige polo / shirt with black pants
               </p>
             </div>
@@ -141,7 +145,7 @@ export const EventDetails: React.FC = () => {
                   Light Green
                 </span>
               </div>
-              <p className="text-xs xs:text-sm sm:text-base text-[#736B63] leading-snug sm:leading-relaxed text-center">
+              <p className="hidden md:block text-xs xs:text-sm sm:text-base text-[#736B63] leading-snug sm:leading-relaxed text-center">
                 Light green dress or formal gown
               </p>
             </div>

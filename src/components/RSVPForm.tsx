@@ -17,7 +17,11 @@ import {
   Palmtree
 } from 'lucide-react';
 
-export const RSVPForm: React.FC = () => {
+interface RSVPFormProps {
+  onNavigate?: (pageIndex: number) => void;
+}
+
+export const RSVPForm: React.FC<RSVPFormProps> = () => {
   const [firstName, setFirstName] = useState('');
   const [surname, setSurname] = useState('');
   const [attending, setAttending] = useState<boolean>(true);
@@ -110,17 +114,17 @@ export const RSVPForm: React.FC = () => {
   };
 
   return (
-    <section id="rsvp" className="relative h-[100dvh] min-h-[100dvh] snap-start snap-always flex flex-col items-center justify-start pt-10 xs:pt-14 sm:pt-18 xl:pt-6 pb-4 xs:pb-5 sm:pb-8 xl:pb-4 px-3.5 xs:px-4 sm:px-6 lg:px-8 bg-subtle-linen w-full overflow-hidden">
+    <section id="rsvp" className="relative w-full h-full flex flex-col items-center justify-start pt-1 sm:pt-2 pb-2 sm:pb-3 px-3.5 xs:px-4 sm:px-6 lg:px-8 bg-subtle-linen overflow-hidden">
       
       {/* Section Header - Perfectly aligned with Page 1 and Page 2 */}
-      <div className="text-center max-w-3xl mx-auto mb-2 xs:mb-2.5 sm:mb-5 xl:mb-2.5 flex-shrink-0">
+      <div className="text-center max-w-3xl mx-auto mb-1 sm:mb-2 flex-shrink-0">
         <span className="text-xs xs:text-sm uppercase tracking-[0.35em] font-semibold text-[#8C7A5E]">
           RSVP & Accommodations
         </span>
-        <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-serif text-[#2A2725] mt-1.5 xs:mt-2 xl:mt-1 leading-tight tracking-tight">
+        <h2 className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl font-serif text-[#2A2725] mt-0.5 leading-tight tracking-tight">
           Join Our Celebration
         </h2>
-        <p className="font-serif italic text-xs xs:text-sm sm:text-base text-[#736B63] mt-0.5 sm:mt-1">
+        <p className="font-serif italic text-xs xs:text-sm sm:text-base text-[#736B63]">
           Please reply by <span className="font-semibold text-[#2A2725] not-italic">{WEDDING_CONFIG.notes.rsvpDeadline}</span> to help us finalize arrangements.
         </p>
       </div>
