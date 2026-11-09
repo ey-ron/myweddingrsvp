@@ -30,6 +30,18 @@ export const isSupabaseConfigured = Boolean(
 
 // Fallback dummy client if credentials aren't set yet, so app renders smoothly
 export const supabase = isSupabaseConfigured
-  ? createClient(supabaseUrl, supabaseKey)
-  : createClient('https://mock-wedding.supabase.co', 'mock-key');
+  ? createClient(supabaseUrl, supabaseKey, {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false,
+        detectSessionInUrl: false,
+      },
+    })
+  : createClient('https://mock-wedding.supabase.co', 'mock-key', {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false,
+        detectSessionInUrl: false,
+      },
+    });
 

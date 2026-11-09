@@ -42,6 +42,68 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
           rel="stylesheet"
         />
+        {/* Shield against Brave Wallet / Web3 extension injected errors */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                function isWeb3Error(msg) {
+                  if (!msg) return false;
+                  var s = String(msg).toLowerCase();
+                  return s.indexOf('ethereum') !== -1 || s.indexOf('selectedaddress') !== -1 || s.indexOf('brave') !== -1;
+                }
+
+                // Prevent Next.js React Dev Overlay from crashing or showing on extension errors
+                window.addEventListener('error', function(e) {
+                  if (isWeb3Error(e.message) || (e.error && isWeb3Error(e.error.message))) {
+                    e.stopImmediatePropagation();
+                    e.preventDefault();
+                    return true;
+                  }
+                }, true);
+
+                window.addEventListener('unhandledrejection', function(e) {
+                  var r = e.reason;
+                  if (r && (isWeb3Error(r.message) || isWeb3Error(r))) {
+                    e.stopImmediatePropagation();
+                    e.preventDefault();
+                    return true;
+                  }
+                }, true);
+
+                // Polyfill selectedAddress safely on window.ethereum if injected by Brave
+                function patchEth(target) {
+                  if (target && typeof target === 'object' && !('selectedAddress' in target)) {
+                    try {
+                      Object.defineProperty(target, 'selectedAddress', {
+                        get: function() { return null; },
+                        set: function() {},
+                        configurable: true,
+                        enumerable: true
+                      });
+                    } catch (_) {}
+                  }
+                }
+
+                try {
+                  var _eth = window.ethereum;
+                  if (_eth) {
+                    patchEth(_eth);
+                  }
+                  Object.defineProperty(window, 'ethereum', {
+                    configurable: true,
+                    enumerable: true,
+                    get: function() { return _eth; },
+                    set: function(val) {
+                      _eth = val;
+                      patchEth(_eth);
+                    }
+                  });
+                } catch (_) {}
+              })();
+            `,
+          }}
+        />
       </head>
       <body className="bg-[#FAF8F5] text-[#2A2725] antialiased selection:bg-[#B89B6D] selection:text-white">
         {children}

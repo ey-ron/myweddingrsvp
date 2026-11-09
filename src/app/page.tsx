@@ -15,6 +15,9 @@ const ViewportIndicator = dynamic(
 
 export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
+  const showSplashRef = useRef(true);
+  showSplashRef.current = showSplash;
+
   const [currentPage, setCurrentPage] = useState(0); // 0: Hero, 1: Schedule, 2: Wedding Party, 3: RSVP
   const isTransitioning = useRef(false);
   const touchStartX = useRef<number | null>(null);
@@ -24,6 +27,7 @@ export default function Home() {
     let wheelTimeout: ReturnType<typeof setTimeout> | null = null;
 
     const handleWheel = (e: WheelEvent) => {
+      if (showSplashRef.current) return;
       if (Math.abs(e.deltaY) < 25) return;
       if (isTransitioning.current) return;
 
@@ -48,6 +52,7 @@ export default function Home() {
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
+      if (showSplashRef.current) return;
       if (touchStartY.current === null || touchStartX.current === null || isTransitioning.current) return;
       const touchEndX = e.changedTouches[0].clientX;
       const touchEndY = e.changedTouches[0].clientY;
@@ -75,6 +80,7 @@ export default function Home() {
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (showSplashRef.current) return;
       if (['ArrowDown', 'PageDown', ' '].includes(e.key)) {
         e.preventDefault();
         setCurrentPage((prev) => Math.min(3, prev + 1));

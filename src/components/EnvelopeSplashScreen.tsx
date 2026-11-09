@@ -33,6 +33,14 @@ export const EnvelopeSplashScreen: React.FC<EnvelopeSplashScreenProps> = ({ onCo
   return (
     <div
       onClick={handleOpen}
+      onTouchEnd={(e) => {
+        // Prevent default tap delay on mobile devices
+        e.preventDefault();
+        handleOpen();
+      }}
+      role="button"
+      tabIndex={0}
+      aria-label="Open Wedding Invitation"
       className={`fixed inset-0 z-[100] flex flex-col items-center justify-between py-4 xs:py-6 sm:py-12 bg-[#FAF8F5] transition-opacity duration-600 ease-in-out cursor-pointer select-none px-4 ${
         stage === 'fadeout' ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
