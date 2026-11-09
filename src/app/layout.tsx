@@ -1,25 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Alex_Brush, Playfair_Display, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
-
-const alexBrush = Alex_Brush({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-alex-brush',
-  display: 'swap',
-});
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair',
-  display: 'swap',
-});
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  variable: '--font-jakarta',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://aaronandeileenwedding.vercel.app'),
@@ -54,7 +34,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${alexBrush.variable} ${playfair.variable} ${jakarta.variable}`}>
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="bg-[#FAF8F5] text-[#2A2725] antialiased selection:bg-[#B89B6D] selection:text-white">
         {children}
       </body>

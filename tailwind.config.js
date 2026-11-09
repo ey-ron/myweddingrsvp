@@ -47,9 +47,9 @@ module.exports = {
         }
       },
       fontFamily: {
-        serif: ['var(--font-playfair)', '"Playfair Display"', 'Georgia', 'serif'],
-        script: ['var(--font-alex-brush)', '"Alex Brush"', 'cursive'],
-        sans: ['var(--font-jakarta)', '"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        script: ['"Alex Brush"', 'cursive'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         'luxury': '0 20px 40px -15px rgba(184, 155, 109, 0.12), 0 0 1px 1px rgba(184, 155, 109, 0.1)',

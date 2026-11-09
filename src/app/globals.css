@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,14 +17,14 @@
     overflow: hidden;
     background-color: #FAF8F5;
     color: #2A2725;
-    font-family: var(--font-jakarta), system-ui, sans-serif;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     -webkit-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-playfair), Georgia, serif;
+    font-family: 'Playfair Display', Georgia, serif;
     letter-spacing: -0.01em;
   }
 }
@@ -75,7 +77,7 @@ input, textarea, select {
 
 /* Responsive Luxury Cursive Headline */
 .text-script-headline {
-  font-family: var(--font-alex-brush), cursive;
+  font-family: 'Alex Brush', cursive;
   font-size: clamp(26px, 7vw, 30px);
   line-height: 1.15;
 }
@@ -239,3 +241,4 @@ input, textarea, select {
 .animate-slide-in-left {
   animation: slideInFromLeft 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+
