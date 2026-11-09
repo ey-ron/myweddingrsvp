@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useEffect } from 'react';
 import { Calendar, MapPin, ChevronDown } from 'lucide-react';
 import { WEDDING_CONFIG } from '../config/wedding';
@@ -83,7 +85,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
           <div className="hidden xl:block xl:w-[46%] rounded-2xl overflow-hidden border border-[#DFD0B7] shadow-card relative flex-shrink-0 bg-[#EDE4D4]/30 self-stretch">
             <video
               ref={desktopVideoRef}
-              src="./VID_20261025210443596.mov"
+              src="/VID_20261025210443596.mov"
               loop
               muted
               playsInline
@@ -98,7 +100,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
             <div className="xl:hidden w-full max-w-[310px] xs:max-w-[340px] tall:max-w-[360px] sm:max-w-[460px] aspect-[2/1] mx-auto mb-2.5 xs:mb-3 tall:mb-4 sm:mb-5 rounded-xl xs:rounded-2xl overflow-hidden border border-[#DFD0B7] shadow-card relative flex-shrink-0 bg-[#EDE4D4]/30">
               <video
                 ref={mobileVideoRef}
-                src="./mobile.mov"
+                src="/mobile.mov"
                 loop
                 muted
                 playsInline

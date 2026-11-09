@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Clock, MapPin, Shirt, ExternalLink, ChevronDown } from 'lucide-react';
 import { WEDDING_CONFIG } from '../config/wedding';

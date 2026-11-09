@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 
 export const ViewportIndicator: React.FC = () => {
@@ -28,7 +30,7 @@ export const ViewportIndicator: React.FC = () => {
     return () => window.removeEventListener('resize', update);
   }, []);
 
-  const isDev = import.meta.env.DEV;
+  const isDev = process.env.NODE_ENV === 'development';
 
   const getBreakpoint = (w: number) => {
     if (w < 380) return '<xs (<380)';

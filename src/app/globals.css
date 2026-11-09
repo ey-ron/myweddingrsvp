@@ -7,7 +7,7 @@
     border-color: #EAE2D8;
   }
 
-  html, body, #root {
+  html, body {
     height: 100%;
     width: 100%;
     margin: 0;
@@ -15,14 +15,14 @@
     overflow: hidden;
     background-color: #FAF8F5;
     color: #2A2725;
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-family: var(--font-jakarta), system-ui, sans-serif;
     -webkit-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: var(--font-playfair), Georgia, serif;
     letter-spacing: -0.01em;
   }
 }
@@ -75,7 +75,7 @@ input, textarea, select {
 
 /* Responsive Luxury Cursive Headline */
 .text-script-headline {
-  font-family: 'Alex Brush', cursive;
+  font-family: var(--font-alex-brush), cursive;
   font-size: clamp(26px, 7vw, 30px);
   line-height: 1.15;
 }
@@ -92,7 +92,7 @@ input, textarea, select {
   }
 }
 
-/* Luxury Gold-Foil Shimmer Sweep (Single Slow Elegant Gleam - Never Disappears) */
+/* Luxury Gold-Foil Shimmer Sweep */
 @keyframes goldShimmer {
   0% {
     background-position: 100% 50%;
@@ -193,7 +193,7 @@ input, textarea, select {
   animation: softFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
 }
 
-/* Scroll Down Cue & Footer Entrance (delayed smooth reveal) */
+/* Scroll Down Cue */
 @keyframes scrollCueEntrance {
   0% {
     opacity: 0;
@@ -239,7 +239,3 @@ input, textarea, select {
 .animate-slide-in-left {
   animation: slideInFromLeft 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
-
-
-
-

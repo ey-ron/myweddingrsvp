@@ -1,12 +1,14 @@
-import { useState, useEffect, useRef } from 'react';
-import { Hero } from './components/Hero';
-import { EventDetails } from './components/EventDetails';
-import { WeddingParty } from './components/WeddingParty';
-import { RSVPForm } from './components/RSVPForm';
-import { EnvelopeSplashScreen } from './components/EnvelopeSplashScreen';
-import { ViewportIndicator } from './components/ViewportIndicator';
+'use client';
 
-function App() {
+import { useState, useEffect, useRef } from 'react';
+import { Hero } from '../components/Hero';
+import { EventDetails } from '../components/EventDetails';
+import { WeddingParty } from '../components/WeddingParty';
+import { RSVPForm } from '../components/RSVPForm';
+import { EnvelopeSplashScreen } from '../components/EnvelopeSplashScreen';
+import { ViewportIndicator } from '../components/ViewportIndicator';
+
+export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
   const [currentPage, setCurrentPage] = useState(0); // 0: Hero, 1: Schedule, 2: Wedding Party, 3: RSVP
   const isTransitioning = useRef(false);
@@ -91,26 +93,8 @@ function App() {
     };
   }, []);
 
-  // Dynamically measure actual visible viewport height (accounts for mobile browser chrome)
-  useEffect(() => {
-    const setAppHeight = () => {
-      const h = window.innerHeight || (window.visualViewport ? window.visualViewport.height : 0) || document.documentElement.clientHeight;
-      if (h && h > 200) {
-        document.documentElement.style.setProperty('--app-height', `${h}px`);
-      }
-    };
-    setAppHeight();
-    const timer = setTimeout(setAppHeight, 150);
-    window.addEventListener('resize', setAppHeight);
-    window.addEventListener('orientationchange', () => setTimeout(setAppHeight, 200));
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('resize', setAppHeight);
-    };
-  }, []);
-
   return (
-    <div className="bg-[#FAF8F5] text-[#2A2725] w-screen h-[100dvh] min-h-[100dvh] max-h-[100dvh] overflow-hidden relative font-sans select-none">
+    <div className="bg-[#FAF8F5] text-[#2A2725] w-full h-[100dvh] min-h-[100dvh] max-h-[100dvh] overflow-hidden relative font-sans select-none">
       {/* Floating Viewport Debug Indicator */}
       <ViewportIndicator />
 
@@ -119,7 +103,7 @@ function App() {
         <EnvelopeSplashScreen onComplete={() => setShowSplash(false)} />
       )}
 
-      {/* Discreet Page Indicator Dots - Positioned vertically at the top right of the header */}
+      {/* Discreet Page Indicator Dots */}
       <nav aria-label="Page navigation" className="fixed top-2.5 right-3 sm:top-3 sm:right-6 z-50 flex flex-col items-center gap-1.5 sm:gap-2 px-1.5 py-2 rounded-full bg-white/70 backdrop-blur-md border border-[#EAE2D8] shadow-xs">
         {[
           { label: 'Save The Date', index: 0 },
@@ -140,7 +124,7 @@ function App() {
         ))}
       </nav>
 
-      {/* Discrete Pages: Only the current page is visible. All others are display: none */}
+      {/* Discrete Pages: Only the current page is visible */}
       <main className="w-full h-full relative">
         <div 
           style={{ display: currentPage === 0 ? 'flex' : 'none' }} 
@@ -173,5 +157,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     screens: {
@@ -47,9 +47,9 @@ export default {
         }
       },
       fontFamily: {
-        serif: ['"Playfair Display"', 'Cormorant Garamond', 'Georgia', 'serif'],
-        script: ['"Alex Brush"', 'cursive'],
-        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-playfair)', '"Playfair Display"', 'Georgia', 'serif'],
+        script: ['var(--font-alex-brush)', '"Alex Brush"', 'cursive'],
+        sans: ['var(--font-jakarta)', '"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         'luxury': '0 20px 40px -15px rgba(184, 155, 109, 0.12), 0 0 1px 1px rgba(184, 155, 109, 0.1)',
@@ -58,5 +58,4 @@ export default {
     },
   },
   plugins: [],
-}
-
+};

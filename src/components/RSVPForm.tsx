@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
 import { supabase, isSupabaseConfigured, RSVPResponse } from '../lib/supabase';
