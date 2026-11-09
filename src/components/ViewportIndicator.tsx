@@ -54,7 +54,17 @@ export const ViewportIndicator: React.FC = () => {
     return 'compact (<800)';
   };
 
-  const videoCalcHeight = Math.min(230, Math.max(135, Math.round(info.height * 0.215)));
+  const videoCalcHeight = Math.round(
+    info.width >= 640
+      ? Math.min(320, Math.max(220, info.height * 0.28))
+      : info.height >= 880
+      ? Math.min(280, Math.max(210, info.height * 0.27))
+      : info.height >= 800
+      ? Math.min(235, Math.max(175, info.height * 0.245))
+      : info.width >= 380
+      ? Math.min(225, Math.max(165, info.height * 0.24))
+      : Math.min(185, Math.max(145, info.height * 0.225))
+  );
 
   return (
     <div

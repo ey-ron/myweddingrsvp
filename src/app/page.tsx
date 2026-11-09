@@ -22,16 +22,34 @@ export default function Home() {
   const isTransitioning = useRef(false);
   const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef<number | null>(null);
+  const touchStartTime = useRef<number>(0);
+  const isMultiTouch = useRef<boolean>(false);
 
   useEffect(() => {
     let wheelTimeout: ReturnType<typeof setTimeout> | null = null;
+    let transitionUnlockTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    const lockTransition = (durationMs = 800) => {
+      isTransitioning.current = true;
+      if (transitionUnlockTimeout) clearTimeout(transitionUnlockTimeout);
+      transitionUnlockTimeout = setTimeout(() => {
+        isTransitioning.current = false;
+      }, durationMs);
+    };
 
     const handleWheel = (e: WheelEvent) => {
       if (showSplashRef.current) return;
-      if (Math.abs(e.deltaY) < 25) return;
       if (isTransitioning.current) return;
 
-      isTransitioning.current = true;
+      // Never change pages if user is pinch-zoomed in
+      if (typeof window !== 'undefined' && window.visualViewport && window.visualViewport.scale > 1.05) {
+        return;
+      }
+
+      // Filter out small trackpad twitches / momentum drift
+      if (Math.abs(e.deltaY) < 65) return;
+
+      lockTransition(800);
       if (e.deltaY > 0) {
         // Scroll down -> next page
         setCurrentPage((prev) => Math.min(3, prev + 1));
@@ -43,29 +61,83 @@ export default function Home() {
       if (wheelTimeout) clearTimeout(wheelTimeout);
       wheelTimeout = setTimeout(() => {
         isTransitioning.current = false;
-      }, 500);
+      }, 800);
     };
 
     const handleTouchStart = (e: TouchEvent) => {
+      // If user uses more than 1 finger (e.g. pinch to zoom), abort swipe tracking immediately
+      if (e.touches.length > 1) {
+        isMultiTouch.current = true;
+        touchStartX.current = null;
+        touchStartY.current = null;
+        return;
+      }
+      isMultiTouch.current = false;
       touchStartX.current = e.touches[0].clientX;
       touchStartY.current = e.touches[0].clientY;
+      touchStartTime.current = Date.now();
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      // If a second finger touches the screen at any point during the gesture, mark as multi-touch (pinch)
+      if (e.touches.length > 1) {
+        isMultiTouch.current = true;
+        touchStartX.current = null;
+        touchStartY.current = null;
+      }
+    };
+
+    const handleTouchCancel = () => {
+      isMultiTouch.current = false;
+      touchStartX.current = null;
+      touchStartY.current = null;
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
       if (showSplashRef.current) return;
-      if (touchStartY.current === null || touchStartX.current === null || isTransitioning.current) return;
+      if (isTransitioning.current) return;
+
+      // 1. If multi-touch (pinch-to-zoom) occurred, ignore completely
+      if (isMultiTouch.current) {
+        isMultiTouch.current = false;
+        touchStartX.current = null;
+        touchStartY.current = null;
+        return;
+      }
+
+      // 2. If user is currently zoomed into the page, allow free panning without changing pages
+      if (typeof window !== 'undefined' && window.visualViewport && window.visualViewport.scale > 1.05) {
+        touchStartX.current = null;
+        touchStartY.current = null;
+        return;
+      }
+
+      if (touchStartY.current === null || touchStartX.current === null) return;
       const touchEndX = e.changedTouches[0].clientX;
       const touchEndY = e.changedTouches[0].clientY;
       const diffX = touchStartX.current - touchEndX;
       const diffY = touchStartY.current - touchEndY;
+      const duration = Date.now() - touchStartTime.current;
+
       touchStartX.current = null;
       touchStartY.current = null;
 
-      // If user is swiping horizontally (e.g., on the Wedding Party carousel), do NOT trigger vertical page change
-      if (Math.abs(diffX) > Math.abs(diffY)) return;
+      // 3. Ignore touches on interactive form controls
+      const target = e.target as HTMLElement | null;
+      if (target && ['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON', 'A'].includes(target.tagName)) {
+        return;
+      }
 
-      if (Math.abs(diffY) > 40) {
-        isTransitioning.current = true;
+      // 4. Must be a clear vertical swipe (vertical distance must be at least 1.5x horizontal distance)
+      // This protects against horizontal swiping on carousels or diagonal gestures
+      if (Math.abs(diffY) < Math.abs(diffX) * 1.5) return;
+
+      // 5. Calm threshold: require intentional, deliberate swipe
+      // Either a clear flick of at least 70px under 400ms, or a deliberate drag of at least 100px
+      const isIntentionalSwipe = (Math.abs(diffY) >= 70 && duration < 400) || Math.abs(diffY) >= 100;
+
+      if (isIntentionalSwipe) {
+        lockTransition(800);
         if (diffY > 0) {
           // Swipe up -> next page
           setCurrentPage((prev) => Math.min(3, prev + 1));
@@ -73,9 +145,6 @@ export default function Home() {
           // Swipe down -> prev page
           setCurrentPage((prev) => Math.max(0, prev - 1));
         }
-        setTimeout(() => {
-          isTransitioning.current = false;
-        }, 500);
       }
     };
 
@@ -92,15 +161,20 @@ export default function Home() {
 
     window.addEventListener('wheel', handleWheel, { passive: true });
     window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
     window.addEventListener('touchend', handleTouchEnd, { passive: true });
+    window.addEventListener('touchcancel', handleTouchCancel, { passive: true });
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       window.removeEventListener('wheel', handleWheel);
       window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
+      window.removeEventListener('touchcancel', handleTouchCancel);
       window.removeEventListener('keydown', handleKeyDown);
       if (wheelTimeout) clearTimeout(wheelTimeout);
+      if (transitionUnlockTimeout) clearTimeout(transitionUnlockTimeout);
     };
   }, []);
 
@@ -139,28 +213,28 @@ export default function Home() {
       <main className="w-full h-full relative">
         <div 
           style={{ display: currentPage === 0 ? 'flex' : 'none' }} 
-          className="w-full h-full flex-col animate-in fade-in duration-200"
+          className="w-full h-full flex-col animate-in fade-in duration-300 ease-out"
         >
           <Hero onNavigate={setCurrentPage} isReady={!showSplash && currentPage === 0} />
         </div>
 
         <div 
           style={{ display: currentPage === 1 ? 'flex' : 'none' }} 
-          className="w-full h-full flex-col animate-in fade-in duration-200"
+          className="w-full h-full flex-col animate-in fade-in duration-300 ease-out"
         >
           <EventDetails onNavigate={setCurrentPage} isActive={currentPage === 1} />
         </div>
 
         <div 
           style={{ display: currentPage === 2 ? 'flex' : 'none' }} 
-          className="w-full h-full flex-col animate-in fade-in duration-200"
+          className="w-full h-full flex-col animate-in fade-in duration-300 ease-out"
         >
           <WeddingParty onNavigate={setCurrentPage} isActive={currentPage === 2} />
         </div>
 
         <div 
           style={{ display: currentPage === 3 ? 'flex' : 'none' }} 
-          className="w-full h-full flex-col animate-in fade-in duration-200"
+          className="w-full h-full flex-col animate-in fade-in duration-300 ease-out"
         >
           <RSVPForm onNavigate={setCurrentPage} isActive={currentPage === 3} />
         </div>

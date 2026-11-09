@@ -79,7 +79,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
       {/* Centered Arch Border Container - Scaled up to fill the viewport */}
       <div className={`w-full flex-1 flex flex-col justify-center items-center my-auto min-h-0 ${isReady ? 'animate-luxury-card' : 'opacity-0'}`}>
         {/* Elegant Arch Border Frame */}
-        <div className="relative max-w-[325px] xs:max-w-[350px] tall:max-w-[365px] xtall:max-w-[395px] sm:max-w-2xl xl:max-w-5xl w-full mx-auto py-2.5 xs:py-3.5 tall:py-4 xtall:py-5 sm:py-5 xl:py-4 px-3.5 xs:px-4.5 tall:px-5 xtall:px-6 sm:px-8 xl:px-6 rounded-[1.5rem] xs:rounded-[1.75rem] tall:rounded-[2rem] xtall:rounded-[2.25rem] sm:rounded-[2.25rem] border border-[#EAE2D8] bg-[#FAF8F5]/85 backdrop-blur-sm shadow-luxury transition-all xl:flex xl:flex-row xl:items-stretch xl:gap-8">
+        <div className="relative max-w-[325px] xs:max-w-[350px] tall:max-w-[365px] xtall:max-w-[405px] sm:max-w-2xl xl:max-w-5xl w-full mx-auto py-2.5 xs:py-3.5 tall:py-4 xtall:py-4.5 sm:py-5 xl:py-4 px-3.5 xs:px-4.5 tall:px-5 xtall:px-5 sm:px-8 xl:px-6 rounded-[1.5rem] xs:rounded-[1.75rem] tall:rounded-[2rem] xtall:rounded-[2.25rem] sm:rounded-[2.25rem] border border-[#EAE2D8] bg-[#FAF8F5]/85 backdrop-blur-sm shadow-luxury transition-all xl:flex xl:flex-row xl:items-stretch xl:gap-8">
 
           {/* Full Height Video (XL Screen View - Left Side) */}
           <div className="hidden xl:block xl:w-[46%] rounded-2xl overflow-hidden border border-[#DFD0B7] shadow-card relative flex-shrink-0 bg-[#EDE4D4]/30 self-stretch">
@@ -97,7 +97,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
           {/* Right Side Content on XL (Full Width on Mobile/Tablet) */}
           <div className="w-full xl:w-[54%] flex flex-col justify-center items-center">
             {/* Dynamic Viewport Looping Video (XS and SM / Mobile Screens) */}
-            <div className="xl:hidden w-full max-w-[270px] xs:max-w-[300px] tall:max-w-[330px] xtall:max-w-[365px] sm:max-w-[420px] h-[clamp(135px,21.5dvh,230px)] mx-auto mb-2 xs:mb-2 tall:mb-3 xtall:mb-4 sm:mb-3.5 rounded-xl xs:rounded-2xl overflow-hidden border border-[#DFD0B7] shadow-card relative flex-shrink-0 bg-[#EDE4D4]/30">
+            <div className="xl:hidden w-full max-w-[280px] xs:max-w-[315px] tall:max-w-[335px] xtall:max-w-[365px] sm:max-w-[450px] h-[clamp(145px,22.5dvh,185px)] xs:h-[clamp(165px,24dvh,225px)] tall:h-[clamp(175px,24.5dvh,235px)] xtall:h-[clamp(210px,27dvh,280px)] sm:h-[clamp(220px,28dvh,320px)] mx-auto mb-2 xs:mb-2 tall:mb-2.5 xtall:mb-3.5 sm:mb-3.5 rounded-xl xs:rounded-2xl overflow-hidden border border-[#DFD0B7] shadow-card relative flex-shrink-0 bg-[#EDE4D4]/30">
               <video
                 ref={mobileVideoRef}
                 src="/mobile.mov"
