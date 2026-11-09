@@ -31,7 +31,7 @@ export const EnvelopeSplashScreen: React.FC<EnvelopeSplashScreenProps> = ({ onCo
   return (
     <div
       onClick={handleOpen}
-      className={`fixed inset-0 z-[100] flex flex-col items-center justify-between py-6 xs:py-8 sm:py-12 bg-[#FAF8F5] transition-opacity duration-600 ease-in-out cursor-pointer select-none px-4 ${
+      className={`fixed inset-0 z-[100] flex flex-col items-center justify-between py-4 xs:py-6 sm:py-12 bg-[#FAF8F5] transition-opacity duration-600 ease-in-out cursor-pointer select-none px-4 ${
         stage === 'fadeout' ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
       style={{
@@ -44,44 +44,44 @@ export const EnvelopeSplashScreen: React.FC<EnvelopeSplashScreenProps> = ({ onCo
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[520px] h-[340px] sm:h-[520px] bg-[#EDE4D4]/50 rounded-full blur-3xl pointer-events-none -z-10" />
 
       {/* Top Header */}
-      <div className="text-center transition-all duration-700 flex-shrink-0 z-10">
-        <span className="text-[11px] xs:text-xs uppercase tracking-[0.35em] text-[#8C7A5E] font-semibold block mb-1">
+      <div className="text-center transition-all duration-700 flex-shrink-0 z-10 mt-1 xs:mt-2">
+        <span className="text-[10px] xs:text-xs uppercase tracking-[0.35em] text-[#8C7A5E] font-semibold block mb-0.5">
           A Special Invitation
         </span>
-        <h2 className="font-serif italic text-2xl xs:text-3xl sm:text-4xl text-[#2A2725]">
+        <h2 className="font-serif italic text-xl xs:text-2xl sm:text-4xl text-[#2A2725]">
           For Our Wedding Celebration
         </h2>
       </div>
 
       {/* Envelope & Card Presentation Container - Centered vertically on the screen */}
-      <div className="relative w-[300px] xs:w-[340px] sm:w-[420px] h-[195px] xs:h-[220px] sm:h-[265px] my-auto">
+      <div className="relative w-[275px] xs:w-[315px] sm:w-[420px] h-[175px] xs:h-[195px] sm:h-[265px] my-auto">
         {/* 1. ENVELOPE BACK (z-0) - 100% solid, fully opaque */}
         <div className="absolute inset-0 bg-[#F4EFE6] rounded-2xl border border-[#DFD0B7] shadow-xl z-0" />
 
         {/* 2. INVITATION CARD (z-10) - Sits INSIDE the envelope pocket. Emerges smoothly out of the top! */}
         <div
-          className="absolute inset-x-3 xs:inset-x-4 top-2 h-[175px] xs:h-[195px] sm:h-[235px] bg-white rounded-xl border border-[#DFD0B7] p-2.5 xs:p-3 flex flex-col items-center justify-center text-center z-10 transition-all duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+          className="absolute inset-x-2.5 xs:inset-x-3.5 top-2 h-[155px] xs:h-[175px] sm:h-[235px] bg-white rounded-xl border border-[#DFD0B7] p-2 xs:p-2.5 sm:p-3 flex flex-col items-center justify-center text-center z-10 transition-all duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
           style={{
             transform: isRevealed
-              ? 'translateY(-115px) scale(1.04)'
+              ? 'translateY(-85px) scale(1.02)'
               : 'translateY(0px) scale(1)',
             boxShadow: isRevealed
               ? '0 25px 50px -12px rgba(184, 155, 109, 0.35), 0 0 1px 1px rgba(184, 155, 109, 0.2)'
               : 'none',
           }}
         >
-          <div className="w-full h-full border border-[#DFD0B7] rounded-lg p-2 xs:p-2.5 flex flex-col items-center justify-center bg-[#FAF8F5]">
-            <span className="text-[9px] xs:text-[10px] uppercase tracking-[0.3em] font-semibold text-[#8C7A5E]">
+          <div className="w-full h-full border border-[#DFD0B7] rounded-lg p-1.5 xs:p-2 flex flex-col items-center justify-center bg-[#FAF8F5]">
+            <span className="text-[8.5px] xs:text-[9.5px] uppercase tracking-[0.3em] font-semibold text-[#8C7A5E]">
               Save The Date
             </span>
-            <div className="font-script text-2xl xs:text-3xl sm:text-4xl text-[#B89B6D] my-0.5 xs:my-1 leading-tight">
+            <div className="font-script text-xl xs:text-2xl sm:text-4xl text-[#B89B6D] my-0.5 leading-tight">
               {WEDDING_CONFIG.couple.partner1} & {WEDDING_CONFIG.couple.partner2}
             </div>
-            <div className="h-px w-14 bg-[#DFD0B7] my-1" />
-            <div className="font-serif text-[11px] xs:text-xs sm:text-sm font-semibold text-[#2A2725]">
+            <div className="h-px w-12 bg-[#DFD0B7] my-0.5 xs:my-1" />
+            <div className="font-serif text-[10px] xs:text-xs sm:text-sm font-semibold text-[#2A2725]">
               {WEDDING_CONFIG.date.display}
             </div>
-            <div className="text-[9px] xs:text-[10px] sm:text-xs text-[#736B63] mt-0.5">
+            <div className="text-[8.5px] xs:text-[9.5px] sm:text-xs text-[#736B63] mt-0.5">
               {WEDDING_CONFIG.venue.name}
             </div>
           </div>

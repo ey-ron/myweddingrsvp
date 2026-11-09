@@ -94,18 +94,23 @@ function App() {
   // Dynamically measure actual visible viewport height (accounts for mobile browser chrome)
   useEffect(() => {
     const setAppHeight = () => {
-      document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
+      const h = window.innerHeight || (window.visualViewport ? window.visualViewport.height : 0) || document.documentElement.clientHeight;
+      if (h && h > 200) {
+        document.documentElement.style.setProperty('--app-height', `${h}px`);
+      }
     };
     setAppHeight();
+    const timer = setTimeout(setAppHeight, 150);
     window.addEventListener('resize', setAppHeight);
-    window.addEventListener('orientationchange', () => setTimeout(setAppHeight, 150));
+    window.addEventListener('orientationchange', () => setTimeout(setAppHeight, 200));
     return () => {
+      clearTimeout(timer);
       window.removeEventListener('resize', setAppHeight);
     };
   }, []);
 
   return (
-    <div className="bg-[#FAF8F5] text-[#2A2725] w-screen h-[100dvh] overflow-hidden relative font-sans select-none" style={{ height: 'var(--app-height, 100dvh)' }}>
+    <div className="bg-[#FAF8F5] text-[#2A2725] w-screen h-[100dvh] min-h-[100dvh] max-h-[100dvh] overflow-hidden relative font-sans select-none">
       {/* Floating Viewport Debug Indicator */}
       <ViewportIndicator />
 
