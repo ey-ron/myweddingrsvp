@@ -24,7 +24,7 @@ export const EventDetails: React.FC<EventDetailsProps> = ({ onNavigate, isActive
           Celebration Schedule
         </span>
         {/* Elegant Cursive Handwriting Headline */}
-        <h2 className="text-script-headline text-[#2A2725] mt-0.5 leading-tight tracking-wide">
+        <h2 className="text-script-headline text-[#2A2725] mt-0.5 leading-tight tracking-wide whitespace-nowrap overflow-hidden">
           <span
             key={isActive ? 'active' : 'inactive'}
             className={`${isActive ? 'animate-cursive-write' : 'opacity-0'} inline-block`}
@@ -130,7 +130,7 @@ export const EventDetails: React.FC<EventDetailsProps> = ({ onNavigate, isActive
             </span>
           </div>
 
-          <div className="grid grid-cols-2 gap-1.5 xs:gap-2 sm:gap-3.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 xs:gap-2 sm:gap-3.5">
             
             {/* Part 1: Ninong & Ninang (Principal Sponsors) */}
             <div className="p-2 xs:p-2.5 sm:p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between">

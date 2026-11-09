@@ -21,13 +21,6 @@
     text-size-adjust: 100%;
   }
 
-  /* Automatically scale mobile viewport to 85% for optimal breathing room and zero collisions */
-  @media (max-width: 639px) {
-    body {
-      zoom: 0.85;
-    }
-  }
-
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', Georgia, serif;
     letter-spacing: -0.01em;

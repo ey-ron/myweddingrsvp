@@ -98,7 +98,7 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
           Our Circle of Honor
         </span>
         {/* Elegant Cursive Handwriting Headline */}
-        <h2 className="text-script-headline text-[#2A2725] mt-0.5 leading-tight tracking-wide">
+        <h2 className="text-script-headline text-[#2A2725] mt-0.5 leading-tight tracking-wide whitespace-nowrap overflow-hidden">
           <span
             key={isActive ? 'active' : 'inactive'}
             className={`${isActive ? 'animate-cursive-write' : 'opacity-0'} inline-block`}
