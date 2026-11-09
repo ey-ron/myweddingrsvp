@@ -33,7 +33,7 @@ export const Navbar: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Monogram / Logo */}
         <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => scrollTo('hero')}
           className="text-left group flex items-center gap-2 cursor-pointer focus:outline-none"
         >
           <span className="font-serif text-2xl tracking-wider text-[#2A2725] group-hover:text-[#B89B6D] transition-colors">
@@ -49,18 +49,6 @@ export const Navbar: React.FC = () => {
             className="text-xs uppercase tracking-[0.2em] text-[#5A544F] hover:text-[#B89B6D] transition-colors font-medium"
           >
             The Details
-          </button>
-          <button
-            onClick={() => scrollTo('venue')}
-            className="text-xs uppercase tracking-[0.2em] text-[#5A544F] hover:text-[#B89B6D] transition-colors font-medium"
-          >
-            Location
-          </button>
-          <button
-            onClick={() => scrollTo('countdown')}
-            className="text-xs uppercase tracking-[0.2em] text-[#5A544F] hover:text-[#B89B6D] transition-colors font-medium"
-          >
-            Countdown
           </button>
           <button
             onClick={() => scrollTo('rsvp')}
@@ -88,18 +76,6 @@ export const Navbar: React.FC = () => {
             className="block w-full text-left py-2 text-sm uppercase tracking-[0.2em] text-[#5A544F] hover:text-[#B89B6D] font-medium"
           >
             The Details
-          </button>
-          <button
-            onClick={() => scrollTo('venue')}
-            className="block w-full text-left py-2 text-sm uppercase tracking-[0.2em] text-[#5A544F] hover:text-[#B89B6D] font-medium"
-          >
-            Location
-          </button>
-          <button
-            onClick={() => scrollTo('countdown')}
-            className="block w-full text-left py-2 text-sm uppercase tracking-[0.2em] text-[#5A544F] hover:text-[#B89B6D] font-medium"
-          >
-            Countdown
           </button>
           <div className="pt-2">
             <button

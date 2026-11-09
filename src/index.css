@@ -7,11 +7,17 @@
     border-color: #EAE2D8;
   }
 
+  html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    overflow-x: clip;
+  }
+
   body {
     background-color: #FAF8F5;
     color: #2A2725;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   h1, h2, h3, h4, h5, h6 {

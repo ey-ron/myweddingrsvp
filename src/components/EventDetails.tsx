@@ -1,190 +1,154 @@
 import React from 'react';
-import { Clock, MapPin, Sparkles, Shirt, ExternalLink, CalendarPlus } from 'lucide-react';
+import { Clock, MapPin, Shirt, ExternalLink } from 'lucide-react';
 import { WEDDING_CONFIG } from '../config/wedding';
 
 export const EventDetails: React.FC = () => {
-  const getGoogleCalendarUrl = () => {
-    // Event: 2026-10-17 16:00 to 23:30 CEST (UTC+2 -> 14:00 to 21:30 UTC)
-    const start = '20261017T140000Z';
-    const end = '20261017T220000Z';
-    const title = encodeURIComponent(WEDDING_CONFIG.date.calendarTitle);
-    const details = encodeURIComponent(WEDDING_CONFIG.date.calendarDescription);
-    const location = encodeURIComponent(`${WEDDING_CONFIG.venue.name}, ${WEDDING_CONFIG.venue.address}`);
-    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${details}&location=${location}`;
-  };
-
-  const downloadIcsFile = () => {
-    const icsData = [
-      'BEGIN:VCALENDAR',
-      'VERSION:2.0',
-      'PRODID:-//Wedding Save The Date//EN',
-      'BEGIN:VEVENT',
-      'UID:wedding-eleanor-julian-2026',
-      'DTSTAMP:20261017T140000Z',
-      'DTSTART:20261017T140000Z',
-      'DTEND:20261017T220000Z',
-      `SUMMARY:${WEDDING_CONFIG.date.calendarTitle}`,
-      `DESCRIPTION:${WEDDING_CONFIG.date.calendarDescription}`,
-      `LOCATION:${WEDDING_CONFIG.venue.name}, ${WEDDING_CONFIG.venue.address}`,
-      'STATUS:CONFIRMED',
-      'END:VEVENT',
-      'END:VCALENDAR',
-    ].join('\r\n');
-
-    const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
-    const link = document.createElement('a');
-    link.href = window.URL.createObjectURL(blob);
-    link.setAttribute('download', 'wedding-eleanor-julian.ics');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
-    <section id="schedule" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <section id="schedule" className="relative h-[100dvh] min-h-[100dvh] snap-start snap-always flex flex-col items-center justify-start pt-10 xs:pt-14 sm:pt-18 xl:pt-6 pb-4 xs:pb-5 sm:pb-8 xl:pb-4 px-3.5 xs:px-4 sm:px-6 lg:px-8 bg-subtle-linen w-full overflow-hidden">
       
-      {/* Section Header */}
-      <div className="text-center max-w-2xl mx-auto mb-16">
-        <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#8C7A5E]">
-          Celebration Timeline
+      {/* Section Header - Perfectly aligned in position and scale with Hero */}
+      <div className="text-center max-w-3xl mx-auto mb-2.5 xs:mb-3.5 sm:mb-6 xl:mb-3 flex-shrink-0">
+        <span className="text-xs xs:text-sm uppercase tracking-[0.35em] font-semibold text-[#8C7A5E]">
+          Celebration Schedule
         </span>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#2A2725] mt-2 mb-4">
+        <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-serif text-[#2A2725] mt-1.5 xs:mt-2 xl:mt-1 leading-tight tracking-tight">
           The Wedding Day
         </h2>
-        <p className="text-sm sm:text-base text-[#736B63] font-sans">
-          A weekend of joy, laughter, and timeless memories on the shores of Lake Como.
+        <p className="font-serif italic text-xs xs:text-sm sm:text-base text-[#736B63] mt-0.5 sm:mt-1">
+          {WEDDING_CONFIG.date.display}
         </p>
-
-        {/* Add to Calendar Bar */}
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-          <a
-            href={getGoogleCalendarUrl()}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs uppercase tracking-wider font-medium text-[#2A2725] bg-white border border-[#DFD0B7] hover:border-[#B89B6D] hover:bg-[#FAF8F5] transition-all shadow-sm"
-          >
-            <CalendarPlus className="w-4 h-4 text-[#B89B6D]" />
-            Add to Google Calendar
-          </a>
-          <button
-            onClick={downloadIcsFile}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs uppercase tracking-wider font-medium text-[#2A2725] bg-white border border-[#DFD0B7] hover:border-[#B89B6D] hover:bg-[#FAF8F5] transition-all shadow-sm"
-          >
-            <CalendarPlus className="w-4 h-4 text-[#B89B6D]" />
-            Download Apple / Outlook (.ics)
-          </button>
-        </div>
       </div>
 
-      {/* Schedule Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-        {WEDDING_CONFIG.schedule.map((item, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-2xl p-6 sm:p-7 border border-[#EAE2D8] shadow-card hover:shadow-luxury transition-all duration-300 relative group flex flex-col justify-between"
-          >
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F7F3EB] text-[#7E633C] text-xs font-semibold tracking-wider">
-                  <Clock className="w-3.5 h-3.5" />
-                  {item.time}
-                </span>
-                <span className="text-xs font-serif text-[#DFD0B7] group-hover:text-[#B89B6D] transition-colors">
-                  0{index + 1}
-                </span>
-              </div>
-              <h3 className="font-serif text-xl text-[#2A2725] mb-2 font-medium">
-                {item.title}
-              </h3>
-              <p className="text-xs sm:text-sm text-[#736B63] leading-relaxed">
-                {item.description}
-              </p>
-            </div>
-            <div className="pt-4 mt-4 border-t border-[#F3EDE2] flex items-center gap-1 text-[11px] text-[#B89B6D] font-medium uppercase tracking-wider">
-              <Sparkles className="w-3 h-3" />
-              <span>Lake Terrace</span>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Two Column Cards: Venue & Dress Code */}
-      <div id="venue" className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {/* Main Content Area - Centered in remaining vertical space */}
+      <div className="max-w-5xl w-full mx-auto flex-1 flex flex-col justify-center">
         
-        {/* Venue Information Card */}
-        <div className="bg-white rounded-3xl p-8 sm:p-10 border border-[#EAE2D8] shadow-card flex flex-col justify-between">
-          <div>
-            <div className="w-10 h-10 rounded-full bg-[#FAF8F5] border border-[#DFD0B7] flex items-center justify-center mb-6">
-              <MapPin className="w-5 h-5 text-[#B89B6D]" />
-            </div>
-            <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#8C7A5E]">
-              The Venue
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-serif text-[#2A2725] mt-1 mb-3">
-              {WEDDING_CONFIG.venue.name}
-            </h3>
-            <p className="text-sm text-[#736B63] leading-relaxed mb-4">
-              Perched on a wooded peninsula extending into the lake, this historical 18th-century villa features romantic terraced gardens and panoramic views.
-            </p>
-            <div className="bg-[#FAF8F5] rounded-xl p-4 border border-[#EAE2D8] text-xs sm:text-sm text-[#5A544F] space-y-1">
-              <p className="font-medium text-[#2A2725]">Address:</p>
-              <p>{WEDDING_CONFIG.venue.address}</p>
-              <p className="text-xs text-[#8C7A5E] pt-1">
-                Boat shuttles will depart from Lenno dock starting at 3:15 PM.
-              </p>
-            </div>
-          </div>
-
-          <div className="pt-6 mt-6">
-            <a
-              href={WEDDING_CONFIG.venue.googleMapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] font-semibold text-[#B89B6D] hover:text-[#9E8052] transition-colors"
+        {/* 3 Schedule Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 xs:gap-3 sm:gap-5 md:gap-6 mb-2.5 xs:mb-3 sm:mb-5 xl:mb-3">
+          {WEDDING_CONFIG.schedule.map((item, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-xl sm:rounded-2xl p-3 xs:p-3.5 sm:p-5 md:p-6 xl:p-4.5 border border-[#EAE2D8] shadow-card hover:shadow-luxury transition-all relative flex flex-col justify-between"
             >
-              Open in Google Maps
-              <ExternalLink className="w-4 h-4" />
-            </a>
-          </div>
+              <div>
+                <div className="flex items-center justify-between mb-1 sm:mb-2">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#F7F3EB] text-[#7E633C] text-xs xs:text-sm sm:text-sm md:text-base font-semibold tracking-wider">
+                    <Clock className="w-3.5 h-3.5 xs:w-4 xs:h-4 text-[#B89B6D]" />
+                    {item.time}
+                  </span>
+                  <span className="text-xs xs:text-sm sm:text-base font-serif text-[#DFD0B7]">
+                    0{index + 1}
+                  </span>
+                </div>
+                <h3 className="font-serif text-base xs:text-lg sm:text-xl md:text-2xl font-medium text-[#2A2725] mt-1 sm:mt-1.5 mb-0.5 sm:mb-1">
+                  {item.title}
+                </h3>
+                <p className="text-xs xs:text-sm sm:text-sm md:text-base text-[#736B63] leading-snug sm:leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+              <a
+                href={item.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pt-2 mt-2 sm:pt-3 sm:mt-3 border-t border-[#F3EDE2] flex items-center justify-between gap-1 text-xs xs:text-sm sm:text-base text-[#B89B6D] hover:text-[#9E8052] font-medium transition-colors group/loc"
+              >
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <MapPin className="w-3.5 h-3.5 xs:w-4 xs:h-4 flex-shrink-0" />
+                  <span className="underline-offset-2 group-hover/loc:underline">{item.location}</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 xs:w-4 xs:h-4 opacity-60 group-hover/loc:opacity-100" />
+              </a>
+            </div>
+          ))}
         </div>
 
-        {/* Dress Code & Notes Card */}
-        <div className="bg-white rounded-3xl p-8 sm:p-10 border border-[#EAE2D8] shadow-card flex flex-col justify-between">
-          <div>
-            <div className="w-10 h-10 rounded-full bg-[#FAF8F5] border border-[#DFD0B7] flex items-center justify-center mb-6">
-              <Shirt className="w-5 h-5 text-[#B89B6D]" />
-            </div>
-            <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#8C7A5E]">
-              Attire & Accommodations
+        {/* Attire Banner (Side-by-side full card layout) */}
+        <div className="bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 xs:p-3.5 sm:p-5 md:p-6 border border-[#EAE2D8] shadow-card max-w-5xl mx-auto w-full">
+          <div className="flex items-center justify-center gap-2 mb-2 xs:mb-2.5 sm:mb-3.5">
+            <span className="text-xs xs:text-sm sm:text-base uppercase tracking-[0.28em] font-semibold text-[#8C7A5E]">
+              Wedding Attire Guidance
             </span>
-            <h3 className="text-2xl sm:text-3xl font-serif text-[#2A2725] mt-1 mb-3">
-              {WEDDING_CONFIG.dressCode.title}
-            </h3>
-            <p className="text-sm text-[#736B63] leading-relaxed mb-6">
-              {WEDDING_CONFIG.dressCode.description}
-            </p>
-
-            <div className="bg-[#FAF8F5] rounded-xl p-4 border border-[#EAE2D8] text-xs sm:text-sm text-[#5A544F] space-y-2">
-              <div className="flex items-center justify-between text-xs font-semibold text-[#2A2725] uppercase tracking-wider">
-                <span>RSVP Deadline</span>
-                <span className="text-[#B89B6D]">{WEDDING_CONFIG.notes.rsvpDeadline}</span>
-              </div>
-              <p className="text-xs text-[#736B63]">
-                {WEDDING_CONFIG.notes.accommodations}
-              </p>
-            </div>
           </div>
 
-          <div className="pt-6 mt-6">
-            <p className="text-xs text-[#8C7A5E] italic">
-              Note: The venue has stone walkways and stairs; block heels or dress wedges are highly recommended.
-            </p>
+          <div className="grid grid-cols-2 gap-2.5 xs:gap-3.5 sm:gap-5">
+            {/* Gentlemen */}
+            <div className="p-2.5 xs:p-3 sm:p-4.5 rounded-xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col items-center text-center">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white border border-[#DFD0B7] flex items-center justify-center mb-1 sm:mb-2 shadow-sm">
+                <Shirt className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#B89B6D]" />
+              </div>
+              <span className="text-xs xs:text-sm sm:text-base uppercase tracking-wider font-semibold text-[#2A2725] mb-1 sm:mb-1.5">
+                Gentlemen
+              </span>
+
+              {/* Color Swatches */}
+              <div className="flex items-center justify-center gap-2.5 xs:gap-3.5 sm:gap-6 mt-1 mb-2 sm:mb-2.5">
+                {/* Top: White or Beige */}
+                <div className="flex flex-col items-center gap-1 sm:gap-1.5">
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    <span
+                      title="White"
+                      className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white border border-[#DFD0B7] shadow-sm flex-shrink-0 inline-block"
+                    />
+                    <span
+                      title="Beige"
+                      className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#EADCC2] border border-[#DFD0B7] shadow-sm flex-shrink-0 inline-block"
+                    />
+                  </div>
+                  <div className="text-[10px] xs:text-xs sm:text-sm uppercase tracking-wider text-[#736B63] font-medium text-center leading-tight">
+                    <div>White / Beige</div>
+                    <div>Top</div>
+                  </div>
+                </div>
+
+                <div className="h-8 sm:h-10 w-px bg-[#EAE2D8] self-center" />
+
+                {/* Pants: Black */}
+                <div className="flex flex-col items-center gap-1 sm:gap-1.5">
+                  <span
+                    title="Black"
+                    className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#1A1817] border border-black shadow-sm flex-shrink-0 inline-block"
+                  />
+                  <div className="text-[10px] xs:text-xs sm:text-sm uppercase tracking-wider text-[#736B63] font-medium text-center leading-tight">
+                    <div>Black</div>
+                    <div>Pants</div>
+                  </div>
+                </div>
+              </div>
+              <p className="text-xs xs:text-sm sm:text-base text-[#736B63] leading-snug sm:leading-relaxed text-center">
+                White or beige polo / shirt with black pants
+              </p>
+            </div>
+
+            {/* Ladies */}
+            <div className="p-2.5 xs:p-3 sm:p-4.5 rounded-xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col items-center text-center">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white border border-[#DFD0B7] flex items-center justify-center mb-1 sm:mb-2 shadow-sm">
+                <svg className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#B89B6D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 3 L15 3 L17 8 L14 10 L16 21 L8 21 L10 10 L7 8 Z" />
+                  <path d="M10 3 C10 5, 14 5, 14 3" />
+                </svg>
+              </div>
+              <span className="text-xs xs:text-sm sm:text-base uppercase tracking-wider font-semibold text-[#2A2725] mb-1 sm:mb-1.5">
+                Ladies
+              </span>
+
+              {/* Color Swatch */}
+              <div className="flex flex-col items-center gap-0.5 sm:gap-1 mt-1 mb-2 sm:mb-2.5">
+                <span
+                  title="Light Green"
+                  className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#B2D3B4] border border-[#8FB891] shadow-sm flex-shrink-0 inline-block"
+                />
+                <span className="text-[10px] xs:text-xs sm:text-sm uppercase tracking-wider text-[#736B63] font-medium whitespace-nowrap">
+                  Light Green
+                </span>
+              </div>
+              <p className="text-xs xs:text-sm sm:text-base text-[#736B63] leading-snug sm:leading-relaxed text-center">
+                Light green dress or formal gown
+              </p>
+            </div>
           </div>
         </div>
 
       </div>
-
     </section>
   );
 };
-

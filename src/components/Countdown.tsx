@@ -1,44 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { WEDDING_CONFIG } from '../config/wedding';
+import React from 'react';
+import { useCountdown } from '../hooks/useCountdown';
 import { Sparkles } from 'lucide-react';
 
-interface TimeLeft {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-}
-
 export const Countdown: React.FC = () => {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [isPast, setIsPast] = useState(false);
-
-  useEffect(() => {
-    const targetDate = new Date(WEDDING_CONFIG.date.isoDate).getTime();
-
-    const calculateTime = () => {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
-
-      if (difference <= 0) {
-        setIsPast(true);
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        return;
-      }
-
-      setTimeLeft({
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-        minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-        seconds: Math.floor((difference % (1000 * 60)) / 1000),
-      });
-    };
-
-    calculateTime();
-    const interval = setInterval(calculateTime, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
+  const { timeLeft, isPast } = useCountdown();
 
   const timeBlocks = [
     { label: 'Days', value: timeLeft.days },
@@ -48,8 +13,8 @@ export const Countdown: React.FC = () => {
   ];
 
   return (
-    <section id="countdown" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-y border-[#EAE2D8] bg-[#F9F6F0]/60">
-      <div className="max-w-4xl mx-auto text-center">
+    <section id="countdown" className="xl:hidden min-h-screen snap-start snap-always flex flex-col justify-center items-center py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-y border-[#EAE2D8] bg-[#F9F6F0]/60">
+      <div className="max-w-4xl mx-auto text-center w-full">
         
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EDE4D4]/60 border border-[#DFD0B7]/50 mb-3">
           <Sparkles className="w-3.5 h-3.5 text-[#B89B6D]" />
