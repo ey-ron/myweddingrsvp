@@ -89,6 +89,12 @@ input, textarea, select {
   }
 }
 
+@media (min-width: 380px) and (min-height: 880px) {
+  .text-script-headline {
+    font-size: clamp(33px, 8.2vw, 39px);
+  }
+}
+
 @media (min-width: 640px) {
   .text-script-headline {
     font-size: clamp(42px, 5.5vw, 52px);

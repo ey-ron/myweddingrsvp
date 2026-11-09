@@ -1,11 +1,17 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import dynamic from 'next/dynamic';
 import { Hero } from '../components/Hero';
 import { EventDetails } from '../components/EventDetails';
 import { WeddingParty } from '../components/WeddingParty';
 import { RSVPForm } from '../components/RSVPForm';
 import { EnvelopeSplashScreen } from '../components/EnvelopeSplashScreen';
+
+const ViewportIndicator = dynamic(
+  () => import('../components/ViewportIndicator').then((m) => m.ViewportIndicator),
+  { ssr: false }
+);
 
 export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
@@ -100,6 +106,9 @@ export default function Home() {
 
   return (
     <div className="bg-[#FAF8F5] text-[#2A2725] w-full h-[100dvh] min-h-[100dvh] max-h-[100dvh] overflow-hidden relative font-sans select-none">
+      {/* Dev-Only Viewport Indicator (Tree-shaken & hidden in production) */}
+      {process.env.NODE_ENV === 'development' && <ViewportIndicator />}
+
       {/* Wedding Envelope Splash Screen */}
       {showSplash && (
         <EnvelopeSplashScreen onComplete={() => setShowSplash(false)} />
