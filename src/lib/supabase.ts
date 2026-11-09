@@ -26,3 +26,4 @@ export const isSupabaseConfigured = Boolean(
 export const supabase = isSupabaseConfigured
   ? createClient(supabaseUrl, supabaseAnonKey)
   : createClient('https://mock-wedding.supabase.co', 'mock-key');
+

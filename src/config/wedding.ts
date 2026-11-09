@@ -54,3 +54,4 @@ export const WEDDING_CONFIG = {
     accommodations: "A reserved block of rooms is available at Grand Hotel Tremezzo and nearby boutique villas.",
   }
 };
+

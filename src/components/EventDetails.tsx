@@ -187,3 +187,4 @@ export const EventDetails: React.FC = () => {
     </section>
   );
 };
+

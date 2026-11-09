@@ -48,3 +48,4 @@ USING (true);
 -- you can create a secure Postgres RPC function or keep it private)
 
 COMMENT ON TABLE public.rsvp_responses IS 'Stores guest RSVP submissions with first name, surname, and guest count.';
+
