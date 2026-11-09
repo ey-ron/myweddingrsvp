@@ -287,7 +287,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
                       setFirstName(e.target.value);
                       if (errors.firstName) setErrors({ ...errors, firstName: '' });
                     }}
-                    placeholder="e.g. Alexander"
+                    placeholder="e.g. Aaron"
                     className={`w-full px-2.5 xs:px-3 sm:px-3.5 py-1.5 xs:py-2 rounded-xl border bg-[#FCFBF9] text-xs xs:text-sm text-[#2A2725] placeholder-[#B5ADA4] focus:outline-none focus:ring-1.5 focus:ring-[#B89B6D]/30 focus:border-[#B89B6D] transition-all ${errors.firstName ? 'border-red-400 bg-red-50/20' : 'border-[#EAE2D8]'
                       }`}
                   />
@@ -311,7 +311,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
                       setSurname(e.target.value);
                       if (errors.surname) setErrors({ ...errors, surname: '' });
                     }}
-                    placeholder="e.g. Dupont"
+                    placeholder="e.g. Handsome"
                     className={`w-full px-2.5 xs:px-3 sm:px-3.5 py-1.5 xs:py-2 rounded-xl border bg-[#FCFBF9] text-xs xs:text-sm text-[#2A2725] placeholder-[#B5ADA4] focus:outline-none focus:ring-1.5 focus:ring-[#B89B6D]/30 focus:border-[#B89B6D] transition-all ${errors.surname ? 'border-red-400 bg-red-50/20' : 'border-[#EAE2D8]'
                       }`}
                   />

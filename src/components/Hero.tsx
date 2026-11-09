@@ -170,7 +170,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
             {/* Action Buttons - Scaled up with generous touch targets */}
             <div className="flex flex-row items-center justify-center gap-2.5 xs:gap-3 sm:gap-4 w-full sm:w-auto">
               <button
-                onClick={() => onNavigate ? onNavigate(2) : scrollTo('rsvp')}
+                onClick={() => onNavigate ? onNavigate(3) : scrollTo('rsvp')}
                 className="flex-1 sm:flex-initial px-4 xs:px-6 sm:px-8 py-2.5 xs:py-3.5 sm:py-3.5 rounded-full bg-[#2A2725] text-white hover:bg-[#B89B6D] text-[11px] xs:text-xs uppercase tracking-[0.18em] sm:tracking-[0.2em] font-semibold transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0"
               >
                 RSVP Attendance

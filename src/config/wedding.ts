@@ -68,5 +68,40 @@ export const WEDDING_CONFIG = {
       image: "./river safari.jpeg",
     },
   ],
+  entourage: {
+    parents: {
+      groom: [
+        { role: "Father", name: "Mr. Pedro Serrano" },
+        { role: "Mother", name: "Mrs. Noemi Serrano" },
+      ],
+      bride: [
+        { role: "Father", name: "Mr. Eddie Sto Domingo" },
+        { role: "Mother", name: "Mrs. Lydia Sto Domingo" },
+      ],
+    },
+    principalSponsors: [
+      { ninong: "AAA", ninang: "BBB" },
+      { ninong: "AAA", ninang: "BBB" },
+      { ninong: "AAA", ninang: "BBB" },
+      { ninong: "AAA", ninang: "BBB" },
+      { ninong: "AAA", ninang: "BBB" },
+      { ninong: "AAA", ninang: "BBB" },
+      { ninong: "AAA", ninang: "BBB" },
+    ],
+    honorAttendants: {
+      bestMan: { name: "Avril Lennon Serrano", role: "Best Man" },
+      matronOfHonor: { name: "Elaine Sto Domingo", role: "Matron of Honor" },
+    },
+    bridalParty: {
+      groomsmen: ["AAA", "AAA", "AAA"],
+      bridesmaids: ["BBB", "BBB", "BBB", "BBB", "BBB", "BBB", "BBB"],
+    },
+    littleOnes: [
+      { role: "Coin Bearer", name: "AAA" },
+      { role: "Ring Bearer", name: "BBB" },
+      { role: "Bible Bearer", name: "AAA" },
+      { role: "Flower Girl", name: "BBB" },
+    ],
+  },
 };
 

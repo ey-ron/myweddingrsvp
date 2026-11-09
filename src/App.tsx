@@ -1,13 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 import { Hero } from './components/Hero';
 import { EventDetails } from './components/EventDetails';
+import { WeddingParty } from './components/WeddingParty';
 import { RSVPForm } from './components/RSVPForm';
 import { EnvelopeSplashScreen } from './components/EnvelopeSplashScreen';
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
-  const [currentPage, setCurrentPage] = useState(0); // 0: Hero, 1: Schedule, 2: RSVP
+  const [currentPage, setCurrentPage] = useState(0); // 0: Hero, 1: Schedule, 2: Wedding Party, 3: RSVP
   const isTransitioning = useRef(false);
+  const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef<number | null>(null);
 
   useEffect(() => {
@@ -20,7 +22,7 @@ function App() {
       isTransitioning.current = true;
       if (e.deltaY > 0) {
         // Scroll down -> next page
-        setCurrentPage((prev) => Math.min(2, prev + 1));
+        setCurrentPage((prev) => Math.min(3, prev + 1));
       } else {
         // Scroll up -> prev page
         setCurrentPage((prev) => Math.max(0, prev - 1));
@@ -33,20 +35,27 @@ function App() {
     };
 
     const handleTouchStart = (e: TouchEvent) => {
+      touchStartX.current = e.touches[0].clientX;
       touchStartY.current = e.touches[0].clientY;
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
-      if (touchStartY.current === null || isTransitioning.current) return;
+      if (touchStartY.current === null || touchStartX.current === null || isTransitioning.current) return;
+      const touchEndX = e.changedTouches[0].clientX;
       const touchEndY = e.changedTouches[0].clientY;
+      const diffX = touchStartX.current - touchEndX;
       const diffY = touchStartY.current - touchEndY;
+      touchStartX.current = null;
       touchStartY.current = null;
+
+      // If user is swiping horizontally (e.g., on the Wedding Party carousel), do NOT trigger vertical page change
+      if (Math.abs(diffX) > Math.abs(diffY)) return;
 
       if (Math.abs(diffY) > 40) {
         isTransitioning.current = true;
         if (diffY > 0) {
           // Swipe up -> next page
-          setCurrentPage((prev) => Math.min(2, prev + 1));
+          setCurrentPage((prev) => Math.min(3, prev + 1));
         } else {
           // Swipe down -> prev page
           setCurrentPage((prev) => Math.max(0, prev - 1));
@@ -60,7 +69,7 @@ function App() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (['ArrowDown', 'PageDown', ' '].includes(e.key)) {
         e.preventDefault();
-        setCurrentPage((prev) => Math.min(2, prev + 1));
+        setCurrentPage((prev) => Math.min(3, prev + 1));
       } else if (['ArrowUp', 'PageUp'].includes(e.key)) {
         e.preventDefault();
         setCurrentPage((prev) => Math.max(0, prev - 1));
@@ -106,7 +115,8 @@ function App() {
         {[
           { label: 'Save The Date', index: 0 },
           { label: 'Event Details', index: 1 },
-          { label: 'RSVP', index: 2 },
+          { label: 'Circle of Honor', index: 2 },
+          { label: 'RSVP', index: 3 },
         ].map((item) => (
           <button
             key={item.index}
@@ -141,7 +151,14 @@ function App() {
           style={{ display: currentPage === 2 ? 'flex' : 'none' }} 
           className="w-full h-full flex-col animate-in fade-in duration-200"
         >
-          <RSVPForm onNavigate={setCurrentPage} isActive={currentPage === 2} />
+          <WeddingParty onNavigate={setCurrentPage} isActive={currentPage === 2} />
+        </div>
+
+        <div 
+          style={{ display: currentPage === 3 ? 'flex' : 'none' }} 
+          className="w-full h-full flex-col animate-in fade-in duration-200"
+        >
+          <RSVPForm onNavigate={setCurrentPage} isActive={currentPage === 3} />
         </div>
       </main>
     </div>
