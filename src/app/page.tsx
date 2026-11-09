@@ -1,12 +1,17 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import dynamic from 'next/dynamic';
 import { Hero } from '../components/Hero';
 import { EventDetails } from '../components/EventDetails';
 import { WeddingParty } from '../components/WeddingParty';
 import { RSVPForm } from '../components/RSVPForm';
 import { EnvelopeSplashScreen } from '../components/EnvelopeSplashScreen';
-import { ViewportIndicator } from '../components/ViewportIndicator';
+
+const ViewportIndicator = dynamic(
+  () => import('../components/ViewportIndicator').then((m) => m.ViewportIndicator),
+  { ssr: false }
+);
 
 export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
@@ -157,3 +162,4 @@ export default function Home() {
     </div>
   );
 }
+

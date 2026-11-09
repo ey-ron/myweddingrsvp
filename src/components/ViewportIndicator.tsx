@@ -3,17 +3,19 @@
 import React, { useState, useEffect } from 'react';
 
 export const ViewportIndicator: React.FC = () => {
+  const [mounted, setMounted] = useState(false);
   const [info, setInfo] = useState({
-    width: typeof window !== 'undefined' ? window.innerWidth : 0,
-    height: typeof window !== 'undefined' ? window.innerHeight : 0,
-    screenWidth: typeof window !== 'undefined' ? window.screen.width : 0,
-    screenHeight: typeof window !== 'undefined' ? window.screen.height : 0,
-    dpr: typeof window !== 'undefined' ? window.devicePixelRatio : 1,
+    width: 0,
+    height: 0,
+    screenWidth: 0,
+    screenHeight: 0,
+    dpr: 1,
   });
 
   const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const update = () => {
       setInfo({
         width: window.innerWidth,
@@ -29,6 +31,8 @@ export const ViewportIndicator: React.FC = () => {
     window.addEventListener('orientationchange', () => setTimeout(update, 150));
     return () => window.removeEventListener('resize', update);
   }, []);
+
+  if (!mounted) return null;
 
   const isDev = process.env.NODE_ENV === 'development';
 
