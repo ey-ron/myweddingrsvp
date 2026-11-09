@@ -8,7 +8,7 @@ interface EventDetailsProps {
 
 export const EventDetails: React.FC<EventDetailsProps> = () => {
   return (
-    <section id="schedule" className="relative w-full h-full flex flex-col items-center justify-start pt-1 sm:pt-2 pb-2 sm:pb-3 px-3.5 xs:px-4 sm:px-6 lg:px-8 bg-subtle-linen overflow-hidden">
+    <section id="schedule" className="relative w-full h-full flex flex-col items-center justify-start pt-1 sm:pt-2 pb-2 sm:pb-3 px-3.5 xs:px-4 sm:px-6 lg:px-8 bg-subtle-linen overflow-y-auto overflow-x-hidden">
       
       {/* Section Header - Perfectly aligned in position and scale with Hero */}
       <div className="text-center max-w-3xl mx-auto mb-1 sm:mb-2 flex-shrink-0">

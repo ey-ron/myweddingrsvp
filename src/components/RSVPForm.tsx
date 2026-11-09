@@ -114,7 +114,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = () => {
   };
 
   return (
-    <section id="rsvp" className="relative w-full h-full flex flex-col items-center justify-start pt-1 sm:pt-2 pb-2 sm:pb-3 px-3.5 xs:px-4 sm:px-6 lg:px-8 bg-subtle-linen overflow-hidden">
+    <section id="rsvp" className="relative w-full h-full flex flex-col items-center justify-start pt-1 sm:pt-2 pb-2 sm:pb-3 px-3.5 xs:px-4 sm:px-6 lg:px-8 bg-subtle-linen overflow-y-auto overflow-x-hidden">
       
       {/* Section Header - Perfectly aligned with Page 1 and Page 2 */}
       <div className="text-center max-w-3xl mx-auto mb-1 sm:mb-2 flex-shrink-0">
