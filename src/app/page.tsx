@@ -106,7 +106,7 @@ export default function Home() {
       )}
 
       {/* Discreet Page Indicator Dots */}
-      <nav aria-label="Page navigation" className="fixed top-2.5 right-3 sm:top-3 sm:right-6 z-50 flex flex-col items-center gap-1.5 sm:gap-2 px-1.5 py-2 rounded-full bg-white/70 backdrop-blur-md border border-[#EAE2D8] shadow-xs">
+      <nav aria-label="Page navigation" className="fixed top-2.5 right-2.5 sm:top-3 sm:right-5 z-50 flex flex-col items-center gap-1 sm:gap-1.5 px-1 py-1.5 sm:px-1 sm:py-2 rounded-full bg-white/65 backdrop-blur-md border border-[#EAE2D8]/80 shadow-xs">
         {[
           { label: 'Save The Date', index: 0 },
           { label: 'Event Details', index: 1 },
@@ -117,10 +117,10 @@ export default function Home() {
             key={item.index}
             onClick={() => setCurrentPage(item.index)}
             aria-label={`Go to ${item.label}`}
-            className={`transition-all duration-300 rounded-full ${
+            className={`transition-all duration-300 rounded-full cursor-pointer ${
               currentPage === item.index
-                ? 'w-1.5 h-4 sm:w-2 sm:h-5 bg-[#B89B6D] shadow-xs'
-                : 'w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#DFD0B7] hover:bg-[#B89B6D]/60'
+                ? 'w-1 h-3.5 sm:w-1.5 sm:h-4.5 bg-[#B89B6D] shadow-xs'
+                : 'w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#DFD0B7] hover:bg-[#B89B6D]/60'
             }`}
           />
         ))}

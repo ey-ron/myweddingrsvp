@@ -55,11 +55,13 @@ export const EnvelopeSplashScreen: React.FC<EnvelopeSplashScreenProps> = ({ onCo
 
       {/* Top Header */}
       <div className="text-center transition-all duration-700 flex-shrink-0 z-10 mt-1 xs:mt-2">
-        <span className="text-[9px] xs:text-[10px] uppercase tracking-[0.28em] text-[#8C7A5E] font-semibold block mb-0.5">
+        <span className="text-[9px] xs:text-[10px] uppercase tracking-[0.28em] text-[#8C7A5E] font-semibold block mb-0.5 animate-header-pill">
           A Special Invitation
         </span>
-        <h2 className="font-serif italic text-lg xs:text-xl sm:text-3xl text-[#2A2725]">
-          For Our Wedding Celebration
+        <h2 className="text-script-headline text-[#2A2725] mt-0.5 leading-tight tracking-wide whitespace-nowrap overflow-hidden">
+          <span className="animate-cursive-write inline-block">
+            For Our Wedding Celebration
+          </span>
         </h2>
       </div>
 
