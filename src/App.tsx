@@ -110,7 +110,7 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-[#FAF8F5] text-[#2A2725] w-screen h-[100dvh] min-h-[100dvh] max-h-[100dvh] overflow-hidden relative font-sans select-none">
+    <div className="bg-[#FAF8F5] text-[#2A2725] w-full h-[100dvh] min-h-[100dvh] max-h-[100dvh] overflow-hidden relative font-sans select-none">
       {/* Floating Viewport Debug Indicator */}
       <ViewportIndicator />
 

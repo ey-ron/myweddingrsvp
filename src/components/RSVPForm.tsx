@@ -128,7 +128,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
           RSVP
         </span>
         {/* Elegant Cursive Handwriting Headline */}
-        <h2 className="text-script-headline text-[#2A2725] mt-0.5 leading-tight tracking-wide whitespace-nowrap overflow-hidden">
+        <h2 className="text-script-headline text-[#2A2725] mt-0.5 leading-tight tracking-wide">
           <span
             key={isActive ? 'active' : 'inactive'}
             className={`${isActive ? 'animate-cursive-write' : 'opacity-0'} inline-block`}
@@ -146,7 +146,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
       </div>
 
       {/* Main Content Area - Centered in remaining vertical space */}
-      <div className="max-w-xl xs:max-w-2xl sm:max-w-3xl lg:max-w-4xl xl:max-w-5xl w-full mx-auto flex-1 min-h-0 flex flex-col lg:grid lg:grid-cols-2 lg:gap-6 xl:gap-8 lg:items-center justify-center my-auto">
+      <div className="max-w-xl xs:max-w-2xl sm:max-w-3xl lg:max-w-4xl xl:max-w-5xl w-full mx-auto flex-1 min-h-0 flex flex-col lg:grid lg:grid-cols-2 lg:gap-6 xl:gap-8 lg:items-center justify-center mt-1 xs:mt-1.5 sm:my-auto">
 
         {/* RSVP Card - Cascades in first */}
         <div

@@ -64,7 +64,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
           Save The Date
         </span>
         {/* Elegant Cursive Handwriting Headline */}
-        <h1 className="text-script-headline text-[#2A2725] mt-0.5 leading-tight tracking-wide whitespace-nowrap overflow-hidden">
+        <h1 className="text-script-headline text-[#2A2725] mt-0.5 leading-tight tracking-wide">
           <span
             key={isReady ? 'ready' : 'hidden'}
             className={`${isReady ? 'animate-cursive-write' : 'opacity-0'} inline-block`}
@@ -75,7 +75,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
       </div>
 
       {/* Centered Arch Border Container - Scaled up to fill the viewport */}
-      <div className={`w-full flex-1 flex flex-col justify-center items-center my-auto min-h-0 ${isReady ? 'animate-luxury-card' : 'opacity-0'}`}>
+      <div className={`w-full flex-1 flex flex-col justify-center items-center mt-1 xs:mt-1.5 sm:my-auto min-h-0 ${isReady ? 'animate-luxury-card' : 'opacity-0'}`}>
         {/* Elegant Arch Border Frame */}
         <div className="relative max-w-[345px] xs:max-w-[380px] sm:max-w-2xl xl:max-w-5xl w-full mx-auto py-3.5 xs:py-4.5 tall:py-6 sm:py-7 xl:py-6 px-4 xs:px-6 sm:px-10 xl:px-8 rounded-[1.85rem] xs:rounded-[2.25rem] tall:rounded-[2.5rem] sm:rounded-[2.5rem] border border-[#EAE2D8] bg-[#FAF8F5]/85 backdrop-blur-sm shadow-luxury transition-all xl:flex xl:flex-row xl:items-stretch xl:gap-8">
 
