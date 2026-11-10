@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Luxury Linen/Ivory Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF8F5" />
+      <stop offset="100%" stop-color="#F2EAE0" />
+    </linearGradient>
+
+    <!-- Metallic Gold Foil Gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EEDCBF" />
+      <stop offset="25%" stop-color="#B89B6D" />
+      <stop offset="50%" stop-color="#FDF6EA" />
+      <stop offset="75%" stop-color="#B89B6D" />
+      <stop offset="100%" stop-color="#8A7045" />
+    </linearGradient>
+
+    <!-- Complementary Gold Angle for Second Ring -->
+    <linearGradient id="goldGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FDF6EA" />
+      <stop offset="30%" stop-color="#B89B6D" />
+      <stop offset="70%" stop-color="#8A7045" />
+      <stop offset="100%" stop-color="#EEDCBF" />
+    </linearGradient>
+
+    <!-- Diamond Sparkle Radial Gradient -->
+    <radialGradient id="sparkleGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="45%" stop-color="#FAF8F5" />
+      <stop offset="85%" stop-color="#B89B6D" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#B89B6D" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Drop Shadow for Rings -->
+    <filter id="ringShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#8A7045" flood-opacity="0.25" />
+    </filter>
+
+    <!-- Subtle Shadow for Typography -->
+    <filter id="textShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#8A7045" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <!-- Luxury Canvas Base (Rounded App Icon Shape) -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)" />
+
+  <!-- Outer Double Gold Border Lines -->
+  <rect x="18" y="18" width="476" height="476" rx="96" fill="none" stroke="url(#goldGrad)" stroke-width="5" opacity="0.8" />
+  <rect x="28" y="28" width="456" height="456" rx="86" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.5" />
+
+  <!-- Intertwined Golden Wedding Rings -->
+  <g filter="url(#ringShadow)">
+    <!-- Groom's Ring (Left) -->
+    <circle cx="200" cy="256" r="114" fill="none" stroke="url(#goldGrad)" stroke-width="26" />
+
+    <!-- Bride's Ring (Right) -->
+    <circle cx="312" cy="256" r="114" fill="none" stroke="url(#goldGrad2)" stroke-width="26" />
+
+    <!-- Intertwining Overlap Effect (Upper Interlock Arc) -->
+    <path d="M 235 147 A 114 114 0 0 1 312 142" fill="none" stroke="url(#goldGrad)" stroke-width="26" stroke-linecap="round" />
+  </g>
+
+  <!-- Diamond & Starburst on Bride's Ring -->
+  <g transform="translate(312, 142)">
+    <!-- Gold Mount Prongs -->
+    <path d="M -14 0 L 0 -18 L 14 0 Z" fill="url(#goldGrad)" />
+    <!-- Brilliant Diamond -->
+    <polygon points="0,-28 18,-14 0,0 -18,-14" fill="#FFFFFF" stroke="#B89B6D" stroke-width="2" />
+    <polygon points="0,-28 7,-14 0,0 -7,-14" fill="#F4EFE6" opacity="0.8" />
+    <!-- Diamond Facets -->
+    <line x1="-18" y1="-14" x2="18" y2="-14" stroke="#DFD0B7" stroke-width="1.5" />
+    <line x1="0" y1="-28" x2="0" y2="0" stroke="#DFD0B7" stroke-width="1.5" />
+    <!-- Sparkle Glow Aura -->
+    <circle cx="0" cy="-14" r="28" fill="url(#sparkleGrad)" pointer-events="none" />
+    <!-- 4-point Shimmer Star -->
+    <path d="M 0 -34 Q 0 -14 20 -14 Q 0 -14 0 6 Q 0 -14 -20 -14 Q 0 -14 0 -34 Z" fill="#FFFFFF" />
+    <circle cx="0" cy="-14" r="3" fill="#B89B6D" />
+  </g>
+
+  <!-- Monogram Initials Inside the Rings -->
+  <!-- 'A' for Aaron inside Left Ring -->
+  <text
+    x="192"
+    y="298"
+    font-family="'Playfair Display', 'Cormorant Garamond', Georgia, serif"
+    font-size="118"
+    font-weight="700"
+    fill="#2A2725"
+    text-anchor="middle"
+    filter="url(#textShadow)"
+  >A</text>
+
+  <!-- 'E' for Eileen inside Right Ring -->
+  <text
+    x="320"
+    y="298"
+    font-family="'Playfair Display', 'Cormorant Garamond', Georgia, serif"
+    font-size="118"
+    font-weight="700"
+    fill="#2A2725"
+    text-anchor="middle"
+    filter="url(#textShadow)"
+  >E</text>
+
+  <!-- '&' Ampersand in the Golden Intersection -->
+  <g filter="url(#textShadow)">
+    <circle cx="256" cy="256" r="26" fill="#FAF8F5" stroke="url(#goldGrad)" stroke-width="2" />
+    <text
+      x="256"
+      y="266"
+      font-family="'Playfair Display', 'Cormorant Garamond', Georgia, serif"
+      font-size="34"
+      font-style="italic"
+      font-weight="600"
+      fill="#8A7045"
+      text-anchor="middle"
+      dominant-baseline="middle"
+    >&amp;</text>
+  </g>
+
+  <!-- Bottom Date Banner -->
+  <g transform="translate(256, 434)">
+    <line x1="-80" y1="0" x2="-40" y2="0" stroke="#DFD0B7" stroke-width="1.5" />
+    <circle cx="-35" cy="0" r="2.5" fill="#B89B6D" />
+    <text
+      x="0"
+      y="4"
+      font-family="'Plus Jakarta Sans', system-ui, sans-serif"
+      font-size="18"
+      font-weight="700"
+      fill="#8C7A5E"
+      text-anchor="middle"
+      letter-spacing="5"
+    >APRIL 11, 2027</text>
+    <circle cx="35" cy="0" r="2.5" fill="#B89B6D" />
+    <line x1="40" y1="0" x2="80" y2="0" stroke="#DFD0B7" stroke-width="1.5" />
+  </g>
+</svg>

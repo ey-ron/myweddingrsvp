@@ -119,9 +119,9 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
       </div>
 
       {/* Main Content Area with Navigation Controls */}
-      <div className="max-w-xl sm:max-w-2xl w-full mx-auto flex-1 min-h-0 flex flex-col justify-center items-center my-auto mb-[clamp(8px,1.5dvh,18px)] sm:mb-0">
+      <div className="max-w-xl sm:max-w-2xl xl:max-w-3xl w-full mx-auto flex-1 min-h-0 flex flex-col justify-center items-center my-auto mb-[clamp(8px,1.5dvh,18px)] sm:mb-0">
         {/* Navigation Bar: Arrow Left, Category Name, Arrow Right */}
-        <div className="flex items-center justify-between w-full max-w-lg mx-auto mb-[clamp(4px,0.8dvh,8px)] sm:mb-1.5 px-1 flex-shrink-0">
+        <div className="flex items-center justify-between w-full max-w-lg sm:max-w-xl xl:max-w-2xl mx-auto mb-[clamp(4px,0.8dvh,8px)] sm:mb-1.5 px-1 flex-shrink-0">
           <button
             onClick={prevSlide}
             disabled={currentSlide === 0}
@@ -137,7 +137,7 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
 
           {/* Current Category Pill Badge - Animated on Change */}
           <div key={`cat-${slideKey}`} className="text-center px-2 animate-header-pill">
-            <span className="text-[clamp(10px,1.25dvh,11px)] uppercase tracking-[0.2em] font-semibold text-[#8C7A5E]">
+            <span className="text-[clamp(10px,1.25dvh,11px)] sm:text-xs xl:text-sm uppercase tracking-[0.2em] font-semibold text-[#8C7A5E]">
               {slideCategories[currentSlide].subtitle}
             </span>
           </div>
@@ -158,7 +158,7 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
 
         {/* The Card Viewport with Entrance Animation - Scaled to fill space beautifully */}
         <div
-          className={`w-full max-w-lg sm:max-w-xl mx-auto bg-white/95 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-[#EAE2D8] shadow-card hover:shadow-luxury transition-all p-[clamp(10px,1.5dvh,16px)] sm:p-5 flex-1 min-h-0 flex flex-col justify-between overflow-hidden relative ${
+          className={`w-full max-w-lg sm:max-w-xl xl:max-w-3xl mx-auto bg-white/95 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-[#EAE2D8] shadow-card hover:shadow-luxury transition-all p-[clamp(10px,1.5dvh,16px)] sm:p-5 xl:p-6.5 flex-1 min-h-0 flex flex-col justify-between overflow-hidden relative ${
             isActive ? 'animate-luxury-card' : 'opacity-0'
           }`}
         >
@@ -171,18 +171,18 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
           >
             {/* SET 1 (SLIDE 0): PARENTS & HONOR ATTENDANTS (Separate Elegant Cards) */}
             {currentSlide === 0 && (
-              <div className="flex-1 flex flex-col justify-between space-y-[clamp(6px,1dvh,10px)]">
+              <div className="flex-1 flex flex-col justify-between space-y-[clamp(6px,1dvh,10px)] xl:space-y-3.5">
                 
                 {/* CARD 1: THE PARENTS */}
-                <div className="p-[clamp(8px,1.2dvh,12px)] sm:p-3.5 rounded-xl sm:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between animate-cascade-1 flex-1">
-                  <div className="flex items-center justify-between pb-1 mb-1 border-b border-[#EAE2D8]/80">
+                <div className="p-[clamp(8px,1.2dvh,12px)] sm:p-3.5 xl:p-4 rounded-xl sm:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between animate-cascade-1 flex-1">
+                  <div className="flex items-center justify-between pb-1 mb-1 xl:pb-1.5 xl:mb-1.5 border-b border-[#EAE2D8]/80">
                     <div className="flex items-center gap-1.5">
-                      <Heart className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#B89B6D]" />
-                      <span className="text-[clamp(9.5px,1.25dvh,11px)] uppercase tracking-wider font-bold text-[#8C7A5E]">
+                      <Heart className="w-3 h-3 sm:w-3.5 sm:h-3.5 xl:w-4 xl:h-4 text-[#B89B6D]" />
+                      <span className="text-[clamp(9.5px,1.25dvh,11px)] sm:text-xs xl:text-sm uppercase tracking-wider font-bold text-[#8C7A5E]">
                         The Parents
                       </span>
                     </div>
-                    <span className="text-[clamp(8.5px,1.1dvh,9px)] text-[#A69781] italic">
+                    <span className="text-[clamp(8.5px,1.1dvh,9px)] sm:text-[10px] xl:text-xs text-[#A69781] italic">
                       Parents of the Couple
                     </span>
                   </div>
@@ -193,26 +193,26 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
 
                     {/* Groom's Parents */}
                     <div className="pr-2 sm:pr-4">
-                      <span className="text-[clamp(8.5px,1.15dvh,9.5px)] uppercase font-semibold text-[#8C7A5E] block mb-0.5">
+                      <span className="text-[clamp(8.5px,1.15dvh,9.5px)] sm:text-[10px] xl:text-xs uppercase font-semibold text-[#8C7A5E] block mb-0.5 xl:mb-1">
                         Groom&apos;s Parents
                       </span>
-                      <p className="font-cormorant text-[clamp(14px,1.85dvh,16px)] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]">
+                      <p className="font-cormorant text-[clamp(14px,1.85dvh,16px)] sm:text-[16px] xl:text-[20px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]">
                         {WEDDING_CONFIG.entourage.parents.groom[0].name}
                       </p>
-                      <p className="font-cormorant text-[clamp(14px,1.85dvh,16px)] font-semibold text-[#2A2725] leading-snug tracking-[0.01em] mt-0.5">
+                      <p className="font-cormorant text-[clamp(14px,1.85dvh,16px)] sm:text-[16px] xl:text-[20px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em] mt-0.5 xl:mt-1">
                         {WEDDING_CONFIG.entourage.parents.groom[1].name}
                       </p>
                     </div>
 
                     {/* Bride's Parents */}
-                    <div className="pl-2 sm:pr-4">
-                      <span className="text-[clamp(8.5px,1.15dvh,9.5px)] uppercase font-semibold text-[#8C7A5E] block mb-0.5">
+                    <div className="pl-2 sm:pl-4">
+                      <span className="text-[clamp(8.5px,1.15dvh,9.5px)] sm:text-[10px] xl:text-xs uppercase font-semibold text-[#8C7A5E] block mb-0.5 xl:mb-1">
                         Bride&apos;s Parents
                       </span>
-                      <p className="font-cormorant text-[clamp(14px,1.85dvh,16px)] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]">
+                      <p className="font-cormorant text-[clamp(14px,1.85dvh,16px)] sm:text-[16px] xl:text-[20px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]">
                         {WEDDING_CONFIG.entourage.parents.bride[0].name}
                       </p>
-                      <p className="font-cormorant text-[clamp(14px,1.85dvh,16px)] font-semibold text-[#2A2725] leading-snug tracking-[0.01em] mt-0.5">
+                      <p className="font-cormorant text-[clamp(14px,1.85dvh,16px)] sm:text-[16px] xl:text-[20px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em] mt-0.5 xl:mt-1">
                         {WEDDING_CONFIG.entourage.parents.bride[1].name}
                       </p>
                     </div>
@@ -220,15 +220,15 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
                 </div>
 
                 {/* CARD 2: HONOR ATTENDANTS (Best Man & Matron of Honor) */}
-                <div className="p-[clamp(8px,1.2dvh,12px)] sm:p-3.5 rounded-xl sm:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between animate-cascade-2 flex-1">
-                  <div className="flex items-center justify-between pb-1 mb-1 border-b border-[#EAE2D8]/80">
+                <div className="p-[clamp(8px,1.2dvh,12px)] sm:p-3.5 xl:p-4 rounded-xl sm:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between animate-cascade-2 flex-1">
+                  <div className="flex items-center justify-between pb-1 mb-1 xl:pb-1.5 xl:mb-1.5 border-b border-[#EAE2D8]/80">
                     <div className="flex items-center gap-1.5">
-                      <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#B89B6D]" />
-                      <span className="text-[clamp(9.5px,1.25dvh,11px)] uppercase tracking-wider font-bold text-[#8C7A5E]">
+                      <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 xl:w-4 xl:h-4 text-[#B89B6D]" />
+                      <span className="text-[clamp(9.5px,1.25dvh,11px)] sm:text-xs xl:text-sm uppercase tracking-wider font-bold text-[#8C7A5E]">
                         Honor Attendants
                       </span>
                     </div>
-                    <span className="text-[clamp(8.5px,1.1dvh,9px)] text-[#A69781] italic">
+                    <span className="text-[clamp(8.5px,1.1dvh,9px)] sm:text-[10px] xl:text-xs text-[#A69781] italic">
                       Witnesses of Honor
                     </span>
                   </div>
@@ -239,33 +239,33 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
 
                     {/* Best Man */}
                     <div className="pr-2 sm:pr-4">
-                      <span className="text-[clamp(8.5px,1.15dvh,9.5px)] uppercase font-semibold text-[#8C7A5E] block mb-0.5">
+                      <span className="text-[clamp(8.5px,1.15dvh,9.5px)] sm:text-[10px] xl:text-xs uppercase font-semibold text-[#8C7A5E] block mb-0.5 xl:mb-1">
                         Best Man
                       </span>
-                      <p className="font-cormorant text-[clamp(14.5px,2dvh,17px)] font-bold text-[#2A2725] leading-snug tracking-[0.01em]">
+                      <p className="font-cormorant text-[clamp(14.5px,2dvh,17px)] sm:text-[17px] xl:text-[22px] font-bold text-[#2A2725] leading-snug tracking-[0.01em]">
                         {WEDDING_CONFIG.entourage.honorAttendants.bestMan.name}
                       </p>
-                      <span className="text-[clamp(8px,1.1dvh,9px)] text-[#A69781] italic block mt-0.5">
+                      <span className="text-[clamp(8px,1.1dvh,9px)] sm:text-[10px] xl:text-xs text-[#A69781] italic block mt-0.5">
                         Groom&apos;s Right Hand
                       </span>
                     </div>
 
                     {/* Matron of Honor */}
-                    <div className="pl-2 sm:pr-4">
-                      <span className="text-[clamp(8.5px,1.15dvh,9.5px)] uppercase font-semibold text-[#8C7A5E] block mb-0.5">
+                    <div className="pl-2 sm:pl-4">
+                      <span className="text-[clamp(8.5px,1.15dvh,9.5px)] sm:text-[10px] xl:text-xs uppercase font-semibold text-[#8C7A5E] block mb-0.5 xl:mb-1">
                         Matron of Honor
                       </span>
-                      <p className="font-cormorant text-[clamp(14.5px,2dvh,17px)] font-bold text-[#2A2725] leading-snug tracking-[0.01em]">
+                      <p className="font-cormorant text-[clamp(14.5px,2dvh,17px)] sm:text-[17px] xl:text-[22px] font-bold text-[#2A2725] leading-snug tracking-[0.01em]">
                         {WEDDING_CONFIG.entourage.honorAttendants.matronOfHonor.name}
                       </p>
-                      <span className="text-[clamp(8px,1.1dvh,9px)] text-[#A69781] italic block mt-0.5">
+                      <span className="text-[clamp(8px,1.1dvh,9px)] sm:text-[10px] xl:text-xs text-[#A69781] italic block mt-0.5">
                         Bride&apos;s Confidante
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <p className="text-center font-serif italic text-[clamp(10px,1.3dvh,11.5px)] text-[#8C7A5E] pt-1 border-t border-[#F3EDE2] animate-cascade-3">
+                <p className="text-center font-serif italic text-[clamp(10px,1.3dvh,11.5px)] sm:text-xs text-[#8C7A5E] pt-1 border-t border-[#F3EDE2] animate-cascade-3">
                   With boundless love to those who guide our path and stand closest to our hearts.
                 </p>
               </div>
@@ -274,55 +274,55 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
             {/* SET 2 (SLIDE 1): PRINCIPAL SPONSORS (7 Rows of Ninong & Ninang) */}
             {currentSlide === 1 && (
               <div className="flex-1 flex flex-col justify-between">
-                <div className="grid grid-cols-2 gap-2 sm:gap-4 flex-1">
+                <div className="grid grid-cols-2 gap-2 sm:gap-4 xl:gap-6 flex-1">
                   {/* Ninongs */}
-                  <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between animate-cascade-1">
-                    <div className="flex items-center justify-center gap-1.5 pb-1 mb-1 border-b border-[#EAE2D8]/80">
-                      <ShieldCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#B89B6D]" />
-                      <span className="text-[clamp(9.5px,1.25dvh,11px)] sm:text-[11px] uppercase tracking-wider font-bold text-[#8C7A5E]">
+                  <div className="p-2 sm:p-3 xl:p-4 rounded-xl sm:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between animate-cascade-1">
+                    <div className="flex items-center justify-center gap-1.5 pb-1 mb-1 xl:pb-1.5 xl:mb-1.5 border-b border-[#EAE2D8]/80">
+                      <ShieldCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5 xl:w-4 xl:h-4 text-[#B89B6D]" />
+                      <span className="text-[clamp(9.5px,1.25dvh,11px)] sm:text-[11px] xl:text-sm uppercase tracking-wider font-bold text-[#8C7A5E]">
                         Ninong
                       </span>
                     </div>
-                    <div className="space-y-[clamp(3px,0.7dvh,6px)] text-center my-auto py-0.5">
+                    <div className="space-y-[clamp(3px,0.7dvh,6px)] xl:space-y-1.5 text-center my-auto py-0.5">
                       {WEDDING_CONFIG.entourage.principalSponsors.map((item, idx) => (
                         <p
                           key={`ninong-${idx}`}
-                          className="font-cormorant text-[clamp(13px,1.75dvh,15.5px)] sm:text-[15.5px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]"
+                          className="font-cormorant text-[clamp(13px,1.75dvh,15.5px)] sm:text-[15.5px] xl:text-[18px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]"
                         >
                           {item.ninong}
                         </p>
                       ))}
                     </div>
-                    <div className="text-[clamp(8px,1.1dvh,9px)] text-[#A69781] text-center pt-0.5 border-t border-[#EAE2D8]/50">
+                    <div className="text-[clamp(8px,1.1dvh,9px)] sm:text-[9.5px] xl:text-xs text-[#A69781] text-center pt-0.5 border-t border-[#EAE2D8]/50">
                       Sponsors
                     </div>
                   </div>
 
                   {/* Ninangs */}
-                  <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between animate-cascade-2">
-                    <div className="flex items-center justify-center gap-1.5 pb-1 mb-1 border-b border-[#EAE2D8]/80">
-                      <Crown className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#B89B6D]" />
-                      <span className="text-[clamp(9.5px,1.25dvh,11px)] sm:text-[11px] uppercase tracking-wider font-bold text-[#8C7A5E]">
+                  <div className="p-2 sm:p-3 xl:p-4 rounded-xl sm:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between animate-cascade-2">
+                    <div className="flex items-center justify-center gap-1.5 pb-1 mb-1 xl:pb-1.5 xl:mb-1.5 border-b border-[#EAE2D8]/80">
+                      <Crown className="w-3 h-3 sm:w-3.5 sm:h-3.5 xl:w-4 xl:h-4 text-[#B89B6D]" />
+                      <span className="text-[clamp(9.5px,1.25dvh,11px)] sm:text-[11px] xl:text-sm uppercase tracking-wider font-bold text-[#8C7A5E]">
                         Ninang
                       </span>
                     </div>
-                    <div className="space-y-[clamp(3px,0.7dvh,6px)] text-center my-auto py-0.5">
+                    <div className="space-y-[clamp(3px,0.7dvh,6px)] xl:space-y-1.5 text-center my-auto py-0.5">
                       {WEDDING_CONFIG.entourage.principalSponsors.map((item, idx) => (
                         <p
                           key={`ninang-${idx}`}
-                          className="font-cormorant text-[clamp(13px,1.75dvh,15.5px)] sm:text-[15.5px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]"
+                          className="font-cormorant text-[clamp(13px,1.75dvh,15.5px)] sm:text-[15.5px] xl:text-[18px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]"
                         >
                           {item.ninang}
                         </p>
                       ))}
                     </div>
-                    <div className="text-[clamp(8px,1.1dvh,9px)] text-[#A69781] text-center pt-0.5 border-t border-[#EAE2D8]/50">
+                    <div className="text-[clamp(8px,1.1dvh,9px)] sm:text-[9.5px] xl:text-xs text-[#A69781] text-center pt-0.5 border-t border-[#EAE2D8]/50">
                       Sponsors
                     </div>
                   </div>
                 </div>
 
-                <p className="text-center font-serif italic text-[clamp(10px,1.25dvh,11.5px)] text-[#8C7A5E] pt-1 mt-1 border-t border-[#F3EDE2] animate-cascade-3">
+                <p className="text-center font-serif italic text-[clamp(10px,1.25dvh,11.5px)] sm:text-xs text-[#8C7A5E] pt-1 mt-1 border-t border-[#F3EDE2] animate-cascade-3">
                   Guiding witnesses to our sacred covenant and lifelong journey.
                 </p>
               </div>
@@ -331,49 +331,49 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
             {/* SET 3 (SLIDE 2): GROOMSMEN (3) & BEARERS (3) ON LEFT, BRIDESMAIDS (7) & FLOWER GIRL (1) ON RIGHT */}
             {currentSlide === 2 && (
               <div className="flex-1 flex flex-col justify-between">
-                <div className="grid grid-cols-2 gap-2 sm:gap-4 flex-1">
+                <div className="grid grid-cols-2 gap-2 sm:gap-4 xl:gap-6 flex-1">
                   {/* Left Column: Groomsmen (Taller) + Bearers (3 Rows, Shorter) */}
-                  <div className="flex flex-col gap-1.5 sm:gap-2 flex-1 justify-between">
+                  <div className="flex flex-col gap-1.5 sm:gap-2 xl:gap-3 flex-1 justify-between">
                     {/* Groomsmen - Primary Card (Taller than Bearers) */}
-                    <div className="p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between animate-cascade-1 flex-[1.4] min-h-0">
-                      <div className="flex items-center justify-between pb-0.5 mb-1 border-b border-[#EAE2D8]/80 flex-shrink-0">
-                        <span className="text-[clamp(9.5px,1.25dvh,11px)] sm:text-[11px] uppercase tracking-wider font-bold text-[#8C7A5E]">
+                    <div className="p-2 sm:p-2.5 xl:p-3.5 rounded-xl sm:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between animate-cascade-1 flex-[1.4] min-h-0">
+                      <div className="flex items-center justify-between pb-0.5 mb-1 xl:pb-1 xl:mb-1.5 border-b border-[#EAE2D8]/80 flex-shrink-0">
+                        <span className="text-[clamp(9.5px,1.25dvh,11px)] sm:text-[11px] xl:text-sm uppercase tracking-wider font-bold text-[#8C7A5E]">
                           Groomsmen
                         </span>
-                        <span className="text-[clamp(8px,1.05dvh,8.5px)] text-[#A69781]">
+                        <span className="text-[clamp(8px,1.05dvh,8.5px)] sm:text-[9.5px] xl:text-xs text-[#A69781]">
                           {WEDDING_CONFIG.entourage.bridalParty.groomsmen.length} Gents
                         </span>
                       </div>
-                      <div className="space-y-[clamp(2px,0.5dvh,4px)] text-center my-auto py-0.5">
+                      <div className="space-y-[clamp(2px,0.5dvh,4px)] xl:space-y-1.5 text-center my-auto py-0.5">
                         {WEDDING_CONFIG.entourage.bridalParty.groomsmen.map((name, idx) => (
                           <p
                             key={`groomsman-${idx}`}
-                            className="font-cormorant text-[clamp(13px,1.75dvh,15.5px)] sm:text-[15.5px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]"
+                            className="font-cormorant text-[clamp(13px,1.75dvh,15.5px)] sm:text-[15.5px] xl:text-[18px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]"
                           >
                             {name}
                           </p>
                         ))}
                       </div>
-                      <div className="text-[clamp(8px,1.05dvh,8.5px)] text-[#A69781] text-center pt-0.5 flex-shrink-0">
+                      <div className="text-[clamp(8px,1.05dvh,8.5px)] sm:text-[9px] xl:text-[11px] text-[#A69781] text-center pt-0.5 flex-shrink-0">
                         Gentlemen Attendants
                       </div>
                     </div>
 
                     {/* Little Attendants / Bearers (3 Rows, Compact, Shorter than Groomsmen) */}
-                    <div className="p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between animate-cascade-2 flex-[0.8] min-h-0">
-                      <div className="flex items-center justify-between pb-0.5 mb-0.5 border-b border-[#EAE2D8]/80 flex-shrink-0">
-                        <span className="text-[clamp(8.5px,1.15dvh,10px)] sm:text-[10px] uppercase tracking-wider font-bold text-[#8C7A5E]">
+                    <div className="p-2 sm:p-2.5 xl:p-3 rounded-xl sm:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between animate-cascade-2 flex-[0.8] min-h-0">
+                      <div className="flex items-center justify-between pb-0.5 mb-0.5 xl:pb-1 xl:mb-1 border-b border-[#EAE2D8]/80 flex-shrink-0">
+                        <span className="text-[clamp(8.5px,1.15dvh,10px)] sm:text-[10px] xl:text-xs uppercase tracking-wider font-bold text-[#8C7A5E]">
                           The Bearers
                         </span>
-                        <span className="text-[clamp(8px,1.05dvh,8.5px)] text-[#A69781]">3 Bearers</span>
+                        <span className="text-[clamp(8px,1.05dvh,8.5px)] sm:text-[9px] xl:text-[11px] text-[#A69781]">3 Bearers</span>
                       </div>
-                      <div className="space-y-1 sm:space-y-1.5 my-auto py-0.5 text-center">
+                      <div className="space-y-1 sm:space-y-1.5 xl:space-y-2 my-auto py-0.5 text-center">
                         {WEDDING_CONFIG.entourage.littleOnes.slice(0, 3).map((item, idx) => (
                           <div key={`bearer-${idx}`} className="text-center">
-                            <span className="text-[clamp(7.5px,1dvh,8.5px)] text-[#8C7A5E] uppercase tracking-wider font-bold block leading-none mb-0.5">
+                            <span className="text-[clamp(7.5px,1dvh,8.5px)] sm:text-[8.5px] xl:text-[10px] text-[#8C7A5E] uppercase tracking-wider font-bold block leading-none mb-0.5">
                               {item.role}
                             </span>
-                            <p className="font-cormorant text-[clamp(12px,1.6dvh,14px)] font-semibold text-[#2A2725] leading-tight tracking-[0.01em]">
+                            <p className="font-cormorant text-[clamp(12px,1.6dvh,14px)] sm:text-[14px] xl:text-[16px] font-semibold text-[#2A2725] leading-tight tracking-[0.01em]">
                               {item.name}
                             </p>
                           </div>
@@ -383,18 +383,18 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
                   </div>
 
                   {/* Right Column: Bridesmaids (7) + Flower Girl (1) */}
-                  <div className="p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between animate-cascade-2 flex-1">
-                    <div className="flex items-center justify-between pb-0.5 mb-1 border-b border-[#EAE2D8]/80">
-                      <span className="text-[clamp(9.5px,1.25dvh,11px)] sm:text-[11px] uppercase tracking-wider font-bold text-[#8C7A5E]">
+                  <div className="p-2 sm:p-2.5 xl:p-3.5 rounded-xl sm:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between animate-cascade-2 flex-1">
+                    <div className="flex items-center justify-between pb-0.5 mb-1 xl:pb-1 xl:mb-1.5 border-b border-[#EAE2D8]/80">
+                      <span className="text-[clamp(9.5px,1.25dvh,11px)] sm:text-[11px] xl:text-sm uppercase tracking-wider font-bold text-[#8C7A5E]">
                         Bridesmaids
                       </span>
-                      <span className="text-[clamp(8px,1.05dvh,8.5px)] text-[#A69781]">7 Ladies</span>
+                      <span className="text-[clamp(8px,1.05dvh,8.5px)] sm:text-[9.5px] xl:text-xs text-[#A69781]">7 Ladies</span>
                     </div>
-                    <div className="space-y-[clamp(1px,0.4dvh,4px)] text-center my-auto py-0.5">
+                    <div className="space-y-[clamp(1px,0.4dvh,4px)] xl:space-y-1 text-center my-auto py-0.5">
                       {WEDDING_CONFIG.entourage.bridalParty.bridesmaids.map((name, idx) => (
                         <p
                           key={`bridesmaid-${idx}`}
-                          className="font-cormorant text-[clamp(12px,1.6dvh,14px)] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]"
+                          className="font-cormorant text-[clamp(12px,1.6dvh,14px)] sm:text-[14px] xl:text-[16px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]"
                         >
                           {name}
                         </p>
@@ -402,21 +402,21 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
                     </div>
 
                     {/* Flower Girl at bottom of Ladies' side */}
-                    <div className="pt-1 mt-0.5 border-t border-[#EAE2D8]/80 text-center">
+                    <div className="pt-1 mt-0.5 xl:pt-1.5 xl:mt-1 border-t border-[#EAE2D8]/80 text-center">
                       <div className="flex items-center justify-center gap-1 mb-0.5">
-                        <Sparkles className="w-2.5 h-2.5 text-[#B89B6D]" />
-                        <span className="text-[clamp(8px,1.05dvh,8.5px)] uppercase tracking-wider font-bold text-[#8C7A5E]">
+                        <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 xl:w-3.5 xl:h-3.5 text-[#B89B6D]" />
+                        <span className="text-[clamp(8px,1.05dvh,8.5px)] sm:text-[9.5px] xl:text-xs uppercase tracking-wider font-bold text-[#8C7A5E]">
                           Flower Girl
                         </span>
                       </div>
-                      <p className="font-cormorant text-[clamp(12px,1.6dvh,13px)] font-semibold text-[#2A2725] leading-none">
+                      <p className="font-cormorant text-[clamp(12px,1.6dvh,13px)] sm:text-[13px] xl:text-[16px] font-semibold text-[#2A2725] leading-none">
                         {WEDDING_CONFIG.entourage.littleOnes[3]?.name || 'BBB'}
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <p className="text-center font-serif italic text-[clamp(10px,1.25dvh,11.5px)] text-[#8C7A5E] pt-1 mt-1 border-t border-[#F3EDE2] animate-cascade-3">
+                <p className="text-center font-serif italic text-[clamp(10px,1.25dvh,11.5px)] sm:text-xs text-[#8C7A5E] pt-1 mt-1 border-t border-[#F3EDE2] animate-cascade-3">
                   Cherished companions and little ones gracing our celebration with joy.
                 </p>
               </div>

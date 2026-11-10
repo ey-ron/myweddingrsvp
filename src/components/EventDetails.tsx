@@ -45,7 +45,7 @@ export const EventDetails: React.FC<EventDetailsProps> = ({ onNavigate, isActive
       </div>
 
       {/* Main Content Area - Anchored neatly, evenly distributed with height-fluid gaps */}
-      <div className="max-w-5xl w-full mx-auto flex-1 min-h-0 flex flex-col justify-between sm:justify-start gap-[clamp(6px,1.2dvh,12px)] sm:gap-4 mb-[clamp(12px,2dvh,22px)] sm:mb-0">
+      <div className="max-w-5xl xl:max-w-6xl w-full mx-auto flex-1 min-h-0 flex flex-col justify-between sm:justify-start gap-[clamp(6px,1.2dvh,12px)] sm:gap-4 mb-[clamp(12px,2dvh,22px)] sm:mb-0">
         
         {/* 3 Schedule Cards - Fluid height-proportional distribution */}
         <div className="flex flex-col justify-between gap-[clamp(4px,0.8dvh,9px)] sm:grid sm:grid-cols-3 sm:gap-4 md:gap-5 flex-1 min-h-0">
@@ -56,33 +56,35 @@ export const EventDetails: React.FC<EventDetailsProps> = ({ onNavigate, isActive
                 isActive ? cascadeClasses[index] : 'opacity-0'
               }`}
             >
-              <div className="flex items-center justify-between gap-2.5 sm:gap-3">
-                {/* Left Side: Time, Title, Description */}
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-1.5 mb-0.5 sm:mb-1">
-                    <span className="inline-flex items-center gap-1 sm:gap-1.5 px-2 py-0.5 rounded-full bg-[#F7F3EB] text-[#7E633C] text-[clamp(9.5px,1.2dvh,11px)] font-semibold tracking-wider">
-                      <Clock className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#B89B6D]" />
-                      {item.time}
-                    </span>
-                    <span className="text-[clamp(10px,1.25dvh,11px)] font-serif text-[#DFD0B7]">
-                      0{index + 1}
-                    </span>
+              <div className="flex items-center justify-between gap-2.5 sm:gap-3 xl:flex-col xl:items-stretch xl:justify-start xl:gap-3 h-full">
+                {/* Left Side: Time, Title, Description (Bottom on XL) */}
+                <div className="flex-1 min-w-0 xl:order-2 xl:w-full xl:flex xl:flex-col xl:justify-between xl:flex-1">
+                  <div>
+                    <div className="flex items-center gap-1.5 mb-0.5 sm:mb-1 xl:mb-1.5">
+                      <span className="inline-flex items-center gap-1 sm:gap-1.5 px-2 py-0.5 rounded-full bg-[#F7F3EB] text-[#7E633C] text-[clamp(9.5px,1.2dvh,11px)] font-semibold tracking-wider">
+                        <Clock className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#B89B6D]" />
+                        {item.time}
+                      </span>
+                      <span className="text-[clamp(10px,1.25dvh,11px)] font-serif text-[#DFD0B7]">
+                        0{index + 1}
+                      </span>
+                    </div>
+
+                    <h3 className="font-serif text-[clamp(12.5px,1.6dvh,15px)] sm:text-base font-medium text-[#2A2725] leading-snug mb-0.5 xl:mb-1">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-[clamp(9.5px,1.2dvh,11px)] sm:text-xs text-[#736B63] leading-snug sm:leading-relaxed">
+                      {item.description}
+                    </p>
                   </div>
-
-                  <h3 className="font-serif text-[clamp(12.5px,1.6dvh,15px)] font-medium text-[#2A2725] leading-snug mb-0.5">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-[clamp(9.5px,1.2dvh,11px)] text-[#736B63] leading-snug sm:leading-relaxed">
-                    {item.description}
-                  </p>
 
                   {/* Desktop Location link */}
                   <a
                     href={item.mapUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hidden sm:inline-flex items-center gap-1.5 text-xs text-[#B89B6D] hover:text-[#9E8052] font-medium transition-colors mt-1.5"
+                    className="hidden sm:inline-flex items-center gap-1.5 text-xs text-[#B89B6D] hover:text-[#9E8052] font-medium transition-colors mt-1.5 xl:mt-2.5"
                   >
                     <MapPin className="w-3 h-3 flex-shrink-0" />
                     <span className="underline-offset-2 hover:underline">{item.location}</span>
@@ -90,10 +92,10 @@ export const EventDetails: React.FC<EventDetailsProps> = ({ onNavigate, isActive
                   </a>
                 </div>
 
-                {/* Right Side: Venue Photo ABOVE the location link */}
-                <div className="flex flex-col items-end flex-shrink-0">
-                  {/* Venue Photo - Height-fluid sizing */}
-                  <div className="w-[clamp(68px,17vw,84px)] h-[clamp(38px,4.8dvh,48px)] sm:w-[84px] sm:h-[48px] rounded-lg overflow-hidden border border-[#DFD0B7]/60 shadow-2xs bg-[#EDE4D4]/30 relative mb-1 group-hover:border-[#B89B6D] transition-colors">
+                {/* Right Side: Venue Photo (TOP on XL) */}
+                <div className="flex flex-col items-end flex-shrink-0 xl:order-1 xl:w-full xl:items-stretch">
+                  {/* Venue Photo - Height-fluid sizing on mobile/tablet, Maximized on XL */}
+                  <div className="w-[clamp(68px,17vw,84px)] h-[clamp(38px,4.8dvh,48px)] sm:w-[84px] sm:h-[48px] xl:w-full xl:h-[110px] rounded-lg xl:rounded-xl overflow-hidden border border-[#DFD0B7]/60 shadow-2xs bg-[#EDE4D4]/30 relative mb-1 xl:mb-0 group-hover:border-[#B89B6D] transition-colors">
                     <img
                       src={item.image}
                       alt={item.location}
@@ -122,85 +124,85 @@ export const EventDetails: React.FC<EventDetailsProps> = ({ onNavigate, isActive
         {/* Expanded Attire Section (Ninong & Ninang + Guests) */}
         <div
           key={`attire-${isActive ? 'active' : 'inactive'}`}
-          className={`bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-[clamp(7px,1.1dvh,12px)] sm:p-4 border border-[#EAE2D8] shadow-card max-w-5xl mx-auto w-full flex-shrink-0 ${
+          className={`bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-[clamp(7px,1.1dvh,12px)] sm:p-4 xl:p-5 xl:py-4.5 border border-[#EAE2D8] shadow-card max-w-5xl xl:max-w-6xl mx-auto w-full flex-shrink-0 ${
             isActive ? 'animate-cascade-4' : 'opacity-0'
           }`}
         >
-          <div className="flex items-center justify-center gap-2 mb-[clamp(3px,0.7dvh,7px)] sm:mb-2.5">
-            <span className="text-[clamp(10px,1.25dvh,11.5px)] sm:text-xs uppercase tracking-[0.22em] font-semibold text-[#8C7A5E]">
+          <div className="flex items-center justify-center gap-2 mb-[clamp(3px,0.7dvh,7px)] sm:mb-2.5 xl:mb-3">
+            <span className="text-[clamp(10px,1.25dvh,11.5px)] sm:text-xs xl:text-sm uppercase tracking-[0.22em] xl:tracking-[0.25em] font-semibold text-[#8C7A5E]">
               Wedding Attire Guidance
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-[clamp(5px,0.9dvh,9px)] sm:gap-3.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-[clamp(5px,0.9dvh,9px)] sm:gap-3.5 xl:gap-5">
             
             {/* Part 1: Ninong & Ninang (Principal Sponsors) */}
-            <div className="p-[clamp(5px,0.9dvh,9px)] sm:p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between">
-              <div className="flex items-center justify-between pb-1 mb-1 border-b border-[#EAE2D8]/80">
-                <span className="text-[clamp(9.5px,1.25dvh,11px)] sm:text-[11px] uppercase tracking-wider font-bold text-[#8C7A5E]">
+            <div className="p-[clamp(5px,0.9dvh,9px)] sm:p-3.5 xl:p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between">
+              <div className="flex items-center justify-between pb-1 mb-1 xl:pb-1.5 xl:mb-1.5 border-b border-[#EAE2D8]/80">
+                <span className="text-[clamp(9.5px,1.25dvh,11px)] sm:text-[11px] xl:text-[13px] uppercase tracking-wider font-bold text-[#8C7A5E]">
                   Ninong & Ninang
                 </span>
-                <span className="text-[clamp(8.5px,1.05dvh,9.5px)] sm:text-[9.5px] text-[#A69781] italic">
+                <span className="text-[clamp(8.5px,1.05dvh,9.5px)] sm:text-[9.5px] xl:text-xs text-[#A69781] italic">
                   Principal Sponsors
                 </span>
               </div>
 
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-2 xl:gap-3">
                 {/* Ninong / Gents */}
                 <div className="flex flex-col items-center text-center px-1">
-                  <div className="flex items-center gap-1 mb-0.5">
-                    <Shirt className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#B89B6D]" />
-                    <span className="text-[clamp(9px,1.2dvh,10.5px)] font-semibold text-[#2A2725]">
+                  <div className="flex items-center gap-1 mb-0.5 xl:mb-1">
+                    <Shirt className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 xl:w-4 xl:h-4 text-[#B89B6D]" />
+                    <span className="text-[clamp(9px,1.2dvh,10.5px)] sm:text-xs xl:text-[13px] font-semibold text-[#2A2725]">
                       Gents
                     </span>
                   </div>
-                  <p className="text-[clamp(8px,1.1dvh,9px)] text-[#736B63] leading-tight">
+                  <p className="text-[clamp(8px,1.1dvh,9px)] sm:text-[10px] xl:text-xs text-[#736B63] leading-tight xl:leading-normal xl:mt-0.5">
                     White Barong & Black Pants
                   </p>
-                  <div className="flex items-center gap-1.5 mt-1 sm:mt-1.5">
+                  <div className="flex items-center gap-1.5 mt-1 sm:mt-1.5 xl:mt-2">
                     <span
                       title="White Barong"
-                      className="w-[clamp(11px,1.6dvh,15px)] h-[clamp(11px,1.6dvh,15px)] sm:w-4.5 sm:h-4.5 rounded-full bg-white border border-[#DFD0B7] shadow-xs inline-block"
+                      className="w-[clamp(11px,1.6dvh,15px)] h-[clamp(11px,1.6dvh,15px)] sm:w-4.5 sm:h-4.5 xl:w-5 xl:h-5 rounded-full bg-white border border-[#DFD0B7] shadow-xs inline-block"
                     />
                     <span
                       title="Black Pants"
-                      className="w-[clamp(11px,1.6dvh,15px)] h-[clamp(11px,1.6dvh,15px)] sm:w-4.5 sm:h-4.5 rounded-full bg-[#1A1817] border border-black shadow-xs inline-block"
+                      className="w-[clamp(11px,1.6dvh,15px)] h-[clamp(11px,1.6dvh,15px)] sm:w-4.5 sm:h-4.5 xl:w-5 xl:h-5 rounded-full bg-[#1A1817] border border-black shadow-xs inline-block"
                     />
                   </div>
-                  <span className="text-[clamp(7.5px,1dvh,8.5px)] text-[#8C7A5E] mt-0.5 font-medium">
+                  <span className="text-[clamp(7.5px,1dvh,8.5px)] sm:text-[9px] xl:text-[11px] text-[#8C7A5E] mt-0.5 xl:mt-1 font-medium">
                     White · Black
                   </span>
                 </div>
 
                 {/* Ninang / Ladies */}
                 <div className="flex flex-col items-center text-center px-1 border-l border-[#EAE2D8]">
-                  <div className="flex items-center gap-1 mb-0.5">
-                    <svg className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#B89B6D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <div className="flex items-center gap-1 mb-0.5 xl:mb-1">
+                    <svg className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 xl:w-4 xl:h-4 text-[#B89B6D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M9 3 L15 3 L17 8 L14 10 L16 21 L8 21 L10 10 L7 8 Z" />
                       <path d="M10 3 C10 5, 14 5, 14 3" />
                     </svg>
-                    <span className="text-[clamp(9px,1.2dvh,10.5px)] font-semibold text-[#2A2725]">
+                    <span className="text-[clamp(9px,1.2dvh,10.5px)] sm:text-xs xl:text-[13px] font-semibold text-[#2A2725]">
                       Ladies
                     </span>
                   </div>
-                  <p className="text-[clamp(8px,1.1dvh,9px)] text-[#736B63] leading-tight">
+                  <p className="text-[clamp(8px,1.1dvh,9px)] sm:text-[10px] xl:text-xs text-[#736B63] leading-tight xl:leading-normal xl:mt-0.5">
                     Long Gown
                   </p>
-                  <div className="flex items-center gap-1.5 mt-1 sm:mt-1.5">
+                  <div className="flex items-center gap-1.5 mt-1 sm:mt-1.5 xl:mt-2">
                     <span
                       title="Champagne"
-                      className="w-[clamp(11px,1.6dvh,15px)] h-[clamp(11px,1.6dvh,15px)] sm:w-4.5 sm:h-4.5 rounded-full bg-[#EDE3D0] border border-[#DFD0B7] shadow-xs inline-block"
+                      className="w-[clamp(11px,1.6dvh,15px)] h-[clamp(11px,1.6dvh,15px)] sm:w-4.5 sm:h-4.5 xl:w-5 xl:h-5 rounded-full bg-[#EDE3D0] border border-[#DFD0B7] shadow-xs inline-block"
                     />
                     <span
                       title="Warm Taupe"
-                      className="w-[clamp(11px,1.6dvh,15px)] h-[clamp(11px,1.6dvh,15px)] sm:w-4.5 sm:h-4.5 rounded-full bg-[#CBB79F] border border-[#BFA88F] shadow-xs inline-block"
+                      className="w-[clamp(11px,1.6dvh,15px)] h-[clamp(11px,1.6dvh,15px)] sm:w-4.5 sm:h-4.5 xl:w-5 xl:h-5 rounded-full bg-[#CBB79F] border border-[#BFA88F] shadow-xs inline-block"
                     />
                     <span
                       title="Soft Mocha"
-                      className="w-[clamp(11px,1.6dvh,15px)] h-[clamp(11px,1.6dvh,15px)] sm:w-4.5 sm:h-4.5 rounded-full bg-[#9E8B79] border border-[#8C7A68] shadow-xs inline-block"
+                      className="w-[clamp(11px,1.6dvh,15px)] h-[clamp(11px,1.6dvh,15px)] sm:w-4.5 sm:h-4.5 xl:w-5 xl:h-5 rounded-full bg-[#9E8B79] border border-[#8C7A68] shadow-xs inline-block"
                     />
                   </div>
-                  <span className="text-[clamp(7.5px,1dvh,8.5px)] text-[#8C7A5E] mt-0.5 font-medium">
+                  <span className="text-[clamp(7.5px,1dvh,8.5px)] sm:text-[9px] xl:text-[11px] text-[#8C7A5E] mt-0.5 xl:mt-1 font-medium">
                     3 Neutral Tones
                   </span>
                 </div>
@@ -208,72 +210,72 @@ export const EventDetails: React.FC<EventDetailsProps> = ({ onNavigate, isActive
             </div>
 
             {/* Part 2: Guests */}
-            <div className="p-[clamp(5px,0.9dvh,9px)] sm:p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between">
-              <div className="flex items-center justify-between pb-1 mb-1 border-b border-[#EAE2D8]/80">
-                <span className="text-[clamp(9.5px,1.25dvh,11px)] sm:text-[11px] uppercase tracking-wider font-bold text-[#8C7A5E]">
+            <div className="p-[clamp(5px,0.9dvh,9px)] sm:p-3.5 xl:p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between">
+              <div className="flex items-center justify-between pb-1 mb-1 xl:pb-1.5 xl:mb-1.5 border-b border-[#EAE2D8]/80">
+                <span className="text-[clamp(9.5px,1.25dvh,11px)] sm:text-[11px] xl:text-[13px] uppercase tracking-wider font-bold text-[#8C7A5E]">
                   Guests
                 </span>
-                <span className="text-[clamp(8.5px,1.05dvh,9.5px)] sm:text-[9.5px] text-[#A69781] italic">
+                <span className="text-[clamp(8.5px,1.05dvh,9.5px)] sm:text-[9.5px] xl:text-xs text-[#A69781] italic">
                   Friends & Family
                 </span>
               </div>
 
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-2 xl:gap-3">
                 {/* Gentlemen */}
                 <div className="flex flex-col items-center text-center px-1">
-                  <div className="flex items-center gap-1 mb-0.5">
-                    <Shirt className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#B89B6D]" />
-                    <span className="text-[clamp(9px,1.2dvh,10.5px)] font-semibold text-[#2A2725]">
+                  <div className="flex items-center gap-1 mb-0.5 xl:mb-1">
+                    <Shirt className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 xl:w-4 xl:h-4 text-[#B89B6D]" />
+                    <span className="text-[clamp(9px,1.2dvh,10.5px)] sm:text-xs xl:text-[13px] font-semibold text-[#2A2725]">
                       Gentlemen
                     </span>
                   </div>
-                  <p className="text-[clamp(8px,1.1dvh,9px)] text-[#736B63] leading-tight">
+                  <p className="text-[clamp(8px,1.1dvh,9px)] sm:text-[10px] xl:text-xs text-[#736B63] leading-tight xl:leading-normal xl:mt-0.5">
                     Polo / Long Sleeves & Black Pants
                   </p>
-                  <div className="flex items-center gap-1.5 mt-1 sm:mt-1.5">
+                  <div className="flex items-center gap-1.5 mt-1 sm:mt-1.5 xl:mt-2">
                     <span
                       title="White Top"
-                      className="w-[clamp(11px,1.6dvh,15px)] h-[clamp(11px,1.6dvh,15px)] sm:w-4.5 sm:h-4.5 rounded-full bg-white border border-[#DFD0B7] shadow-xs inline-block"
+                      className="w-[clamp(11px,1.6dvh,15px)] h-[clamp(11px,1.6dvh,15px)] sm:w-4.5 sm:h-4.5 xl:w-5 xl:h-5 rounded-full bg-white border border-[#DFD0B7] shadow-xs inline-block"
                     />
                     <span
                       title="Black Pants"
-                      className="w-[clamp(11px,1.6dvh,15px)] h-[clamp(11px,1.6dvh,15px)] sm:w-4.5 sm:h-4.5 rounded-full bg-[#1A1817] border border-black shadow-xs inline-block"
+                      className="w-[clamp(11px,1.6dvh,15px)] h-[clamp(11px,1.6dvh,15px)] sm:w-4.5 sm:h-4.5 xl:w-5 xl:h-5 rounded-full bg-[#1A1817] border border-black shadow-xs inline-block"
                     />
                   </div>
-                  <span className="text-[clamp(7.5px,1dvh,8.5px)] text-[#8C7A5E] mt-0.5 font-medium">
+                  <span className="text-[clamp(7.5px,1dvh,8.5px)] sm:text-[9px] xl:text-[11px] text-[#8C7A5E] mt-0.5 xl:mt-1 font-medium">
                     White · Black
                   </span>
                 </div>
 
                 {/* Ladies */}
                 <div className="flex flex-col items-center text-center px-1 border-l border-[#EAE2D8]">
-                  <div className="flex items-center gap-1 mb-0.5">
-                    <svg className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#B89B6D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <div className="flex items-center gap-1 mb-0.5 xl:mb-1">
+                    <svg className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 xl:w-4 xl:h-4 text-[#B89B6D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M9 3 L15 3 L17 8 L14 10 L16 21 L8 21 L10 10 L7 8 Z" />
                       <path d="M10 3 C10 5, 14 5, 14 3" />
                     </svg>
-                    <span className="text-[clamp(9px,1.2dvh,10.5px)] font-semibold text-[#2A2725]">
+                    <span className="text-[clamp(9px,1.2dvh,10.5px)] sm:text-xs xl:text-[13px] font-semibold text-[#2A2725]">
                       Ladies
                     </span>
                   </div>
-                  <p className="text-[clamp(8px,1.1dvh,9px)] text-[#736B63] leading-tight">
+                  <p className="text-[clamp(8px,1.1dvh,9px)] sm:text-[10px] xl:text-xs text-[#736B63] leading-tight xl:leading-normal xl:mt-0.5">
                     Formal Dress
                   </p>
-                  <div className="flex items-center gap-1.5 mt-1 sm:mt-1.5">
+                  <div className="flex items-center gap-1.5 mt-1 sm:mt-1.5 xl:mt-2">
                     <span
                       title="Champagne"
-                      className="w-[clamp(11px,1.6dvh,15px)] h-[clamp(11px,1.6dvh,15px)] sm:w-4.5 sm:h-4.5 rounded-full bg-[#EDE3D0] border border-[#DFD0B7] shadow-xs inline-block"
+                      className="w-[clamp(11px,1.6dvh,15px)] h-[clamp(11px,1.6dvh,15px)] sm:w-4.5 sm:h-4.5 xl:w-5 xl:h-5 rounded-full bg-[#EDE3D0] border border-[#DFD0B7] shadow-xs inline-block"
                     />
                     <span
                       title="Warm Taupe"
-                      className="w-[clamp(11px,1.6dvh,15px)] h-[clamp(11px,1.6dvh,15px)] sm:w-4.5 sm:h-4.5 rounded-full bg-[#CBB79F] border border-[#BFA88F] shadow-xs inline-block"
+                      className="w-[clamp(11px,1.6dvh,15px)] h-[clamp(11px,1.6dvh,15px)] sm:w-4.5 sm:h-4.5 xl:w-5 xl:h-5 rounded-full bg-[#CBB79F] border border-[#BFA88F] shadow-xs inline-block"
                     />
                     <span
                       title="Soft Mocha"
-                      className="w-[clamp(11px,1.6dvh,15px)] h-[clamp(11px,1.6dvh,15px)] sm:w-4.5 sm:h-4.5 rounded-full bg-[#9E8B79] border border-[#8C7A68] shadow-xs inline-block"
+                      className="w-[clamp(11px,1.6dvh,15px)] h-[clamp(11px,1.6dvh,15px)] sm:w-4.5 sm:h-4.5 xl:w-5 xl:h-5 rounded-full bg-[#9E8B79] border border-[#8C7A68] shadow-xs inline-block"
                     />
                   </div>
-                  <span className="text-[clamp(7.5px,1dvh,8.5px)] text-[#8C7A5E] mt-0.5 font-medium">
+                  <span className="text-[clamp(7.5px,1dvh,8.5px)] sm:text-[9px] xl:text-[11px] text-[#8C7A5E] mt-0.5 xl:mt-1 font-medium">
                     3 Neutral Tones
                   </span>
                 </div>

@@ -79,10 +79,10 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
       {/* Centered Arch Border Container - Scaled to fill the viewport */}
       <div className={`w-full flex-1 flex flex-col justify-center items-center my-auto min-h-0 mb-[clamp(10px,1.8dvh,20px)] ${isReady ? 'animate-luxury-card' : 'opacity-0'}`}>
         {/* Elegant Arch Border Frame */}
-        <div className="relative max-w-[370px] sm:max-w-2xl xl:max-w-5xl w-full mx-auto py-[clamp(12px,2dvh,22px)] sm:py-5 xl:py-4 px-3.5 sm:px-8 xl:px-6 rounded-[1.75rem] sm:rounded-[2.25rem] border border-[#EAE2D8] bg-[#FAF8F5]/85 backdrop-blur-sm shadow-luxury transition-all xl:flex xl:flex-row xl:items-stretch xl:gap-8">
+        <div className="relative max-w-[370px] sm:max-w-2xl xl:max-w-6xl w-full mx-auto py-[clamp(12px,2dvh,22px)] sm:py-5 xl:py-7 px-3.5 sm:px-8 xl:px-8 rounded-[1.75rem] sm:rounded-[2.25rem] border border-[#EAE2D8] bg-[#FAF8F5]/85 backdrop-blur-sm shadow-luxury transition-all xl:flex xl:flex-row xl:items-stretch xl:gap-8 xl:min-h-[500px]">
 
           {/* Full Height Video (XL Screen View - Left Side) */}
-          <div className="hidden xl:block xl:w-[46%] rounded-2xl overflow-hidden border border-[#DFD0B7] shadow-card relative flex-shrink-0 bg-[#EDE4D4]/30 self-stretch">
+          <div className="hidden xl:block xl:w-[48%] rounded-2xl overflow-hidden border border-[#DFD0B7] shadow-card relative flex-shrink-0 bg-[#EDE4D4]/30 self-stretch xl:min-h-[450px]">
             <video
               ref={desktopVideoRef}
               src="/VID_20261025210443596.mov"
@@ -95,7 +95,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
           </div>
 
           {/* Right Side Content on XL (Full Width on Mobile/Tablet) */}
-          <div className="w-full xl:w-[54%] flex flex-col justify-center items-center">
+          <div className="w-full xl:w-[52%] flex flex-col justify-between items-center xl:py-2">
             {/* Dynamic Viewport Looping Video (Mobile Screens) - Generous height */}
             <div className="xl:hidden w-full max-w-[340px] sm:max-w-[450px] h-[clamp(165px,25dvh,255px)] sm:h-[clamp(220px,28dvh,320px)] mx-auto mb-[clamp(8px,1.4dvh,16px)] sm:mb-3.5 rounded-xl sm:rounded-2xl overflow-hidden border border-[#DFD0B7] shadow-card relative flex-shrink-0 bg-[#EDE4D4]/30">
               <video
@@ -110,13 +110,13 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
             </div>
 
             {/* Live Countdown Timer */}
-            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-[clamp(6px,1.2dvh,14px)] sm:mb-3.5 xl:mb-2">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-[clamp(6px,1.2dvh,14px)] sm:mb-3.5 xl:mb-3">
               {timeBlocks.map((block) => (
                 <div
                   key={block.label}
-                  className="bg-white/90 backdrop-blur-sm border border-[#EAE2D8] rounded-xl sm:rounded-2xl px-2.5 sm:px-3.5 py-1.5 sm:py-2 xl:px-3 xl:py-1.5 shadow-xs text-center min-w-[54px] sm:min-w-[64px]"
+                  className="bg-white/90 backdrop-blur-sm border border-[#EAE2D8] rounded-xl sm:rounded-2xl px-2.5 sm:px-3.5 py-1.5 sm:py-2 xl:px-3.5 xl:py-2 shadow-xs text-center min-w-[54px] sm:min-w-[64px]"
                 >
-                  <div className="font-serif text-[clamp(16px,2.4dvh,22px)] sm:text-xl xl:text-lg font-light text-[#2A2725] tabular-nums leading-none">
+                  <div className="font-serif text-[clamp(16px,2.4dvh,22px)] sm:text-xl xl:text-xl font-light text-[#2A2725] tabular-nums leading-none">
                     {String(block.value).padStart(2, '0')}
                   </div>
                   <div className="text-[clamp(8px,1.1dvh,9px)] sm:text-[8.5px] uppercase tracking-[0.16em] text-[#8C7A5E] font-medium mt-0.5 sm:mt-1">
@@ -127,10 +127,10 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
             </div>
 
             {/* Couple Names - Grand, Stacked Script Typography with Gold Foil Shimmer */}
-            <div className="my-[clamp(6px,1.2dvh,14px)] sm:my-3 xl:my-2 flex flex-col justify-center">
+            <div className="my-[clamp(6px,1.2dvh,14px)] sm:my-3 xl:my-2.5 flex flex-col justify-center">
               <h2
                 key={`names-${isReady ? 'ready' : 'hidden'}`}
-                className={`flex flex-col items-center justify-center font-script text-[clamp(38px,5.8dvh,52px)] sm:text-[50px] xl:text-[44px] font-normal leading-[1.08] ${
+                className={`flex flex-col items-center justify-center font-script text-[clamp(38px,5.8dvh,52px)] sm:text-[50px] xl:text-[48px] font-normal leading-[1.08] ${
                   isReady ? 'animate-gold-shimmer' : 'text-[#B89B6D]'
                 }`}
               >
@@ -143,14 +143,14 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
             </div>
 
             {/* Divider Flourish */}
-            <div className="flex items-center justify-center gap-2 sm:gap-3 my-[clamp(4px,0.8dvh,10px)] sm:my-2.5 xl:my-2">
-              <div className="h-px w-10 sm:w-16 bg-[#DFD0B7]" />
+            <div className="flex items-center justify-center gap-2 sm:gap-3 my-[clamp(4px,0.8dvh,10px)] sm:my-2.5 xl:my-2.5">
+              <div className="h-px w-10 sm:w-16 xl:w-20 bg-[#DFD0B7]" />
               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#B89B6D]" />
-              <div className="h-px w-10 sm:w-16 bg-[#DFD0B7]" />
+              <div className="h-px w-10 sm:w-16 xl:w-20 bg-[#DFD0B7]" />
             </div>
 
             {/* Date & Location Badges */}
-            <div className="flex flex-col items-center justify-center gap-1 sm:gap-2 text-[clamp(11.5px,1.5dvh,13px)] sm:text-xs xl:text-[11px] text-[#5A544F] mb-[clamp(8px,1.5dvh,16px)] sm:mb-3.5 xl:mb-2.5 font-medium">
+            <div className="flex flex-col items-center justify-center gap-1 sm:gap-2 text-[clamp(11.5px,1.5dvh,13px)] sm:text-xs xl:text-xs text-[#5A544F] mb-[clamp(8px,1.5dvh,16px)] sm:mb-3.5 xl:mb-3.5 font-medium">
               {/* Row 1: Date */}
               <div className="flex items-center gap-1.5 sm:gap-2">
                 <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#B89B6D] flex-shrink-0" />
@@ -173,13 +173,13 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
             <div className="flex flex-row items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto">
               <button
                 onClick={() => onNavigate ? onNavigate(3) : scrollTo('rsvp')}
-                className="flex-1 sm:flex-initial px-4 sm:px-6 py-[clamp(8px,1.2dvh,11px)] sm:py-2.5 rounded-full bg-[#2A2725] text-white hover:bg-[#B89B6D] text-[clamp(10.5px,1.35dvh,11.5px)] sm:text-[11px] uppercase tracking-[0.15em] font-semibold transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0"
+                className="flex-1 sm:flex-initial px-4 sm:px-6 xl:px-7 py-[clamp(8px,1.2dvh,11px)] sm:py-2.5 xl:py-2.5 rounded-full bg-[#2A2725] text-white hover:bg-[#B89B6D] text-[clamp(10.5px,1.35dvh,11.5px)] sm:text-[11px] xl:text-[11px] uppercase tracking-[0.15em] font-semibold transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0"
               >
                 RSVP Attendance
               </button>
               <button
                 onClick={() => onNavigate ? onNavigate(1) : scrollTo('schedule')}
-                className="flex-1 sm:flex-initial px-4 sm:px-6 py-[clamp(8px,1.2dvh,11px)] sm:py-2.5 rounded-full border border-[#DFD0B7] hover:border-[#B89B6D] text-[#2A2725] hover:text-[#B89B6D] text-[clamp(10.5px,1.35dvh,11.5px)] sm:text-[11px] uppercase tracking-[0.15em] font-semibold transition-all bg-white/50"
+                className="flex-1 sm:flex-initial px-4 sm:px-6 xl:px-7 py-[clamp(8px,1.2dvh,11px)] sm:py-2.5 xl:py-2.5 rounded-full border border-[#DFD0B7] hover:border-[#B89B6D] text-[#2A2725] hover:text-[#B89B6D] text-[clamp(10.5px,1.35dvh,11.5px)] sm:text-[11px] xl:text-[11px] uppercase tracking-[0.15em] font-semibold transition-all bg-white/50"
               >
                 Event Details
               </button>
