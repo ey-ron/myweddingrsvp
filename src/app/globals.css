@@ -659,4 +659,243 @@ html, body {
   }
 }
 
+/* =========================================================================
+   Medium & Tall Mobile Phones (Height >= 750px, Width <= 639px)
+   Smaller mobile screens (< 750px height like iPhone 12 mini / iPhone SE) are untouched!
+   ========================================================================= */
+@media (min-height: 750px) and (max-width: 639px) {
+  /* Page 2: Venue Schedule Cards - Balanced font scaling and proportions */
+  .ipad-venue-card {
+    padding: 0.55rem 0.75rem !important;
+  }
+
+  .ipad-venue-badge {
+    font-size: 0.6875rem !important;
+    padding: 0.125rem 0.45rem !important;
+  }
+
+  .ipad-venue-title {
+    font-size: 0.925rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 0.15rem !important;
+  }
+
+  .ipad-venue-desc {
+    font-size: 0.72rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .ipad-venue-img-box {
+    width: 86px !important;
+    height: 50px !important;
+    border-radius: 0.6rem !important;
+  }
+
+  .ipad-venue-mobile-link {
+    font-size: 0.72rem !important;
+    margin-top: 0.2rem !important;
+  }
+
+  /* Page 2: Attire Guidance */
+  .ipad-attire-card {
+    padding: 0.6rem 0.8rem !important;
+  }
+
+  .ipad-attire-main-title {
+    font-size: 0.725rem !important;
+  }
+
+  .ipad-attire-title {
+    font-size: 0.725rem !important;
+  }
+
+  .ipad-attire-label {
+    font-size: 0.725rem !important;
+  }
+
+  .ipad-attire-desc {
+    font-size: 0.68rem !important;
+  }
+
+  .ipad-attire-swatch {
+    width: 0.9rem !important;
+    height: 0.9rem !important;
+  }
+
+  /* Page 3: Wedding Party - Enhanced Name Fonts to fill tall card gracefully */
+  .party-parents-name {
+    font-size: 1.15rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .party-honor-name {
+    font-size: 1.25rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .party-sponsor-name {
+    font-size: 1.05rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .party-groomsmen-name {
+    font-size: 1.1rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .party-bearer-name {
+    font-size: 0.95rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .party-bridesmaid-name {
+    font-size: 0.95rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .party-flowergirl-name {
+    font-size: 0.95rem !important;
+    line-height: 1.25 !important;
+  }
+
+  /* Page 4: RSVP Form */
+  .ipad-rsvp-card {
+    padding: 0.75rem 0.9rem !important;
+  }
+
+  .ipad-rsvp-input {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    font-size: 0.825rem !important;
+  }
+
+  .ipad-rsvp-btn-attending {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  .ipad-rsvp-submit-btn {
+    padding-top: 0.6rem !important;
+    padding-bottom: 0.6rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Page 4: Accommodations Card - Never truncated */
+  .ipad-acc-card {
+    padding: 0.75rem 0.9rem !important;
+  }
+
+  .ipad-acc-title {
+    font-size: 0.775rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .ipad-acc-desc {
+    font-size: 0.675rem !important;
+    line-height: 1.35 !important;
+    -webkit-line-clamp: 2 !important;
+    line-clamp: 2 !important;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    overflow: visible !important;
+  }
+}
+
+/* Narrow & Tall Mobile Phones (Height >= 750px, Width <= 414px, e.g. iPhone 13/14, Galaxy at 360-393px width)
+   Ensures accommodation card is never truncated or pushed off screen by narrow column heights */
+@media (min-height: 750px) and (max-width: 414px) {
+  .ipad-acc-img {
+    height: 74px !important;
+  }
+
+  .ipad-acc-card {
+    padding: 0.65rem 0.75rem !important;
+  }
+
+  .ipad-acc-title {
+    font-size: 0.75rem !important;
+  }
+
+  .ipad-acc-desc {
+    font-size: 0.65rem !important;
+  }
+
+  .ipad-groom-sig {
+    padding-top: 0.4rem !important;
+  }
+}
+
+/* Wide & Tall Mobile Phones (Height >= 750px, Width 415px–639px, e.g. iPhone Pro Max at 440x796)
+   Generous accommodation image height absorbs bottom dead space */
+@media (min-height: 750px) and (min-width: 415px) and (max-width: 639px) {
+  .ipad-acc-img {
+    height: 96px !important;
+  }
+}
+
+/* Extra-Tall Mobile Phones (Height >= 850px, Width <= 639px, e.g. iPhone 15/16 Pro Max at 932px) */
+@media (min-height: 850px) and (max-width: 639px) {
+  .ipad-venue-card {
+    padding: 0.65rem 0.85rem !important;
+  }
+
+  .ipad-venue-title {
+    font-size: 0.975rem !important;
+  }
+
+  .ipad-venue-desc {
+    font-size: 0.76rem !important;
+  }
+
+  .ipad-venue-img-box {
+    width: 90px !important;
+    height: 54px !important;
+  }
+
+  /* Page 3: Extra-Tall Phones */
+  .party-parents-name {
+    font-size: 1.2rem !important;
+  }
+
+  .party-honor-name {
+    font-size: 1.3rem !important;
+  }
+
+  .party-sponsor-name {
+    font-size: 1.1rem !important;
+  }
+
+  .party-groomsmen-name {
+    font-size: 1.15rem !important;
+  }
+
+  .party-bearer-name {
+    font-size: 1rem !important;
+  }
+
+  .party-bridesmaid-name {
+    font-size: 1rem !important;
+  }
+
+  .party-flowergirl-name {
+    font-size: 1rem !important;
+  }
+}
+
+@media (min-height: 850px) and (min-width: 415px) and (max-width: 639px) {
+  .ipad-acc-img {
+    height: 112px !important;
+  }
+
+  .ipad-acc-title {
+    font-size: 0.8125rem !important;
+  }
+
+  .ipad-acc-desc {
+    font-size: 0.7rem !important;
+  }
+}
+
+
 

@@ -463,7 +463,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
                     </h4>
                     <ExternalLink className="w-2.5 h-2.5 text-[#B89B6D] opacity-60 group-hover:opacity-100 flex-shrink-0 mt-0.5" />
                   </div>
-                  <p className="ipad-acc-desc text-[clamp(8px,1.05dvh,9px)] sm:text-[9.5px] text-[#736B63] leading-snug line-clamp-1 sm:line-clamp-none">
+                  <p className="ipad-acc-desc text-[clamp(8px,1.05dvh,9px)] sm:text-[9.5px] text-[#736B63] leading-snug line-clamp-2 sm:line-clamp-none">
                     {acc.description}
                   </p>
 
@@ -493,7 +493,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
         key={`sig-${isActive ? 'active' : 'inactive'}`}
         onClick={() => onNavigate ? onNavigate(0) : undefined}
         aria-label="Return to Save The Date"
-        className={`flex items-center justify-center gap-1.5 font-script text-[clamp(13px,1.8dvh,16px)] sm:text-base tracking-wide text-[#8C7A5E] hover:text-[#2A2725] transition-all flex-shrink-0 cursor-pointer mt-auto pt-[clamp(12px,2dvh,22px)] pb-1 sm:pb-2 group focus:outline-none ${isActive ? 'animate-scroll-cue' : 'opacity-0'
+        className={`ipad-groom-sig flex items-center justify-center gap-1.5 font-script text-[clamp(13px,1.8dvh,16px)] sm:text-base tracking-wide text-[#8C7A5E] hover:text-[#2A2725] transition-all flex-shrink-0 cursor-pointer mt-auto pt-[clamp(12px,2dvh,22px)] pb-1 sm:pb-2 group focus:outline-none ${isActive ? 'animate-scroll-cue' : 'opacity-0'
           }`}
       >
         <span>Crafted with</span>

@@ -196,10 +196,10 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
                       <span className="text-[clamp(8.5px,1.15dvh,9.5px)] sm:text-[10px] xl:text-xs uppercase font-semibold text-[#8C7A5E] block mb-0.5 xl:mb-1">
                         Groom&apos;s Parents
                       </span>
-                      <p className="font-cormorant text-[clamp(14px,1.85dvh,16px)] sm:text-[16px] xl:text-[20px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]">
+                      <p className="font-cormorant party-parents-name text-[clamp(14px,1.85dvh,16px)] sm:text-[16px] xl:text-[20px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]">
                         {WEDDING_CONFIG.entourage.parents.groom[0].name}
                       </p>
-                      <p className="font-cormorant text-[clamp(14px,1.85dvh,16px)] sm:text-[16px] xl:text-[20px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em] mt-0.5 xl:mt-1">
+                      <p className="font-cormorant party-parents-name text-[clamp(14px,1.85dvh,16px)] sm:text-[16px] xl:text-[20px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em] mt-0.5 xl:mt-1">
                         {WEDDING_CONFIG.entourage.parents.groom[1].name}
                       </p>
                     </div>
@@ -209,10 +209,10 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
                       <span className="text-[clamp(8.5px,1.15dvh,9.5px)] sm:text-[10px] xl:text-xs uppercase font-semibold text-[#8C7A5E] block mb-0.5 xl:mb-1">
                         Bride&apos;s Parents
                       </span>
-                      <p className="font-cormorant text-[clamp(14px,1.85dvh,16px)] sm:text-[16px] xl:text-[20px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]">
+                      <p className="font-cormorant party-parents-name text-[clamp(14px,1.85dvh,16px)] sm:text-[16px] xl:text-[20px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]">
                         {WEDDING_CONFIG.entourage.parents.bride[0].name}
                       </p>
-                      <p className="font-cormorant text-[clamp(14px,1.85dvh,16px)] sm:text-[16px] xl:text-[20px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em] mt-0.5 xl:mt-1">
+                      <p className="font-cormorant party-parents-name text-[clamp(14px,1.85dvh,16px)] sm:text-[16px] xl:text-[20px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em] mt-0.5 xl:mt-1">
                         {WEDDING_CONFIG.entourage.parents.bride[1].name}
                       </p>
                     </div>
@@ -242,7 +242,7 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
                       <span className="text-[clamp(8.5px,1.15dvh,9.5px)] sm:text-[10px] xl:text-xs uppercase font-semibold text-[#8C7A5E] block mb-0.5 xl:mb-1">
                         Best Man
                       </span>
-                      <p className="font-cormorant text-[clamp(14.5px,2dvh,17px)] sm:text-[17px] xl:text-[22px] font-bold text-[#2A2725] leading-snug tracking-[0.01em]">
+                      <p className="font-cormorant party-honor-name text-[clamp(14.5px,2dvh,17px)] sm:text-[17px] xl:text-[22px] font-bold text-[#2A2725] leading-snug tracking-[0.01em]">
                         {WEDDING_CONFIG.entourage.honorAttendants.bestMan.name}
                       </p>
                       <span className="text-[clamp(8px,1.1dvh,9px)] sm:text-[10px] xl:text-xs text-[#A69781] italic block mt-0.5">
@@ -255,7 +255,7 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
                       <span className="text-[clamp(8.5px,1.15dvh,9.5px)] sm:text-[10px] xl:text-xs uppercase font-semibold text-[#8C7A5E] block mb-0.5 xl:mb-1">
                         Matron of Honor
                       </span>
-                      <p className="font-cormorant text-[clamp(14.5px,2dvh,17px)] sm:text-[17px] xl:text-[22px] font-bold text-[#2A2725] leading-snug tracking-[0.01em]">
+                      <p className="font-cormorant party-honor-name text-[clamp(14.5px,2dvh,17px)] sm:text-[17px] xl:text-[22px] font-bold text-[#2A2725] leading-snug tracking-[0.01em]">
                         {WEDDING_CONFIG.entourage.honorAttendants.matronOfHonor.name}
                       </p>
                       <span className="text-[clamp(8px,1.1dvh,9px)] sm:text-[10px] xl:text-xs text-[#A69781] italic block mt-0.5">
@@ -287,7 +287,7 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
                       {WEDDING_CONFIG.entourage.principalSponsors.map((item, idx) => (
                         <p
                           key={`ninong-${idx}`}
-                          className="font-cormorant text-[clamp(13px,1.75dvh,15.5px)] sm:text-[15.5px] xl:text-[18px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]"
+                          className="font-cormorant party-sponsor-name text-[clamp(13px,1.75dvh,15.5px)] sm:text-[15.5px] xl:text-[18px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]"
                         >
                           {item.ninong}
                         </p>
@@ -310,7 +310,7 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
                       {WEDDING_CONFIG.entourage.principalSponsors.map((item, idx) => (
                         <p
                           key={`ninang-${idx}`}
-                          className="font-cormorant text-[clamp(13px,1.75dvh,15.5px)] sm:text-[15.5px] xl:text-[18px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]"
+                          className="font-cormorant party-sponsor-name text-[clamp(13px,1.75dvh,15.5px)] sm:text-[15.5px] xl:text-[18px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]"
                         >
                           {item.ninang}
                         </p>
@@ -348,7 +348,7 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
                         {WEDDING_CONFIG.entourage.bridalParty.groomsmen.map((name, idx) => (
                           <p
                             key={`groomsman-${idx}`}
-                            className="font-cormorant text-[clamp(13px,1.75dvh,15.5px)] sm:text-[15.5px] xl:text-[18px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]"
+                            className="font-cormorant party-groomsmen-name text-[clamp(13px,1.75dvh,15.5px)] sm:text-[15.5px] xl:text-[18px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]"
                           >
                             {name}
                           </p>
@@ -376,7 +376,7 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
                             <span className="text-[clamp(7.5px,1dvh,8.5px)] sm:text-[8.5px] xl:text-[11.5px] text-[#8C7A5E] uppercase tracking-wider font-bold block xl:inline leading-none mb-0.5 xl:mb-0 xl:text-left">
                               {item.role}
                             </span>
-                            <p className="font-cormorant text-[clamp(12px,1.6dvh,14px)] sm:text-[14px] xl:text-[17.5px] font-semibold text-[#2A2725] leading-tight tracking-[0.01em] xl:text-right">
+                            <p className="font-cormorant party-bearer-name text-[clamp(12px,1.6dvh,14px)] sm:text-[14px] xl:text-[17.5px] font-semibold text-[#2A2725] leading-tight tracking-[0.01em] xl:text-right">
                               {item.name}
                             </p>
                           </div>
@@ -397,7 +397,7 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
                       {WEDDING_CONFIG.entourage.bridalParty.bridesmaids.map((name, idx) => (
                         <p
                           key={`bridesmaid-${idx}`}
-                          className="font-cormorant text-[clamp(12px,1.6dvh,14px)] sm:text-[14px] xl:text-[16px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]"
+                          className="font-cormorant party-bridesmaid-name text-[clamp(12px,1.6dvh,14px)] sm:text-[14px] xl:text-[16px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]"
                         >
                           {name}
                         </p>
@@ -412,7 +412,7 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
                           Flower Girl
                         </span>
                       </div>
-                      <p className="font-cormorant text-[clamp(12px,1.6dvh,13px)] sm:text-[13px] xl:text-[16px] font-semibold text-[#2A2725] leading-none">
+                      <p className="font-cormorant party-flowergirl-name text-[clamp(12px,1.6dvh,13px)] sm:text-[13px] xl:text-[16px] font-semibold text-[#2A2725] leading-none">
                         {WEDDING_CONFIG.entourage.littleOnes[3]?.name || 'BBB'}
                       </p>
                     </div>
