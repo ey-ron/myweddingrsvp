@@ -93,7 +93,12 @@ export const WEDDING_CONFIG = {
       matronOfHonor: { name: "Elaine Sto Domingo", role: "Matron of Honor" },
     },
     bridalParty: {
-      groomsmen: ["AAA", "AAA", "AAA"],
+      groomsmen: [
+        "Mark De Lara",
+        "Eman Roberto",
+        "Alvin Labiano",
+        "Bob Fuentes",
+      ],
       bridesmaids: ["BBB", "BBB", "BBB", "BBB", "BBB", "BBB", "BBB"],
     },
     littleOnes: [

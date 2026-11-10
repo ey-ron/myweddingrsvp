@@ -332,15 +332,17 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
             {currentSlide === 2 && (
               <div className="flex-1 flex flex-col justify-between">
                 <div className="grid grid-cols-2 gap-2 xs:gap-3 sm:gap-4 flex-1">
-                  {/* Left Column: Groomsmen (3) + Bearers (3) */}
+                  {/* Left Column: Groomsmen (Taller) + Bearers (3 Rows, Shorter) */}
                   <div className="flex flex-col gap-1.5 xs:gap-2 flex-1 justify-between">
-                    {/* Groomsmen */}
-                    <div className="p-2 xs:p-2.5 rounded-xl xs:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col animate-cascade-1 flex-1 justify-between">
-                      <div className="flex items-center justify-between pb-0.5 mb-1 border-b border-[#EAE2D8]/80">
+                    {/* Groomsmen - Primary Card (Taller than Bearers) */}
+                    <div className="p-2 xs:p-2.5 rounded-xl xs:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between animate-cascade-1 flex-[1.4] min-h-0">
+                      <div className="flex items-center justify-between pb-0.5 mb-1 border-b border-[#EAE2D8]/80 flex-shrink-0">
                         <span className="text-[9px] xs:text-[10px] sm:text-[11px] uppercase tracking-wider font-bold text-[#8C7A5E]">
                           Groomsmen
                         </span>
-                        <span className="text-[7.5px] xs:text-[8.5px] text-[#A69781]">3 Gents</span>
+                        <span className="text-[7.5px] xs:text-[8.5px] text-[#A69781]">
+                          {WEDDING_CONFIG.entourage.bridalParty.groomsmen.length} Gents
+                        </span>
                       </div>
                       <div className="space-y-0.5 xs:space-y-1 text-center my-auto py-0.5">
                         {WEDDING_CONFIG.entourage.bridalParty.groomsmen.map((name, idx) => (
@@ -352,26 +354,28 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
                           </p>
                         ))}
                       </div>
-                      <div className="text-[7.5px] xs:text-[8px] text-[#A69781] text-center pt-0.5">Companions</div>
+                      <div className="text-[7.5px] xs:text-[8px] text-[#A69781] text-center pt-0.5 flex-shrink-0">
+                        Gentlemen Attendants
+                      </div>
                     </div>
 
-                    {/* Little Attendants / Bearers (3 Bearers: Coin, Ring, Bible) */}
-                    <div className="p-1.5 xs:p-2 rounded-xl xs:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col animate-cascade-2">
-                      <div className="flex items-center justify-between pb-0.5 mb-0.5 border-b border-[#EAE2D8]/80">
+                    {/* Little Attendants / Bearers (3 Rows, Compact, Shorter than Groomsmen) */}
+                    <div className="p-2 xs:p-2.5 rounded-xl xs:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between animate-cascade-2 flex-[0.8] min-h-0">
+                      <div className="flex items-center justify-between pb-0.5 mb-0.5 border-b border-[#EAE2D8]/80 flex-shrink-0">
                         <span className="text-[8.5px] xs:text-[9.5px] sm:text-[10px] uppercase tracking-wider font-bold text-[#8C7A5E]">
                           The Bearers
                         </span>
-                        <span className="text-[7px] xs:text-[8px] text-[#A69781]">3 Gents</span>
+                        <span className="text-[7.5px] xs:text-[8.5px] text-[#A69781]">3 Bearers</span>
                       </div>
-                      <div className="grid grid-cols-3 gap-0.5 text-center py-0.5">
+                      <div className="space-y-1 xs:space-y-1.5 my-auto py-0.5 text-center">
                         {WEDDING_CONFIG.entourage.littleOnes.slice(0, 3).map((item, idx) => (
-                          <div key={`bearer-${idx}`} className="flex flex-col items-center">
-                            <span className="text-[7px] xs:text-[7.5px] text-[#8C7A5E] uppercase tracking-tight leading-none truncate max-w-full mb-0.5">
-                              {item.role.replace(' Bearer', '')}
+                          <div key={`bearer-${idx}`} className="text-center">
+                            <span className="text-[7px] xs:text-[7.5px] sm:text-[8px] text-[#8C7A5E] uppercase tracking-wider font-bold block leading-none mb-0.5">
+                              {item.role}
                             </span>
-                            <span className="font-cormorant text-[11.5px] xs:text-[12.5px] font-semibold text-[#2A2725] leading-tight">
+                            <p className="font-cormorant text-[12px] xs:text-[13px] sm:text-[14px] font-semibold text-[#2A2725] leading-tight tracking-[0.01em]">
                               {item.name}
-                            </span>
+                            </p>
                           </div>
                         ))}
                       </div>
