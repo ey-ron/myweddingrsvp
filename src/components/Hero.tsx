@@ -90,7 +90,6 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
               className="w-full h-full object-cover"
             >
               <source src="/desktop.mp4" type="video/mp4" />
-              <source src="/VID_20261025210443596.mov" type="video/quicktime" />
             </video>
           </div>
 
@@ -109,7 +108,6 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
                 className="w-full h-full object-cover"
               >
                 <source src="/mobile.mp4" type="video/mp4" />
-                <source src="/mobile.mov" type="video/quicktime" />
               </video>
             </div>
 
