@@ -18,22 +18,18 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
   // Play video only when Page 1 is visible
   useEffect(() => {
     if (isReady) {
-      if (mobileVideoRef.current) {
-        mobileVideoRef.current.currentTime = 0;
+      if (mobileVideoRef.current && mobileVideoRef.current.paused) {
         mobileVideoRef.current.play().catch(() => {});
       }
-      if (desktopVideoRef.current) {
-        desktopVideoRef.current.currentTime = 0;
+      if (desktopVideoRef.current && desktopVideoRef.current.paused) {
         desktopVideoRef.current.play().catch(() => {});
       }
     } else {
       if (mobileVideoRef.current) {
         mobileVideoRef.current.pause();
-        mobileVideoRef.current.currentTime = 0;
       }
       if (desktopVideoRef.current) {
         desktopVideoRef.current.pause();
-        desktopVideoRef.current.currentTime = 0;
       }
     }
   }, [isReady]);
@@ -85,13 +81,17 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
           <div className="hidden xl:block xl:w-[48%] rounded-2xl overflow-hidden border border-[#DFD0B7] shadow-card relative flex-shrink-0 bg-[#EDE4D4]/30 self-stretch xl:min-h-[450px]">
             <video
               ref={desktopVideoRef}
-              src="/VID_20261025210443596.mov"
+              poster="/hero-poster.jpg"
+              autoPlay
               loop
               muted
               playsInline
               preload="auto"
               className="w-full h-full object-cover"
-            />
+            >
+              <source src="/desktop.mp4" type="video/mp4" />
+              <source src="/VID_20261025210443596.mov" type="video/quicktime" />
+            </video>
           </div>
 
           {/* Right Side Content on XL (Full Width on Mobile/Tablet) */}
@@ -100,13 +100,17 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
             <div className="xl:hidden w-full max-w-[340px] sm:max-w-[450px] h-[clamp(165px,25dvh,255px)] sm:h-[clamp(220px,28dvh,320px)] mx-auto mb-[clamp(8px,1.4dvh,16px)] sm:mb-3.5 rounded-xl sm:rounded-2xl overflow-hidden border border-[#DFD0B7] shadow-card relative flex-shrink-0 bg-[#EDE4D4]/30">
               <video
                 ref={mobileVideoRef}
-                src="/mobile.mov"
+                poster="/hero-poster.jpg"
+                autoPlay
                 loop
                 muted
                 playsInline
                 preload="auto"
                 className="w-full h-full object-cover"
-              />
+              >
+                <source src="/mobile.mp4" type="video/mp4" />
+                <source src="/mobile.mov" type="video/quicktime" />
+              </video>
             </div>
 
             {/* Live Countdown Timer */}
