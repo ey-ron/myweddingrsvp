@@ -367,13 +367,16 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
                         </span>
                         <span className="text-[clamp(8px,1.05dvh,8.5px)] sm:text-[9px] xl:text-[11px] text-[#A69781]">3 Bearers</span>
                       </div>
-                      <div className="space-y-1 sm:space-y-1.5 xl:space-y-2 my-auto py-0.5 text-center">
+                      <div className="space-y-1 sm:space-y-1.5 xl:space-y-2.5 my-auto py-0.5 text-center">
                         {WEDDING_CONFIG.entourage.littleOnes.slice(0, 3).map((item, idx) => (
-                          <div key={`bearer-${idx}`} className="text-center">
-                            <span className="text-[clamp(7.5px,1dvh,8.5px)] sm:text-[8.5px] xl:text-[10px] text-[#8C7A5E] uppercase tracking-wider font-bold block leading-none mb-0.5">
+                          <div
+                            key={`bearer-${idx}`}
+                            className="text-center xl:flex xl:flex-row xl:items-center xl:justify-between xl:text-left xl:px-2.5"
+                          >
+                            <span className="text-[clamp(7.5px,1dvh,8.5px)] sm:text-[8.5px] xl:text-[11.5px] text-[#8C7A5E] uppercase tracking-wider font-bold block xl:inline leading-none mb-0.5 xl:mb-0 xl:text-left">
                               {item.role}
                             </span>
-                            <p className="font-cormorant text-[clamp(12px,1.6dvh,14px)] sm:text-[14px] xl:text-[16px] font-semibold text-[#2A2725] leading-tight tracking-[0.01em]">
+                            <p className="font-cormorant text-[clamp(12px,1.6dvh,14px)] sm:text-[14px] xl:text-[17.5px] font-semibold text-[#2A2725] leading-tight tracking-[0.01em] xl:text-right">
                               {item.name}
                             </p>
                           </div>

@@ -381,3 +381,282 @@ html, body {
   animation: luxuryAmbientPulse 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* =========================================================================
+   Landscape Orientation Guard for Mobile & Tablet
+   ========================================================================= */
+
+@keyframes deviceRotateToPortrait {
+  0%, 15% {
+    transform: rotate(-90deg);
+  }
+  38%, 68% {
+    transform: rotate(0deg);
+  }
+  88%, 100% {
+    transform: rotate(-90deg);
+  }
+}
+
+@keyframes rotationArrowPulse {
+  0%, 15% {
+    opacity: 0.35;
+    transform: scale(0.92);
+  }
+  38%, 68% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  88%, 100% {
+    opacity: 0.35;
+    transform: scale(0.92);
+  }
+}
+
+@keyframes orientGlowPulse {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.25;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.6;
+  }
+}
+
+.animate-device-rotate {
+  animation: deviceRotateToPortrait 3.4s cubic-bezier(0.34, 1.25, 0.64, 1) infinite;
+  transform-origin: 0px 0px;
+}
+
+.animate-arrow-pulse {
+  animation: rotationArrowPulse 3.4s cubic-bezier(0.34, 1.25, 0.64, 1) infinite;
+  transform-origin: 0px 0px;
+}
+
+.animate-orient-glow {
+  animation: orientGlowPulse 3.4s ease-in-out infinite;
+  transform-origin: 0px 0px;
+}
+
+/* Hidden by default on laptops and desktop screens */
+.orientation-guard-container {
+  display: none;
+}
+
+/* Mobile landscape (any phone in landscape: height <= 520px) */
+@media (orientation: landscape) and (max-height: 520px) {
+  .orientation-guard-container {
+    display: flex !important;
+  }
+  
+  .orientation-card-layout {
+    flex-direction: row !important;
+    text-align: left !important;
+  }
+  
+  .orientation-text-align {
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+  
+  .orientation-text-align > div {
+    justify-content: flex-start !important;
+  }
+}
+
+/* Tablet landscape (touch device in landscape with max-width: 1366px and max-height: 1024px) */
+@media (orientation: landscape) and (hover: none) and (pointer: coarse) and (max-width: 1366px) and (max-height: 1024px) {
+  .orientation-guard-container {
+    display: flex !important;
+  }
+}
+
+/* =========================================================================
+   iPad Mini & Portrait Tablets (Height >= 880px, Width 640px–1279px)
+   ========================================================================= */
+@media (min-height: 880px) and (min-width: 640px) and (max-width: 1279px) {
+  /* Page 2: Event Details - 3 vertical rows for venue cards (balanced & compact) */
+  .ipad-venue-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    gap: 0.65rem !important;
+    flex: none !important;
+  }
+
+  .ipad-venue-card {
+    padding: 0.75rem 1.15rem !important;
+    flex: none !important;
+  }
+
+  .ipad-venue-card-content {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 1rem !important;
+    height: auto !important;
+  }
+
+  .ipad-venue-info {
+    order: 1 !important;
+    flex: 1 1 0% !important;
+    width: auto !important;
+  }
+
+  .ipad-venue-badge {
+    font-size: 0.75rem !important;
+    padding: 0.15rem 0.55rem !important;
+  }
+
+  .ipad-venue-title {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.15rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .ipad-venue-desc {
+    font-size: 0.8rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .ipad-venue-link {
+    display: inline-flex !important;
+    font-size: 0.8rem !important;
+    margin-top: 0.35rem !important;
+  }
+
+  .ipad-venue-media {
+    order: 2 !important;
+    width: auto !important;
+    align-items: flex-end !important;
+  }
+
+  .ipad-venue-img-box {
+    width: 120px !important;
+    height: 74px !important;
+    border-radius: 0.75rem !important;
+  }
+
+  /* Page 2: Wedding Attire - Prominent, balanced, and readable */
+  .ipad-attire-card {
+    padding: 1.25rem 1.4rem !important;
+    margin-top: 0.5rem !important;
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+  }
+
+  .ipad-attire-main-title {
+    font-size: 0.875rem !important;
+    letter-spacing: 0.22em !important;
+  }
+
+  .ipad-attire-grid {
+    gap: 0.85rem !important;
+    flex: 1 1 auto !important;
+  }
+
+  .ipad-attire-box {
+    padding: 0.95rem 1.15rem !important;
+  }
+
+  .ipad-attire-header {
+    padding-bottom: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .ipad-attire-title {
+    font-size: 0.9rem !important;
+  }
+
+  .ipad-attire-label {
+    font-size: 0.875rem !important;
+  }
+
+  .ipad-attire-desc {
+    font-size: 0.825rem !important;
+    margin-top: 0.2rem !important;
+  }
+
+  .ipad-attire-swatch {
+    width: 1.35rem !important;
+    height: 1.35rem !important;
+    margin-top: 0.45rem !important;
+  }
+
+  .ipad-attire-sub {
+    font-size: 0.775rem !important;
+    margin-top: 0.3rem !important;
+  }
+
+  /* Page 4: RSVP Form & Accommodations - Generous iPad sizing */
+  .ipad-rsvp-container {
+    max-width: 620px !important;
+    gap: 1.25rem !important;
+  }
+
+  .ipad-rsvp-card {
+    padding: 1.5rem 1.75rem !important;
+  }
+
+  .ipad-rsvp-input {
+    padding-top: 0.65rem !important;
+    padding-bottom: 0.65rem !important;
+    font-size: 0.95rem !important;
+  }
+
+  .ipad-rsvp-btn-attending {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  .ipad-rsvp-counter-btn {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+
+  .ipad-rsvp-counter-num {
+    font-size: 1.15rem !important;
+    width: 1.75rem !important;
+  }
+
+  .ipad-rsvp-quick-btn {
+    width: 1.75rem !important;
+    height: 1.75rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  .ipad-rsvp-textarea {
+    min-height: 60px !important;
+    font-size: 0.9rem !important;
+    padding-top: 0.6rem !important;
+    padding-bottom: 0.6rem !important;
+  }
+
+  .ipad-rsvp-submit-btn {
+    padding-top: 0.85rem !important;
+    padding-bottom: 0.85rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  .ipad-acc-card {
+    padding: 1.25rem 1.5rem !important;
+  }
+
+  .ipad-acc-img {
+    height: 5.5rem !important;
+  }
+
+  .ipad-acc-title {
+    font-size: 0.95rem !important;
+  }
+
+  .ipad-acc-desc {
+    font-size: 0.825rem !important;
+  }
+}
+
+

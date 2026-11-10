@@ -151,12 +151,12 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
       </div>
 
       {/* Main Content Area - Cards sit naturally together without gaps between them */}
-      <div className="max-w-xl sm:max-w-3xl lg:max-w-5xl w-full mx-auto flex-1 min-h-0 flex flex-col justify-start lg:grid lg:grid-cols-2 lg:gap-6 xl:gap-8 lg:items-center gap-[clamp(8px,1.3dvh,14px)] mb-[clamp(10px,1.8dvh,20px)] sm:mb-0">
+      <div className="ipad-rsvp-container max-w-xl sm:max-w-3xl lg:max-w-5xl w-full mx-auto flex-1 min-h-0 flex flex-col justify-start lg:grid lg:grid-cols-2 lg:gap-6 xl:gap-8 lg:items-center gap-[clamp(8px,1.3dvh,14px)] mb-[clamp(10px,1.8dvh,20px)] sm:mb-0">
 
         {/* RSVP Card */}
         <div
           key={`rsvp-${isActive ? 'active' : 'inactive'}`}
-          className={`bg-white rounded-2xl sm:rounded-3xl border border-[#EAE2D8] shadow-luxury p-[clamp(10px,1.5dvh,18px)] sm:p-5 xl:p-6 transition-all flex flex-col justify-between flex-shrink-0 ${isActive ? 'animate-cascade-1' : 'opacity-0'
+          className={`ipad-rsvp-card bg-white rounded-2xl sm:rounded-3xl border border-[#EAE2D8] shadow-luxury p-[clamp(10px,1.5dvh,18px)] sm:p-5 xl:p-6 transition-all flex flex-col justify-between flex-shrink-0 ${isActive ? 'animate-cascade-1' : 'opacity-0'
             }`}
         >
           {/* Card Header Badge */}
@@ -246,7 +246,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
                   <button
                     type="button"
                     onClick={() => setAttending(true)}
-                    className={`py-[clamp(7px,1.25dvh,12px)] sm:py-2 px-2.5 sm:px-3 rounded-xl border text-center transition-all flex items-center justify-center gap-1.5 sm:gap-2 text-[clamp(10px,1.35dvh,11.5px)] sm:text-xs font-medium ${attending
+                    className={`ipad-rsvp-btn-attending py-[clamp(7px,1.25dvh,12px)] sm:py-2 px-2.5 sm:px-3 rounded-xl border text-center transition-all flex items-center justify-center gap-1.5 sm:gap-2 text-[clamp(10px,1.35dvh,11.5px)] sm:text-xs font-medium ${attending
                       ? 'border-[#B89B6D] bg-[#F7F3EB] text-[#2A2725] ring-1 ring-[#B89B6D]/30 font-semibold'
                       : 'border-[#EAE2D8] hover:border-[#DFD0B7] bg-white text-[#5A544F]'
                       }`}
@@ -264,7 +264,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
                       setAttending(false);
                       setAdditionalGuests(0);
                     }}
-                    className={`py-[clamp(7px,1.25dvh,12px)] sm:py-2 px-2.5 sm:px-3 rounded-xl border text-center transition-all flex items-center justify-center gap-1.5 sm:gap-2 text-[clamp(10px,1.35dvh,11.5px)] sm:text-xs font-medium ${!attending
+                    className={`ipad-rsvp-btn-attending py-[clamp(7px,1.25dvh,12px)] sm:py-2 px-2.5 sm:px-3 rounded-xl border text-center transition-all flex items-center justify-center gap-1.5 sm:gap-2 text-[clamp(10px,1.35dvh,11.5px)] sm:text-xs font-medium ${!attending
                       ? 'border-[#B89B6D] bg-[#F7F3EB] text-[#2A2725] ring-1 ring-[#B89B6D]/30 font-semibold'
                       : 'border-[#EAE2D8] hover:border-[#DFD0B7] bg-white text-[#5A544F]'
                       }`}
@@ -293,7 +293,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
                       if (errors.firstName) setErrors({ ...errors, firstName: '' });
                     }}
                     placeholder="e.g. Aaron"
-                    className={`w-full px-2.5 sm:px-3 py-[clamp(7px,1.2dvh,11px)] sm:py-2 rounded-xl border bg-[#FCFBF9] text-[clamp(11.5px,1.4dvh,13px)] sm:text-xs text-[#2A2725] placeholder-[#B5ADA4] focus:outline-none focus:ring-1 focus:ring-[#B89B6D]/30 focus:border-[#B89B6D] transition-all ${errors.firstName ? 'border-red-400 bg-red-50/20' : 'border-[#EAE2D8]'
+                    className={`ipad-rsvp-input w-full px-2.5 sm:px-3 py-[clamp(7px,1.2dvh,11px)] sm:py-2 rounded-xl border bg-[#FCFBF9] text-[clamp(11.5px,1.4dvh,13px)] sm:text-xs text-[#2A2725] placeholder-[#B5ADA4] focus:outline-none focus:ring-1 focus:ring-[#B89B6D]/30 focus:border-[#B89B6D] transition-all ${errors.firstName ? 'border-red-400 bg-red-50/20' : 'border-[#EAE2D8]'
                       }`}
                   />
                   {errors.firstName && (
@@ -317,7 +317,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
                       if (errors.surname) setErrors({ ...errors, surname: '' });
                     }}
                     placeholder="e.g. Handsome"
-                    className={`w-full px-2.5 sm:px-3 py-[clamp(7px,1.2dvh,11px)] sm:py-2 rounded-xl border bg-[#FCFBF9] text-[clamp(11.5px,1.4dvh,13px)] sm:text-xs text-[#2A2725] placeholder-[#B5ADA4] focus:outline-none focus:ring-1 focus:ring-[#B89B6D]/30 focus:border-[#B89B6D] transition-all ${errors.surname ? 'border-red-400 bg-red-50/20' : 'border-[#EAE2D8]'
+                    className={`ipad-rsvp-input w-full px-2.5 sm:px-3 py-[clamp(7px,1.2dvh,11px)] sm:py-2 rounded-xl border bg-[#FCFBF9] text-[clamp(11.5px,1.4dvh,13px)] sm:text-xs text-[#2A2725] placeholder-[#B5ADA4] focus:outline-none focus:ring-1 focus:ring-[#B89B6D]/30 focus:border-[#B89B6D] transition-all ${errors.surname ? 'border-red-400 bg-red-50/20' : 'border-[#EAE2D8]'
                       }`}
                   />
                   {errors.surname && (
@@ -350,12 +350,12 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
                         onClick={() => setAdditionalGuests(Math.max(0, additionalGuests - 1))}
                         disabled={additionalGuests === 0}
                         aria-label="Decrease guest count"
-                        className="w-5.5 h-5.5 sm:w-6.5 sm:h-6.5 rounded-lg bg-white border border-[#DFD0B7] flex items-center justify-center text-[#2A2725] hover:border-[#B89B6D] disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-2xs"
+                        className="ipad-rsvp-counter-btn w-5.5 h-5.5 sm:w-6.5 sm:h-6.5 rounded-lg bg-white border border-[#DFD0B7] flex items-center justify-center text-[#2A2725] hover:border-[#B89B6D] disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-2xs"
                       >
                         <Minus className="w-2.5 h-2.5" />
                       </button>
 
-                      <span className="w-5 sm:w-6 text-center font-serif text-[clamp(12px,1.6dvh,14px)] sm:text-base font-semibold text-[#2A2725] tabular-nums">
+                      <span className="ipad-rsvp-counter-num w-5 sm:w-6 text-center font-serif text-[clamp(12px,1.6dvh,14px)] sm:text-base font-semibold text-[#2A2725] tabular-nums">
                         {additionalGuests}
                       </span>
 
@@ -364,7 +364,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
                         onClick={() => setAdditionalGuests(Math.min(10, additionalGuests + 1))}
                         disabled={additionalGuests >= 10}
                         aria-label="Increase guest count"
-                        className="w-5.5 h-5.5 sm:w-6.5 sm:h-6.5 rounded-lg bg-white border border-[#DFD0B7] flex items-center justify-center text-[#2A2725] hover:border-[#B89B6D] disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-2xs"
+                        className="ipad-rsvp-counter-btn w-5.5 h-5.5 sm:w-6.5 sm:h-6.5 rounded-lg bg-white border border-[#DFD0B7] flex items-center justify-center text-[#2A2725] hover:border-[#B89B6D] disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-2xs"
                       >
                         <Plus className="w-2.5 h-2.5" />
                       </button>
@@ -377,7 +377,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
                           key={num}
                           type="button"
                           onClick={() => setAdditionalGuests(num)}
-                          className={`w-[clamp(20px,2.6dvh,24px)] h-[clamp(20px,2.6dvh,24px)] sm:w-6 sm:h-6 rounded-md text-[clamp(8.5px,1.1dvh,9.5px)] sm:text-[10px] font-medium transition-all ${additionalGuests === num
+                          className={`ipad-rsvp-quick-btn w-[clamp(20px,2.6dvh,24px)] h-[clamp(20px,2.6dvh,24px)] sm:w-6 sm:h-6 rounded-md text-[clamp(8.5px,1.1dvh,9.5px)] sm:text-[10px] font-medium transition-all ${additionalGuests === num
                             ? 'bg-[#B89B6D] text-white shadow-2xs font-semibold'
                             : 'bg-white border border-[#EAE2D8] text-[#5A544F] hover:border-[#DFD0B7]'
                             }`}
@@ -401,7 +401,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder="e.g. Excited to celebrate with you!"
-                  className="w-full px-2.5 sm:px-3 py-[clamp(5px,0.85dvh,9px)] rounded-xl border border-[#EAE2D8] bg-[#FCFBF9] text-[clamp(10.5px,1.3dvh,12px)] sm:text-xs text-[#2A2725] placeholder-[#B5ADA4] focus:outline-none focus:ring-1 focus:ring-[#B89B6D]/30 focus:border-[#B89B6D] transition-all resize-none"
+                  className="ipad-rsvp-textarea w-full px-2.5 sm:px-3 py-[clamp(5px,0.85dvh,9px)] rounded-xl border border-[#EAE2D8] bg-[#FCFBF9] text-[clamp(10.5px,1.3dvh,12px)] sm:text-xs text-[#2A2725] placeholder-[#B5ADA4] focus:outline-none focus:ring-1 focus:ring-[#B89B6D]/30 focus:border-[#B89B6D] transition-all resize-none"
                 />
               </div>
 
@@ -410,7 +410,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-[clamp(7.5px,1.25dvh,11px)] sm:py-2.5 rounded-full bg-[#2A2725] hover:bg-[#B89B6D] text-white text-[clamp(10px,1.25dvh,11px)] sm:text-[11px] uppercase tracking-[0.15em] font-semibold transition-all duration-300 shadow-md hover:shadow-xl flex items-center justify-center gap-1.5 disabled:opacity-75 disabled:cursor-wait transform hover:-translate-y-0.5 active:translate-y-0"
+                  className="ipad-rsvp-submit-btn w-full py-[clamp(7.5px,1.25dvh,11px)] sm:py-2.5 rounded-full bg-[#2A2725] hover:bg-[#B89B6D] text-white text-[clamp(10px,1.25dvh,11px)] sm:text-[11px] uppercase tracking-[0.15em] font-semibold transition-all duration-300 shadow-md hover:shadow-xl flex items-center justify-center gap-1.5 disabled:opacity-75 disabled:cursor-wait transform hover:-translate-y-0.5 active:translate-y-0"
                 >
                   {isSubmitting ? (
                     <>
@@ -434,7 +434,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
         {/* Suggested Accommodations for Vacation */}
         <div
           key={`acc-${isActive ? 'active' : 'inactive'}`}
-          className={`bg-white/95 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-[#EAE2D8] shadow-card p-[clamp(9px,1.35dvh,16px)] sm:p-3.5 xl:p-4 text-center transition-all flex flex-col justify-between flex-shrink-0 ${isActive ? 'animate-cascade-3' : 'opacity-0'
+          className={`ipad-acc-card bg-white/95 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-[#EAE2D8] shadow-card p-[clamp(9px,1.35dvh,16px)] sm:p-3.5 xl:p-4 text-center transition-all flex flex-col justify-between flex-shrink-0 ${isActive ? 'animate-cascade-3' : 'opacity-0'
             }`}
         >
           <div className="flex items-center justify-center gap-1.5 mb-0.5">
@@ -458,17 +458,17 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
               >
                 <div>
                   <div className="flex items-start justify-between gap-1 mb-0.5">
-                    <h4 className="font-serif text-[clamp(10.5px,1.35dvh,12px)] sm:text-xs font-medium text-[#2A2725] group-hover:text-[#B89B6D] transition-colors leading-tight">
+                    <h4 className="ipad-acc-title font-serif text-[clamp(10.5px,1.35dvh,12px)] sm:text-xs font-medium text-[#2A2725] group-hover:text-[#B89B6D] transition-colors leading-tight">
                       {acc.name}
                     </h4>
                     <ExternalLink className="w-2.5 h-2.5 text-[#B89B6D] opacity-60 group-hover:opacity-100 flex-shrink-0 mt-0.5" />
                   </div>
-                  <p className="text-[clamp(8px,1.05dvh,9px)] sm:text-[9.5px] text-[#736B63] leading-snug line-clamp-1 sm:line-clamp-none">
+                  <p className="ipad-acc-desc text-[clamp(8px,1.05dvh,9px)] sm:text-[9.5px] text-[#736B63] leading-snug line-clamp-1 sm:line-clamp-none">
                     {acc.description}
                   </p>
 
                   {/* Resort Photo - Fluid height dynamically fills space on any screen */}
-                  <div className="w-full h-[clamp(68px,10dvh,120px)] sm:h-[72px] lg:h-24 my-1 sm:my-1.5 rounded-lg overflow-hidden border border-[#DFD0B7]/50 bg-[#EDE4D4]/30 relative">
+                  <div className="ipad-acc-img w-full h-[clamp(68px,10dvh,120px)] sm:h-[72px] lg:h-24 my-1 sm:my-1.5 rounded-lg overflow-hidden border border-[#DFD0B7]/50 bg-[#EDE4D4]/30 relative">
                     <img
                       src={acc.image}
                       alt={acc.name}

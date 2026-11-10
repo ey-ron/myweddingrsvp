@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
+import { OrientationGuard } from '../components/OrientationGuard';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://aaronandeileenwedding.vercel.app'),
@@ -120,6 +121,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-[#FAF8F5] text-[#2A2725] antialiased selection:bg-[#B89B6D] selection:text-white">
+        <OrientationGuard />
         {children}
       </body>
     </html>
