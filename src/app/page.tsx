@@ -46,11 +46,14 @@ export default function Home() {
         return;
       }
 
-      // Filter out small trackpad twitches / momentum drift
-      if (Math.abs(e.deltaY) < 65) return;
+      // Normalize delta across wheel modes (0 = pixel, 1 = line, 2 = page)
+      const rawDelta = e.deltaMode === 1 ? e.deltaY * 30 : e.deltaMode === 2 ? e.deltaY * 100 : e.deltaY;
 
-      lockTransition(800);
-      if (e.deltaY > 0) {
+      // Responsive threshold for intentional wheel / trackpad scroll
+      if (Math.abs(rawDelta) < 25) return;
+
+      lockTransition(700);
+      if (rawDelta > 0) {
         // Scroll down -> next page
         setCurrentPage((prev) => Math.min(3, prev + 1));
       } else {
@@ -61,7 +64,7 @@ export default function Home() {
       if (wheelTimeout) clearTimeout(wheelTimeout);
       wheelTimeout = setTimeout(() => {
         isTransitioning.current = false;
-      }, 800);
+      }, 700);
     };
 
     const handleTouchStart = (e: TouchEvent) => {
@@ -85,12 +88,6 @@ export default function Home() {
         touchStartX.current = null;
         touchStartY.current = null;
       }
-    };
-
-    const handleTouchCancel = () => {
-      isMultiTouch.current = false;
-      touchStartX.current = null;
-      touchStartY.current = null;
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
@@ -122,22 +119,21 @@ export default function Home() {
       touchStartX.current = null;
       touchStartY.current = null;
 
-      // 3. Ignore touches on interactive form controls
+      // 3. Ignore swipe ONLY if the gesture began inside active text entry fields (typing / text selection)
       const target = e.target as HTMLElement | null;
-      if (target && ['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON', 'A'].includes(target.tagName)) {
+      if (target && ['INPUT', 'TEXTAREA'].includes(target.tagName)) {
         return;
       }
 
-      // 4. Must be a clear vertical swipe (vertical distance must be at least 1.5x horizontal distance)
-      // This protects against horizontal swiping on carousels or diagonal gestures
-      if (Math.abs(diffY) < Math.abs(diffX) * 1.5) return;
+      // 4. Must be a predominantly vertical swipe (vertical distance >= horizontal distance * 1.15)
+      // Protects horizontal carousels while recognizing natural diagonal thumb flicks anywhere on the screen
+      if (Math.abs(diffY) < Math.abs(diffX) * 1.15) return;
 
-      // 5. Calm threshold: require intentional, deliberate swipe
-      // Either a clear flick of at least 70px under 400ms, or a deliberate drag of at least 100px
-      const isIntentionalSwipe = (Math.abs(diffY) >= 70 && duration < 400) || Math.abs(diffY) >= 100;
+      // 5. Natural swipe threshold: flick of >= 40px under 450ms, or deliberate drag of >= 60px
+      const isIntentionalSwipe = (Math.abs(diffY) >= 40 && duration < 450) || Math.abs(diffY) >= 60;
 
       if (isIntentionalSwipe) {
-        lockTransition(800);
+        lockTransition(700);
         if (diffY > 0) {
           // Swipe up -> next page
           setCurrentPage((prev) => Math.min(3, prev + 1));
@@ -145,6 +141,18 @@ export default function Home() {
           // Swipe down -> prev page
           setCurrentPage((prev) => Math.max(0, prev - 1));
         }
+      }
+    };
+
+    const handleTouchCancel = (e: TouchEvent) => {
+      // If mobile browser cancels the touch stream due to rubber-banding on background gutters,
+      // evaluate the gesture via handleTouchEnd if touch has moved
+      if (e.changedTouches && e.changedTouches.length > 0 && touchStartY.current !== null) {
+        handleTouchEnd(e);
+      } else {
+        isMultiTouch.current = false;
+        touchStartX.current = null;
+        touchStartY.current = null;
       }
     };
 
@@ -190,7 +198,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-[#FAF8F5] text-[#2A2725] w-full h-[100dvh] min-h-[100dvh] max-h-[100dvh] overflow-hidden relative font-sans select-none">
+    <div className="slider-container bg-[#FAF8F5] text-[#2A2725] w-full h-[100dvh] min-h-[100dvh] max-h-[100dvh] overflow-hidden relative font-sans select-none">
       {/* Dev-Only Viewport Indicator (Tree-shaken & hidden in production) */}
       {process.env.NODE_ENV === 'development' && <ViewportIndicator />}
 

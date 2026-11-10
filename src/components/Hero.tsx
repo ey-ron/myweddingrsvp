@@ -51,15 +51,15 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
   };
 
   return (
-    <section id="hero" className="relative w-full h-full flex flex-col items-center justify-between pt-4 xs:pt-5 sm:pt-7 pb-2.5 xs:pb-3 sm:pb-4 px-3.5 xs:px-4 sm:px-6 lg:px-8 bg-subtle-linen overflow-hidden">
+    <section id="hero" className="slide-section bg-subtle-linen">
       {/* Decorative luxury background elements */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[600px] h-[340px] sm:h-[600px] bg-[#EDE4D4]/30 rounded-full blur-3xl pointer-events-none -z-10" />
 
       {/* Top Header (Outside the Border) */}
-      <div className="text-center max-w-3xl mx-auto mt-0.5 xs:mt-1 sm:mt-1.5 mb-0.5 xs:mb-1 tall:mb-1.5 xtall:mb-2 sm:mb-1.5 flex-shrink-0">
+      <div className="text-center max-w-3xl mx-auto mt-0.5 sm:mt-1.5 mb-[clamp(12px,2.2dvh,24px)] sm:mb-5 flex-shrink-0">
         <span
           key={`std-${isReady ? 'ready' : 'hidden'}`}
-          className={`text-[9px] xs:text-[10px] tall:text-[10.5px] xtall:text-[11.5px] uppercase tracking-[0.28em] xtall:tracking-[0.32em] font-semibold text-[#8C7A5E] inline-block ${
+          className={`text-[clamp(10px,1.25dvh,11.5px)] uppercase tracking-[0.28em] font-semibold text-[#8C7A5E] inline-block ${
             isReady ? 'animate-header-pill' : 'opacity-0'
           }`}
         >
@@ -76,10 +76,10 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
         </h1>
       </div>
 
-      {/* Centered Arch Border Container - Scaled up to fill the viewport */}
-      <div className={`w-full flex-1 flex flex-col justify-center items-center my-auto min-h-0 ${isReady ? 'animate-luxury-card' : 'opacity-0'}`}>
+      {/* Centered Arch Border Container - Scaled to fill the viewport */}
+      <div className={`w-full flex-1 flex flex-col justify-center items-center my-auto min-h-0 mb-[clamp(10px,1.8dvh,20px)] ${isReady ? 'animate-luxury-card' : 'opacity-0'}`}>
         {/* Elegant Arch Border Frame */}
-        <div className="relative max-w-[325px] xs:max-w-[350px] tall:max-w-[365px] xtall:max-w-[405px] sm:max-w-2xl xl:max-w-5xl w-full mx-auto py-2.5 xs:py-3.5 tall:py-4 xtall:py-4.5 sm:py-5 xl:py-4 px-3.5 xs:px-4.5 tall:px-5 xtall:px-5 sm:px-8 xl:px-6 rounded-[1.5rem] xs:rounded-[1.75rem] tall:rounded-[2rem] xtall:rounded-[2.25rem] sm:rounded-[2.25rem] border border-[#EAE2D8] bg-[#FAF8F5]/85 backdrop-blur-sm shadow-luxury transition-all xl:flex xl:flex-row xl:items-stretch xl:gap-8">
+        <div className="relative max-w-[370px] sm:max-w-2xl xl:max-w-5xl w-full mx-auto py-[clamp(12px,2dvh,22px)] sm:py-5 xl:py-4 px-3.5 sm:px-8 xl:px-6 rounded-[1.75rem] sm:rounded-[2.25rem] border border-[#EAE2D8] bg-[#FAF8F5]/85 backdrop-blur-sm shadow-luxury transition-all xl:flex xl:flex-row xl:items-stretch xl:gap-8">
 
           {/* Full Height Video (XL Screen View - Left Side) */}
           <div className="hidden xl:block xl:w-[46%] rounded-2xl overflow-hidden border border-[#DFD0B7] shadow-card relative flex-shrink-0 bg-[#EDE4D4]/30 self-stretch">
@@ -96,8 +96,8 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
 
           {/* Right Side Content on XL (Full Width on Mobile/Tablet) */}
           <div className="w-full xl:w-[54%] flex flex-col justify-center items-center">
-            {/* Dynamic Viewport Looping Video (XS and SM / Mobile Screens) */}
-            <div className="xl:hidden w-full max-w-[280px] xs:max-w-[315px] tall:max-w-[335px] xtall:max-w-[365px] sm:max-w-[450px] h-[clamp(145px,22.5dvh,185px)] xs:h-[clamp(165px,24dvh,225px)] tall:h-[clamp(175px,24.5dvh,235px)] xtall:h-[clamp(210px,27dvh,280px)] sm:h-[clamp(220px,28dvh,320px)] mx-auto mb-2 xs:mb-2 tall:mb-2.5 xtall:mb-3.5 sm:mb-3.5 rounded-xl xs:rounded-2xl overflow-hidden border border-[#DFD0B7] shadow-card relative flex-shrink-0 bg-[#EDE4D4]/30">
+            {/* Dynamic Viewport Looping Video (Mobile Screens) - Generous height */}
+            <div className="xl:hidden w-full max-w-[340px] sm:max-w-[450px] h-[clamp(165px,25dvh,255px)] sm:h-[clamp(220px,28dvh,320px)] mx-auto mb-[clamp(8px,1.4dvh,16px)] sm:mb-3.5 rounded-xl sm:rounded-2xl overflow-hidden border border-[#DFD0B7] shadow-card relative flex-shrink-0 bg-[#EDE4D4]/30">
               <video
                 ref={mobileVideoRef}
                 src="/mobile.mov"
@@ -110,16 +110,16 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
             </div>
 
             {/* Live Countdown Timer */}
-            <div className="flex items-center justify-center gap-1.5 xs:gap-2 xtall:gap-2.5 sm:gap-3 mb-2 xs:mb-2 tall:mb-2.5 xtall:mb-3.5 sm:mb-3.5 xl:mb-2">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-[clamp(6px,1.2dvh,14px)] sm:mb-3.5 xl:mb-2">
               {timeBlocks.map((block) => (
                 <div
                   key={block.label}
-                  className="bg-white/90 backdrop-blur-sm border border-[#EAE2D8] rounded-xl xtall:rounded-2xl sm:rounded-2xl px-1.5 xs:px-2.5 xtall:px-3 sm:px-3.5 py-1 xs:py-1 tall:py-1.5 xtall:py-2 sm:py-2 xl:px-3 xl:py-1.5 shadow-xs text-center min-w-[46px] xs:min-w-[52px] tall:min-w-[56px] xtall:min-w-[62px] sm:min-w-[64px]"
+                  className="bg-white/90 backdrop-blur-sm border border-[#EAE2D8] rounded-xl sm:rounded-2xl px-2.5 sm:px-3.5 py-1.5 sm:py-2 xl:px-3 xl:py-1.5 shadow-xs text-center min-w-[54px] sm:min-w-[64px]"
                 >
-                  <div className="font-serif text-sm xs:text-base tall:text-lg xtall:text-xl sm:text-xl xl:text-lg font-light text-[#2A2725] tabular-nums leading-none">
+                  <div className="font-serif text-[clamp(16px,2.4dvh,22px)] sm:text-xl xl:text-lg font-light text-[#2A2725] tabular-nums leading-none">
                     {String(block.value).padStart(2, '0')}
                   </div>
-                  <div className="text-[6.5px] xs:text-[7.5px] tall:text-[8px] xtall:text-[8.5px] sm:text-[8.5px] uppercase tracking-[0.16em] text-[#8C7A5E] font-medium mt-0.5 sm:mt-1">
+                  <div className="text-[clamp(8px,1.1dvh,9px)] sm:text-[8.5px] uppercase tracking-[0.16em] text-[#8C7A5E] font-medium mt-0.5 sm:mt-1">
                     {block.label}
                   </div>
                 </div>
@@ -127,15 +127,15 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
             </div>
 
             {/* Couple Names - Grand, Stacked Script Typography with Gold Foil Shimmer */}
-            <div className="my-1.5 xs:my-2 tall:my-2.5 xtall:my-3.5 sm:my-3 xl:my-2 flex flex-col justify-center">
+            <div className="my-[clamp(6px,1.2dvh,14px)] sm:my-3 xl:my-2 flex flex-col justify-center">
               <h2
                 key={`names-${isReady ? 'ready' : 'hidden'}`}
-                className={`flex flex-col items-center justify-center font-script text-[32px] xs:text-[38px] tall:text-[42px] xtall:text-[48px] sm:text-[50px] xl:text-[44px] font-normal leading-[1.08] ${
+                className={`flex flex-col items-center justify-center font-script text-[clamp(38px,5.8dvh,52px)] sm:text-[50px] xl:text-[44px] font-normal leading-[1.08] ${
                   isReady ? 'animate-gold-shimmer' : 'text-[#B89B6D]'
                 }`}
               >
                 <span>{WEDDING_CONFIG.couple.partner1}</span>
-                <span className="text-base xs:text-lg tall:text-xl xtall:text-2xl sm:text-2xl xl:text-xl leading-none inline-flex items-center justify-center my-0 xs:my-0.5 sm:my-1">
+                <span className="text-xl sm:text-2xl xl:text-xl leading-none inline-flex items-center justify-center my-0.5 sm:my-1">
                   &
                 </span>
                 <span>{WEDDING_CONFIG.couple.partner2}</span>
@@ -143,17 +143,17 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
             </div>
 
             {/* Divider Flourish */}
-            <div className="flex items-center justify-center gap-2 sm:gap-3 my-1.5 xs:my-2 tall:my-2 xtall:my-2.5 sm:my-2.5 xl:my-2">
-              <div className="h-px w-8 xs:w-10 xtall:w-12 sm:w-16 bg-[#DFD0B7]" />
+            <div className="flex items-center justify-center gap-2 sm:gap-3 my-[clamp(4px,0.8dvh,10px)] sm:my-2.5 xl:my-2">
+              <div className="h-px w-10 sm:w-16 bg-[#DFD0B7]" />
               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#B89B6D]" />
-              <div className="h-px w-8 xs:w-10 xtall:w-12 sm:w-16 bg-[#DFD0B7]" />
+              <div className="h-px w-10 sm:w-16 bg-[#DFD0B7]" />
             </div>
 
             {/* Date & Location Badges */}
-            <div className="flex flex-col items-center justify-center gap-1 xs:gap-1.5 xtall:gap-2 sm:gap-2 xl:gap-1.5 text-[10px] xs:text-[11px] tall:text-[11.5px] xtall:text-[12px] sm:text-xs xl:text-[11px] text-[#5A544F] mb-2 xs:mb-2.5 tall:mb-3 xtall:mb-4 sm:mb-3.5 xl:mb-2.5 font-medium">
+            <div className="flex flex-col items-center justify-center gap-1 sm:gap-2 text-[clamp(11.5px,1.5dvh,13px)] sm:text-xs xl:text-[11px] text-[#5A544F] mb-[clamp(8px,1.5dvh,16px)] sm:mb-3.5 xl:mb-2.5 font-medium">
               {/* Row 1: Date */}
               <div className="flex items-center gap-1.5 sm:gap-2">
-                <Calendar className="w-3 h-3 xs:w-3.5 xs:h-3.5 xtall:w-4 xtall:h-4 sm:w-4 sm:h-4 text-[#B89B6D] flex-shrink-0" />
+                <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#B89B6D] flex-shrink-0" />
                 <span>{WEDDING_CONFIG.date.display}</span>
               </div>
 
@@ -164,22 +164,22 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5 sm:gap-2 hover:text-[#B89B6D] transition-colors"
               >
-                <MapPin className="w-3 h-3 xs:w-3.5 xs:h-3.5 xtall:w-4 xtall:h-4 sm:w-4 sm:h-4 text-[#B89B6D] flex-shrink-0" />
+                <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#B89B6D] flex-shrink-0" />
                 <span>{WEDDING_CONFIG.venue.name}{WEDDING_CONFIG.venue.city ? `, ${WEDDING_CONFIG.venue.city}` : ''}</span>
               </a>
             </div>
 
-            {/* Action Buttons - Scaled up with generous touch targets */}
-            <div className="flex flex-row items-center justify-center gap-2 xs:gap-2.5 xtall:gap-3 sm:gap-3 w-full sm:w-auto">
+            {/* Action Buttons - Generous touch targets */}
+            <div className="flex flex-row items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto">
               <button
                 onClick={() => onNavigate ? onNavigate(3) : scrollTo('rsvp')}
-                className="flex-1 sm:flex-initial px-3 xs:px-4 tall:px-4.5 xtall:px-5 sm:px-6 py-1.5 xs:py-2 tall:py-2 xtall:py-2.5 sm:py-2.5 rounded-full bg-[#2A2725] text-white hover:bg-[#B89B6D] text-[9.5px] xs:text-[10px] tall:text-[10.5px] xtall:text-[11px] sm:text-[11px] uppercase tracking-[0.15em] font-semibold transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0"
+                className="flex-1 sm:flex-initial px-4 sm:px-6 py-[clamp(8px,1.2dvh,11px)] sm:py-2.5 rounded-full bg-[#2A2725] text-white hover:bg-[#B89B6D] text-[clamp(10.5px,1.35dvh,11.5px)] sm:text-[11px] uppercase tracking-[0.15em] font-semibold transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0"
               >
                 RSVP Attendance
               </button>
               <button
                 onClick={() => onNavigate ? onNavigate(1) : scrollTo('schedule')}
-                className="flex-1 sm:flex-initial px-3 xs:px-4 tall:px-4.5 xtall:px-5 sm:px-6 py-1.5 xs:py-2 tall:py-2 xtall:py-2.5 sm:py-2.5 rounded-full border border-[#DFD0B7] hover:border-[#B89B6D] text-[#2A2725] hover:text-[#B89B6D] text-[9.5px] xs:text-[10px] tall:text-[10.5px] xtall:text-[11px] sm:text-[11px] uppercase tracking-[0.15em] font-semibold transition-all bg-white/50"
+                className="flex-1 sm:flex-initial px-4 sm:px-6 py-[clamp(8px,1.2dvh,11px)] sm:py-2.5 rounded-full border border-[#DFD0B7] hover:border-[#B89B6D] text-[#2A2725] hover:text-[#B89B6D] text-[clamp(10.5px,1.35dvh,11.5px)] sm:text-[11px] uppercase tracking-[0.15em] font-semibold transition-all bg-white/50"
               >
                 Event Details
               </button>
@@ -189,19 +189,19 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
         </div>
       </div>
 
-      {/* Scroll Down Cue - Animated entrance */}
+      {/* Scroll Down Cue - Balanced spacing above the button */}
       <button
         key={`scroll-${isReady ? 'ready' : 'hidden'}`}
         onClick={() => onNavigate ? onNavigate(1) : scrollTo('schedule')}
         aria-label="Scroll down to Event Details"
-        className={`flex flex-col items-center text-[#8C7A5E] hover:text-[#2A2725] transition-all focus:outline-none flex-shrink-0 cursor-pointer pt-0.5 xs:pt-0.5 tall:pt-1 xtall:pt-1.5 pb-0.5 tall:pb-1 xtall:pb-1.5 ${
+        className={`flex flex-col items-center text-[#8C7A5E] hover:text-[#2A2725] transition-all focus:outline-none flex-shrink-0 cursor-pointer mt-auto pt-[clamp(12px,2dvh,22px)] pb-1 sm:pb-2 ${
           isReady ? 'animate-scroll-cue' : 'opacity-0'
         }`}
       >
-        <span className="text-[7.5px] xs:text-[8.5px] tall:text-[9px] xtall:text-[9.5px] sm:text-[9.5px] uppercase tracking-[0.2em] font-medium leading-none mb-0.5">
+        <span className="text-[clamp(8px,1.1dvh,9.5px)] uppercase tracking-[0.2em] font-medium leading-none mb-0.5">
           Scroll Down
         </span>
-        <ChevronDown className="w-3 h-3 xs:w-3.5 xs:h-3.5 xtall:w-4 xtall:h-4 animate-bounce text-[#B89B6D]" />
+        <ChevronDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-bounce text-[#B89B6D]" />
       </button>
     </section>
   );

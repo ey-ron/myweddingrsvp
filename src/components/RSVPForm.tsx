@@ -121,13 +121,13 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
   };
 
   return (
-    <section id="rsvp" className="relative w-full h-full flex flex-col items-center justify-between pt-3.5 xs:pt-4.5 sm:pt-6 pb-2 xs:pb-2.5 sm:pb-3 px-3 xs:px-4 sm:px-6 lg:px-8 bg-subtle-linen overflow-hidden">
+    <section id="rsvp" className="slide-section bg-subtle-linen">
 
-      {/* Section Header - Perfectly aligned with Page 1 and Page 2 */}
-      <div className="text-center max-w-3xl mx-auto mt-0.5 xs:mt-1 sm:mt-1.5 mb-1.5 xs:mb-2.5 tall:mb-3.5 sm:mb-4 flex-shrink-0">
+      {/* Section Header - Generous gap below */}
+      <div className="text-center max-w-3xl mx-auto mt-0.5 sm:mt-1.5 mb-[clamp(14px,2.4dvh,26px)] sm:mb-5 flex-shrink-0">
         <span
           key={`pill-${isActive ? 'active' : 'inactive'}`}
-          className={`text-[9px] xs:text-[10px] tall:text-[10.5px] sm:text-[11px] uppercase tracking-[0.28em] font-semibold text-[#8C7A5E] inline-block ${isActive ? 'animate-header-pill' : 'opacity-0'
+          className={`text-[clamp(10px,1.25dvh,11px)] uppercase tracking-[0.28em] font-semibold text-[#8C7A5E] inline-block ${isActive ? 'animate-header-pill' : 'opacity-0'
             }`}
         >
           RSVP
@@ -143,33 +143,33 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
         </h2>
         <p
           key={`date-${isActive ? 'active' : 'inactive'}`}
-          className={`font-serif italic text-[10px] xs:text-[11px] tall:text-xs sm:text-xs text-[#736B63] ${isActive ? 'animate-header-sub' : 'opacity-0'
+          className={`font-serif italic text-[clamp(11px,1.35dvh,12.5px)] sm:text-xs text-[#736B63] ${isActive ? 'animate-header-sub' : 'opacity-0'
             }`}
         >
           Kindly favor us with your reply by <span className="font-semibold text-[#2A2725] not-italic">{WEDDING_CONFIG.notes.rsvpDeadline}</span>
         </p>
       </div>
 
-      {/* Main Content Area - Centered in remaining vertical space */}
-      <div className="max-w-xl xs:max-w-2xl sm:max-w-3xl lg:max-w-4xl xl:max-w-5xl w-full mx-auto flex-1 min-h-0 flex flex-col lg:grid lg:grid-cols-2 lg:gap-6 xl:gap-8 lg:items-center justify-center my-auto">
+      {/* Main Content Area - Cards sit naturally together without gaps between them */}
+      <div className="max-w-xl sm:max-w-3xl lg:max-w-5xl w-full mx-auto flex-1 min-h-0 flex flex-col justify-start lg:grid lg:grid-cols-2 lg:gap-6 xl:gap-8 lg:items-center gap-[clamp(8px,1.3dvh,14px)] mb-[clamp(10px,1.8dvh,20px)] sm:mb-0">
 
-        {/* RSVP Card - Cascades in first */}
+        {/* RSVP Card */}
         <div
           key={`rsvp-${isActive ? 'active' : 'inactive'}`}
-          className={`bg-white rounded-2xl sm:rounded-3xl border border-[#EAE2D8] shadow-luxury p-2.5 xs:p-3 sm:p-5 xl:p-6 transition-all ${isActive ? 'animate-cascade-1' : 'opacity-0'
+          className={`bg-white rounded-2xl sm:rounded-3xl border border-[#EAE2D8] shadow-luxury p-[clamp(10px,1.5dvh,18px)] sm:p-5 xl:p-6 transition-all flex flex-col justify-between flex-shrink-0 ${isActive ? 'animate-cascade-1' : 'opacity-0'
             }`}
         >
           {/* Card Header Badge */}
-          <div className="flex items-center justify-center gap-1.5 mb-1 xs:mb-1.5 sm:mb-2">
+          <div className="flex items-center justify-center gap-1.5 mb-1 sm:mb-2">
             <HeartHandshake className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#B89B6D]" />
-            <span className="text-[8px] xs:text-[9px] sm:text-[10px] uppercase tracking-[0.2em] font-semibold text-[#8C7A5E]">
+            <span className="text-[clamp(8.5px,1.1dvh,9.5px)] sm:text-[10px] uppercase tracking-[0.2em] font-semibold text-[#8C7A5E]">
               Official Guest RSVP
             </span>
           </div>
 
           {/* SUCCESS STATE */}
           {submittedData ? (
-            <div className="text-center py-2.5 sm:py-4 space-y-2 sm:space-y-3 animate-in fade-in zoom-in-95 duration-300">
+            <div className="text-center py-2 sm:py-4 space-y-2 sm:space-y-3 animate-in fade-in zoom-in-95 duration-300">
               <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#E6ECE6] border border-[#CFDBCF] flex items-center justify-center mx-auto text-[#4A5B4C]">
                 <PartyPopper className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
@@ -178,7 +178,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
                 <h3 className="text-sm sm:text-base font-serif text-[#2A2725]">
                   Thank You, {submittedData.first_name}!
                 </h3>
-                <p className="text-[9px] xs:text-[10px] sm:text-[11px] text-[#736B63] mt-0.5 max-w-md mx-auto">
+                <p className="text-[clamp(9px,1.2dvh,10.5px)] sm:text-[11px] text-[#736B63] mt-0.5 max-w-md mx-auto">
                   {submittedData.attending
                     ? 'Your RSVP has been joyfully saved! We cannot wait to celebrate together.'
                     : 'We are so sorry you cannot make it, but we deeply appreciate your warm wishes!'}
@@ -188,22 +188,22 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
               {/* Summary Card */}
               <div className="bg-[#FAF8F5] border border-[#EAE2D8] rounded-xl p-2 sm:p-3 text-left max-w-md mx-auto space-y-1 text-xs">
                 <div className="flex justify-between items-center border-b border-[#EAE2D8] pb-1">
-                  <span className="text-[#8C7A5E] uppercase tracking-wider font-semibold text-[7.5px] sm:text-[8.5px]">Primary Guest</span>
-                  <span className="font-semibold text-[#2A2725] text-[10px] sm:text-xs">
+                  <span className="text-[#8C7A5E] uppercase tracking-wider font-semibold text-[clamp(7.5px,1dvh,8.5px)]">Primary Guest</span>
+                  <span className="font-semibold text-[#2A2725] text-[clamp(10px,1.25dvh,11.5px)] sm:text-xs">
                     {submittedData.first_name} {submittedData.surname}
                   </span>
                 </div>
                 <div className="flex justify-between items-center border-b border-[#EAE2D8] pb-1">
-                  <span className="text-[#8C7A5E] uppercase tracking-wider font-semibold text-[7.5px] sm:text-[8.5px]">Attendance</span>
-                  <span className={`inline-flex items-center gap-1 font-semibold text-[8.5px] sm:text-[9.5px] px-1.5 py-0.5 rounded-full ${submittedData.attending ? 'bg-[#E6ECE6] text-[#4A5B4C]' : 'bg-[#F7EEE9] text-[#7E633C]'
+                  <span className="text-[#8C7A5E] uppercase tracking-wider font-semibold text-[clamp(7.5px,1dvh,8.5px)]">Attendance</span>
+                  <span className={`inline-flex items-center gap-1 font-semibold text-[clamp(8.5px,1.1dvh,9.5px)] px-1.5 py-0.5 rounded-full ${submittedData.attending ? 'bg-[#E6ECE6] text-[#4A5B4C]' : 'bg-[#F7EEE9] text-[#7E633C]'
                     }`}>
                     {submittedData.attending ? 'Attending' : 'Regretfully Declines'}
                   </span>
                 </div>
                 {submittedData.attending && (
                   <div className="flex justify-between items-center border-b border-[#EAE2D8] pb-1">
-                    <span className="text-[#8C7A5E] uppercase tracking-wider font-semibold text-[7.5px] sm:text-[8.5px]">Bringing With You</span>
-                    <span className="font-medium text-[#2A2725] text-[9.5px] sm:text-[11px]">
+                    <span className="text-[#8C7A5E] uppercase tracking-wider font-semibold text-[clamp(7.5px,1dvh,8.5px)]">Bringing With You</span>
+                    <span className="font-medium text-[#2A2725] text-[clamp(9.5px,1.2dvh,10.5px)] sm:text-[11px]">
                       {submittedData.additional_guests === 0
                         ? 'Just yourself (0 guests)'
                         : `+${submittedData.additional_guests} guest(s) (${1 + submittedData.additional_guests} seats total)`}
@@ -216,7 +216,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
               <div className="flex items-center justify-center pt-0.5">
                 <button
                   onClick={handleReset}
-                  className="px-3.5 py-1 rounded-full border border-[#DFD0B7] text-[#2A2725] hover:bg-[#FAF8F5] text-[8.5px] xs:text-[9px] uppercase tracking-[0.16em] font-semibold transition-all cursor-pointer"
+                  className="px-3.5 py-1 rounded-full border border-[#DFD0B7] text-[#2A2725] hover:bg-[#FAF8F5] text-[clamp(8.5px,1.1dvh,9.5px)] uppercase tracking-[0.16em] font-semibold transition-all cursor-pointer"
                 >
                   Submit Another RSVP
                 </button>
@@ -224,7 +224,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
             </div>
           ) : (
             /* FORM STATE */
-            <form onSubmit={handleSubmit} className="space-y-1 xs:space-y-1.5 sm:space-y-2">
+            <form onSubmit={handleSubmit} className="space-y-[clamp(5px,0.9dvh,10px)] sm:space-y-2.5">
 
               {/* Error banner if submission fails */}
               {errorMessage && (
@@ -239,21 +239,21 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
 
               {/* Attendance Selection */}
               <div>
-                <label className="block text-[8px] xs:text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.15em] font-semibold text-[#8C7A5E] mb-0.5">
+                <label className="block text-[clamp(8.5px,1.1dvh,9.5px)] uppercase tracking-[0.15em] font-semibold text-[#8C7A5E] mb-0.5 sm:mb-1">
                   Will You Be Attending? <span className="text-[#B89B6D]">*</span>
                 </label>
-                <div className="grid grid-cols-2 gap-1.5 xs:gap-2">
+                <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
                   <button
                     type="button"
                     onClick={() => setAttending(true)}
-                    className={`py-1 xs:py-1.5 sm:py-1.5 px-2 rounded-xl border text-center transition-all flex items-center justify-center gap-1.5 text-[9px] xs:text-[9.5px] sm:text-[10.5px] font-medium ${attending
+                    className={`py-[clamp(7px,1.25dvh,12px)] sm:py-2 px-2.5 sm:px-3 rounded-xl border text-center transition-all flex items-center justify-center gap-1.5 sm:gap-2 text-[clamp(10px,1.35dvh,11.5px)] sm:text-xs font-medium ${attending
                       ? 'border-[#B89B6D] bg-[#F7F3EB] text-[#2A2725] ring-1 ring-[#B89B6D]/30 font-semibold'
                       : 'border-[#EAE2D8] hover:border-[#DFD0B7] bg-white text-[#5A544F]'
                       }`}
                   >
-                    <div className={`w-2.5 h-2.5 xs:w-3 xs:h-3 rounded-full border flex items-center justify-center ${attending ? 'border-[#B89B6D] bg-[#B89B6D]' : 'border-[#DFD0B7]'
+                    <div className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border flex items-center justify-center ${attending ? 'border-[#B89B6D] bg-[#B89B6D]' : 'border-[#DFD0B7]'
                       }`}>
-                      {attending && <Check className="w-1.5 h-1.5 text-white" />}
+                      {attending && <Check className="w-2 h-2 text-white" />}
                     </div>
                     <span>Joyfully Accept</span>
                   </button>
@@ -264,14 +264,14 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
                       setAttending(false);
                       setAdditionalGuests(0);
                     }}
-                    className={`py-1 xs:py-1.5 sm:py-1.5 px-2 rounded-xl border text-center transition-all flex items-center justify-center gap-1.5 text-[9px] xs:text-[9.5px] sm:text-[10.5px] font-medium ${!attending
+                    className={`py-[clamp(7px,1.25dvh,12px)] sm:py-2 px-2.5 sm:px-3 rounded-xl border text-center transition-all flex items-center justify-center gap-1.5 sm:gap-2 text-[clamp(10px,1.35dvh,11.5px)] sm:text-xs font-medium ${!attending
                       ? 'border-[#B89B6D] bg-[#F7F3EB] text-[#2A2725] ring-1 ring-[#B89B6D]/30 font-semibold'
                       : 'border-[#EAE2D8] hover:border-[#DFD0B7] bg-white text-[#5A544F]'
                       }`}
                   >
-                    <div className={`w-2.5 h-2.5 xs:w-3 xs:h-3 rounded-full border flex items-center justify-center ${!attending ? 'border-[#B89B6D] bg-[#B89B6D]' : 'border-[#DFD0B7]'
+                    <div className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border flex items-center justify-center ${!attending ? 'border-[#B89B6D] bg-[#B89B6D]' : 'border-[#DFD0B7]'
                       }`}>
-                      {!attending && <Check className="w-1.5 h-1.5 text-white" />}
+                      {!attending && <Check className="w-2 h-2 text-white" />}
                     </div>
                     <span>Regretfully Decline</span>
                   </button>
@@ -279,9 +279,9 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
               </div>
 
               {/* Name and Surname Grid */}
-              <div className="grid grid-cols-2 gap-1.5 xs:gap-2">
+              <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
                 <div>
-                  <label htmlFor="first_name" className="block text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.15em] font-semibold text-[#8C7A5E] mb-0.5">
+                  <label htmlFor="first_name" className="block text-[clamp(8.5px,1.1dvh,9.5px)] uppercase tracking-[0.15em] font-semibold text-[#8C7A5E] mb-0.5">
                     First Name <span className="text-[#B89B6D]">*</span>
                   </label>
                   <input
@@ -293,11 +293,11 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
                       if (errors.firstName) setErrors({ ...errors, firstName: '' });
                     }}
                     placeholder="e.g. Aaron"
-                    className={`w-full px-2 xs:px-2.5 sm:px-3 py-1 rounded-xl border bg-[#FCFBF9] text-[10px] xs:text-[11px] text-[#2A2725] placeholder-[#B5ADA4] focus:outline-none focus:ring-1 focus:ring-[#B89B6D]/30 focus:border-[#B89B6D] transition-all ${errors.firstName ? 'border-red-400 bg-red-50/20' : 'border-[#EAE2D8]'
+                    className={`w-full px-2.5 sm:px-3 py-[clamp(7px,1.2dvh,11px)] sm:py-2 rounded-xl border bg-[#FCFBF9] text-[clamp(11.5px,1.4dvh,13px)] sm:text-xs text-[#2A2725] placeholder-[#B5ADA4] focus:outline-none focus:ring-1 focus:ring-[#B89B6D]/30 focus:border-[#B89B6D] transition-all ${errors.firstName ? 'border-red-400 bg-red-50/20' : 'border-[#EAE2D8]'
                       }`}
                   />
                   {errors.firstName && (
-                    <p className="mt-0.5 text-[8px] xs:text-[8.5px] text-red-600 flex items-center gap-1">
+                    <p className="mt-0.5 text-[8px] text-red-600 flex items-center gap-1">
                       <AlertCircle className="w-2.5 h-2.5" />
                       {errors.firstName}
                     </p>
@@ -305,7 +305,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
                 </div>
 
                 <div>
-                  <label htmlFor="surname" className="block text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.15em] font-semibold text-[#8C7A5E] mb-0.5">
+                  <label htmlFor="surname" className="block text-[clamp(8.5px,1.1dvh,9.5px)] uppercase tracking-[0.15em] font-semibold text-[#8C7A5E] mb-0.5">
                     Surname <span className="text-[#B89B6D]">*</span>
                   </label>
                   <input
@@ -317,11 +317,11 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
                       if (errors.surname) setErrors({ ...errors, surname: '' });
                     }}
                     placeholder="e.g. Handsome"
-                    className={`w-full px-2 xs:px-2.5 sm:px-3 py-1 rounded-xl border bg-[#FCFBF9] text-[10px] xs:text-[11px] text-[#2A2725] placeholder-[#B5ADA4] focus:outline-none focus:ring-1 focus:ring-[#B89B6D]/30 focus:border-[#B89B6D] transition-all ${errors.surname ? 'border-red-400 bg-red-50/20' : 'border-[#EAE2D8]'
+                    className={`w-full px-2.5 sm:px-3 py-[clamp(7px,1.2dvh,11px)] sm:py-2 rounded-xl border bg-[#FCFBF9] text-[clamp(11.5px,1.4dvh,13px)] sm:text-xs text-[#2A2725] placeholder-[#B5ADA4] focus:outline-none focus:ring-1 focus:ring-[#B89B6D]/30 focus:border-[#B89B6D] transition-all ${errors.surname ? 'border-red-400 bg-red-50/20' : 'border-[#EAE2D8]'
                       }`}
                   />
                   {errors.surname && (
-                    <p className="mt-0.5 text-[8px] xs:text-[8.5px] text-red-600 flex items-center gap-1">
+                    <p className="mt-0.5 text-[8px] text-red-600 flex items-center gap-1">
                       <AlertCircle className="w-2.5 h-2.5" />
                       {errors.surname}
                     </p>
@@ -333,29 +333,29 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
               {attending && (
                 <div>
                   <div className="flex items-center justify-between mb-0.5">
-                    <label className="text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.15em] font-semibold text-[#8C7A5E] flex items-center gap-1">
+                    <label className="text-[clamp(8.5px,1.1dvh,9.5px)] uppercase tracking-[0.15em] font-semibold text-[#8C7A5E] flex items-center gap-1">
                       <Users className="w-2.5 h-2.5 text-[#B89B6D]" />
                       Bringing Additional Guests?
                     </label>
-                    <span className="text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] text-[#736B63]">
+                    <span className="text-[clamp(8.5px,1.1dvh,9.5px)] text-[#736B63]">
                       Total: <strong className="text-[#2A2725]">{1 + additionalGuests} seat(s)</strong>
                     </span>
                   </div>
 
                   {/* Counter & Quick Select */}
-                  <div className="flex items-center gap-1.5 bg-[#FCFBF9] px-2 py-0.5 rounded-xl border border-[#EAE2D8]">
-                    <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-1.5 bg-[#FCFBF9] px-2.5 py-[clamp(4px,0.7dvh,8px)] sm:py-1.5 rounded-xl border border-[#EAE2D8]">
+                    <div className="flex items-center gap-1.5">
                       <button
                         type="button"
                         onClick={() => setAdditionalGuests(Math.max(0, additionalGuests - 1))}
                         disabled={additionalGuests === 0}
                         aria-label="Decrease guest count"
-                        className="w-5 h-5 xs:w-5.5 xs:h-5.5 rounded-lg bg-white border border-[#DFD0B7] flex items-center justify-center text-[#2A2725] hover:border-[#B89B6D] disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-2xs"
+                        className="w-5.5 h-5.5 sm:w-6.5 sm:h-6.5 rounded-lg bg-white border border-[#DFD0B7] flex items-center justify-center text-[#2A2725] hover:border-[#B89B6D] disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-2xs"
                       >
-                        <Minus className="w-2 h-2" />
+                        <Minus className="w-2.5 h-2.5" />
                       </button>
 
-                      <span className="w-4 xs:w-5 text-center font-serif text-[11px] xs:text-xs font-semibold text-[#2A2725] tabular-nums">
+                      <span className="w-5 sm:w-6 text-center font-serif text-[clamp(12px,1.6dvh,14px)] sm:text-base font-semibold text-[#2A2725] tabular-nums">
                         {additionalGuests}
                       </span>
 
@@ -364,20 +364,20 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
                         onClick={() => setAdditionalGuests(Math.min(10, additionalGuests + 1))}
                         disabled={additionalGuests >= 10}
                         aria-label="Increase guest count"
-                        className="w-5 h-5 xs:w-5.5 xs:h-5.5 rounded-lg bg-white border border-[#DFD0B7] flex items-center justify-center text-[#2A2725] hover:border-[#B89B6D] disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-2xs"
+                        className="w-5.5 h-5.5 sm:w-6.5 sm:h-6.5 rounded-lg bg-white border border-[#DFD0B7] flex items-center justify-center text-[#2A2725] hover:border-[#B89B6D] disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-2xs"
                       >
-                        <Plus className="w-2 h-2" />
+                        <Plus className="w-2.5 h-2.5" />
                       </button>
                     </div>
 
                     <div className="flex items-center gap-1 ml-auto border-l border-[#EAE2D8] pl-2">
-                      <span className="text-[7.5px] xs:text-[8px] uppercase tracking-wider text-[#8C7A5E] mr-0.5 hidden xs:inline">Quick:</span>
+                      <span className="text-[7.5px] uppercase tracking-wider text-[#8C7A5E] mr-0.5 hidden sm:inline">Quick:</span>
                       {[0, 1, 2, 3].map((num) => (
                         <button
                           key={num}
                           type="button"
                           onClick={() => setAdditionalGuests(num)}
-                          className={`w-4.5 h-4.5 xs:w-5 xs:h-5 sm:w-5.5 sm:h-5.5 rounded-md text-[8px] xs:text-[8.5px] font-medium transition-all ${additionalGuests === num
+                          className={`w-[clamp(20px,2.6dvh,24px)] h-[clamp(20px,2.6dvh,24px)] sm:w-6 sm:h-6 rounded-md text-[clamp(8.5px,1.1dvh,9.5px)] sm:text-[10px] font-medium transition-all ${additionalGuests === num
                             ? 'bg-[#B89B6D] text-white shadow-2xs font-semibold'
                             : 'bg-white border border-[#EAE2D8] text-[#5A544F] hover:border-[#DFD0B7]'
                             }`}
@@ -392,34 +392,34 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
 
               {/* Dietary requirements / Note to couple */}
               <div>
-                <label htmlFor="notes" className="block text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.15em] font-semibold text-[#8C7A5E] mb-0.5">
+                <label htmlFor="notes" className="block text-[clamp(8.5px,1.1dvh,9.5px)] uppercase tracking-[0.15em] font-semibold text-[#8C7A5E] mb-0.5">
                   Note to Couple (Optional)
                 </label>
                 <textarea
                   id="notes"
-                  rows={1}
+                  rows={2}
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder="e.g. Excited to celebrate with you!"
-                  className="w-full px-2 xs:px-2.5 py-0.5 xs:py-1 rounded-xl border border-[#EAE2D8] bg-[#FCFBF9] text-[10px] xs:text-[10.5px] text-[#2A2725] placeholder-[#B5ADA4] focus:outline-none focus:ring-1 focus:ring-[#B89B6D]/30 focus:border-[#B89B6D] transition-all resize-none"
+                  className="w-full px-2.5 sm:px-3 py-[clamp(5px,0.85dvh,9px)] rounded-xl border border-[#EAE2D8] bg-[#FCFBF9] text-[clamp(10.5px,1.3dvh,12px)] sm:text-xs text-[#2A2725] placeholder-[#B5ADA4] focus:outline-none focus:ring-1 focus:ring-[#B89B6D]/30 focus:border-[#B89B6D] transition-all resize-none"
                 />
               </div>
 
               {/* Submit Button */}
-              <div className="pt-0.5">
+              <div className="pt-0.5 sm:pt-1">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-1.5 xs:py-2 rounded-full bg-[#2A2725] hover:bg-[#B89B6D] text-white text-[8.5px] xs:text-[9px] sm:text-[10px] uppercase tracking-[0.15em] font-semibold transition-all duration-300 shadow-md hover:shadow-xl flex items-center justify-center gap-1.5 disabled:opacity-75 disabled:cursor-wait transform hover:-translate-y-0.5 active:translate-y-0"
+                  className="w-full py-[clamp(7.5px,1.25dvh,11px)] sm:py-2.5 rounded-full bg-[#2A2725] hover:bg-[#B89B6D] text-white text-[clamp(10px,1.25dvh,11px)] sm:text-[11px] uppercase tracking-[0.15em] font-semibold transition-all duration-300 shadow-md hover:shadow-xl flex items-center justify-center gap-1.5 disabled:opacity-75 disabled:cursor-wait transform hover:-translate-y-0.5 active:translate-y-0"
                 >
                   {isSubmitting ? (
                     <>
-                      <Loader2 className="w-2.5 h-2.5 animate-spin" />
+                      <Loader2 className="w-3 h-3 animate-spin" />
                       <span>Saving Your RSVP...</span>
                     </>
                   ) : (
                     <>
-                      <Send className="w-2.5 h-2.5" />
+                      <Send className="w-3 h-3" />
                       <span>Confirm RSVP Response</span>
                     </>
                   )}
@@ -431,44 +431,44 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
 
         </div>
 
-        {/* Suggested Accommodations for Vacation - Cascades in after RSVP */}
+        {/* Suggested Accommodations for Vacation */}
         <div
           key={`acc-${isActive ? 'active' : 'inactive'}`}
-          className={`mt-2 xs:mt-2 lg:mt-0 bg-white/95 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-[#EAE2D8] shadow-card p-2 xs:p-2 sm:p-3.5 xl:p-4 text-center transition-all ${isActive ? 'animate-cascade-3' : 'opacity-0'
+          className={`bg-white/95 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-[#EAE2D8] shadow-card p-[clamp(9px,1.35dvh,16px)] sm:p-3.5 xl:p-4 text-center transition-all flex flex-col justify-between flex-shrink-0 ${isActive ? 'animate-cascade-3' : 'opacity-0'
             }`}
         >
           <div className="flex items-center justify-center gap-1.5 mb-0.5">
-            <Palmtree className="w-3 h-3 xs:w-3.5 xs:h-3.5 text-[#B89B6D]" />
-            <span className="text-[9px] xs:text-[10px] sm:text-[11px] uppercase tracking-[0.22em] font-semibold text-[#8C7A5E]">
+            <Palmtree className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#B89B6D]" />
+            <span className="text-[clamp(9px,1.15dvh,10.5px)] sm:text-[11px] uppercase tracking-[0.22em] font-semibold text-[#8C7A5E]">
               Staying for Vacation After?
             </span>
           </div>
-          <p className="text-[8.5px] xs:text-[9.5px] sm:text-[10.5px] text-[#736B63] mb-1 xs:mb-1.5 max-w-xl mx-auto leading-tight">
+          <p className="text-[clamp(8.5px,1.1dvh,9.5px)] sm:text-[10.5px] text-[#736B63] mb-[clamp(4px,0.6dvh,8px)] max-w-xl mx-auto leading-tight">
             For friends wishing to stay for vacation, here are our suggested accommodations:
           </p>
 
-          <div className="grid grid-cols-2 lg:grid-cols-1 gap-1.5 xs:gap-1.5 sm:gap-2.5 text-left">
+          <div className="grid grid-cols-2 lg:grid-cols-1 gap-[clamp(6px,0.85dvh,10px)] sm:gap-2.5 text-left">
             {WEDDING_CONFIG.accommodations.map((acc, idx) => (
               <a
                 key={idx}
                 href={acc.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-1.5 xs:p-1.5 sm:p-2.5 rounded-xl bg-[#FAF8F5] border border-[#EAE2D8] hover:border-[#B89B6D] transition-all group flex flex-col justify-between"
+                className="p-[clamp(6px,0.9dvh,10px)] sm:p-2.5 rounded-xl bg-[#FAF8F5] border border-[#EAE2D8] hover:border-[#B89B6D] transition-all group flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-start justify-between gap-1 mb-0.5">
-                    <h4 className="font-serif text-[10px] xs:text-[11px] sm:text-xs font-medium text-[#2A2725] group-hover:text-[#B89B6D] transition-colors leading-tight">
+                    <h4 className="font-serif text-[clamp(10.5px,1.35dvh,12px)] sm:text-xs font-medium text-[#2A2725] group-hover:text-[#B89B6D] transition-colors leading-tight">
                       {acc.name}
                     </h4>
                     <ExternalLink className="w-2.5 h-2.5 text-[#B89B6D] opacity-60 group-hover:opacity-100 flex-shrink-0 mt-0.5" />
                   </div>
-                  <p className="text-[8px] xs:text-[8.5px] sm:text-[9.5px] text-[#736B63] leading-snug line-clamp-1 sm:line-clamp-none">
+                  <p className="text-[clamp(8px,1.05dvh,9px)] sm:text-[9.5px] text-[#736B63] leading-snug line-clamp-1 sm:line-clamp-none">
                     {acc.description}
                   </p>
 
-                  {/* Resort Photo - Balanced preview height */}
-                  <div className="w-full h-[46px] xs:h-[52px] sm:h-[62px] lg:h-20 my-1 rounded-lg overflow-hidden border border-[#DFD0B7]/50 bg-[#EDE4D4]/30 relative">
+                  {/* Resort Photo - Fluid height dynamically fills space on any screen */}
+                  <div className="w-full h-[clamp(68px,10dvh,120px)] sm:h-[72px] lg:h-24 my-1 sm:my-1.5 rounded-lg overflow-hidden border border-[#DFD0B7]/50 bg-[#EDE4D4]/30 relative">
                     <img
                       src={acc.image}
                       alt={acc.name}
@@ -477,7 +477,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
                     />
                   </div>
                 </div>
-                <div className="flex items-center gap-1 text-[8.5px] xs:text-[9px] sm:text-[10px] text-[#B89B6D] font-medium pt-0.5 border-t border-[#F3EDE2]">
+                <div className="flex items-center gap-1 text-[clamp(8px,1.05dvh,9.5px)] sm:text-[10px] text-[#B89B6D] font-medium pt-0.5 border-t border-[#F3EDE2]">
                   <MapPin className="w-2.5 h-2.5 flex-shrink-0" />
                   <span className="group-hover:underline">View on Map</span>
                 </div>
@@ -488,12 +488,12 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ onNavigate, isActive = true 
 
       </div>
 
-      {/* Personal Groom Signature Footer - Animated entrance */}
+      {/* Personal Groom Signature Footer - Balanced space above */}
       <button
         key={`sig-${isActive ? 'active' : 'inactive'}`}
         onClick={() => onNavigate ? onNavigate(0) : undefined}
         aria-label="Return to Save The Date"
-        className={`flex items-center justify-center gap-1.5 font-script text-[12px] xs:text-[14px] sm:text-base tracking-wide text-[#8C7A5E] hover:text-[#2A2725] transition-all flex-shrink-0 cursor-pointer pt-0.5 pb-0.5 group focus:outline-none ${isActive ? 'animate-scroll-cue' : 'opacity-0'
+        className={`flex items-center justify-center gap-1.5 font-script text-[clamp(13px,1.8dvh,16px)] sm:text-base tracking-wide text-[#8C7A5E] hover:text-[#2A2725] transition-all flex-shrink-0 cursor-pointer mt-auto pt-[clamp(12px,2dvh,22px)] pb-1 sm:pb-2 group focus:outline-none ${isActive ? 'animate-scroll-cue' : 'opacity-0'
           }`}
       >
         <span>Crafted with</span>

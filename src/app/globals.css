@@ -75,30 +75,121 @@ input, textarea, select {
   animation: cursiveWrite 3.8s cubic-bezier(0.33, 1, 0.68, 1) forwards;
 }
 
-/* Responsive Luxury Cursive Headline */
+/* Sequential line-by-line handwriting for two-row cursive headlines */
+.animate-cursive-write-row1 {
+  display: block;
+  animation: cursiveWrite 1.9s cubic-bezier(0.33, 1, 0.68, 1) 0.15s forwards;
+  clip-path: inset(0 100% 0 0);
+}
+
+.animate-cursive-write-row2 {
+  display: block;
+  animation: cursiveWrite 1.5s cubic-bezier(0.33, 1, 0.68, 1) 2.05s forwards;
+  clip-path: inset(0 100% 0 0);
+}
+
+/* Responsive Luxury Cursive Headline - Dynamic Viewport Height Fluid Sizing */
 .text-script-headline {
   font-family: 'Alex Brush', cursive;
-  font-size: clamp(24px, 6.5vw, 28px);
-  line-height: 1.25;
+  font-size: clamp(28px, 4.2dvh, 38px);
+  line-height: 1.2;
   padding-bottom: 2px;
-}
-
-@media (min-width: 380px) {
-  .text-script-headline {
-    font-size: clamp(29px, 7.8vw, 35px);
-  }
-}
-
-@media (min-width: 380px) and (min-height: 880px) {
-  .text-script-headline {
-    font-size: clamp(33px, 8.2vw, 39px);
-  }
 }
 
 @media (min-width: 640px) {
   .text-script-headline {
-    font-size: clamp(42px, 5.5vw, 52px);
+    font-size: clamp(40px, 5.5vw, 54px);
   }
+}
+
+html, body {
+  overscroll-behavior: none;
+  touch-action: pan-y;
+}
+
+/* Container enclosing all sections */
+.slider-container {
+  height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+  touch-action: pan-y;
+  overscroll-behavior: none;
+}
+
+/* Individual slides - Locks viewport with modern 100dvh & safe-area insets */
+.slide-section {
+  height: 100dvh;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Evenly distributes top, middle, and bottom content */
+  padding-top: max(env(safe-area-inset-top, 0.75rem), 0.75rem);
+  padding-bottom: max(env(safe-area-inset-bottom, 0.5rem), 0.5rem);
+  padding-left: 0.875rem;
+  padding-right: 0.875rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  touch-action: pan-y;
+  overscroll-behavior: none;
+}
+
+@media (min-width: 640px) {
+  .slide-section {
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Guard rails against compact screens (<680px) */
+@media (max-height: 680px) {
+  .slider-container {
+    scroll-snap-type: none;
+  }
+  .slide-section {
+    height: auto;
+    min-height: 100dvh;
+    padding-top: max(env(safe-area-inset-top, 1rem), 1rem);
+    padding-bottom: max(env(safe-area-inset-bottom, 1rem), 1rem);
+  }
+}
+
+/* Constrains mobile presentation style within a centered column */
+.slide-inner {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (min-width: 640px) {
+  .slide-inner {
+    max-width: none;
+  }
+}
+
+/* Flexbox visual - consumes leftover surplus height */
+.slide-visual {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.slide-visual img,
+.slide-visual video {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 /* Luxury Gold-Foil Shimmer Sweep */

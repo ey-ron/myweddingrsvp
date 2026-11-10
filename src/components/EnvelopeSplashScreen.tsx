@@ -47,7 +47,7 @@ export const EnvelopeSplashScreen: React.FC<EnvelopeSplashScreenProps> = ({ onCo
       role="button"
       tabIndex={0}
       aria-label="Open Wedding Invitation"
-      className={`fixed inset-0 z-[100] flex flex-col items-center justify-between py-4 xs:py-6 sm:py-12 bg-[#FAF8F5] transition-opacity duration-600 ease-in-out cursor-pointer select-none px-4 overflow-hidden ${
+      className={`fixed inset-0 z-[100] flex flex-col items-center justify-between py-4 sm:py-12 bg-[#FAF8F5] transition-opacity duration-600 ease-in-out cursor-pointer select-none px-4 overflow-hidden ${
         stage === 'fadeout' ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
       style={{
@@ -63,20 +63,23 @@ export const EnvelopeSplashScreen: React.FC<EnvelopeSplashScreenProps> = ({ onCo
         }`}
       />
 
-      {/* Top Header */}
-      <div className={`text-center transition-all duration-700 flex-shrink-0 z-10 mt-1 xs:mt-2 ${isUnveiling ? 'opacity-0 transform -translate-y-2' : 'opacity-100'}`}>
-        <span className="text-[9px] xs:text-[10px] uppercase tracking-[0.28em] text-[#8C7A5E] font-semibold block mb-0.5 animate-header-pill">
+      {/* Top Header - Moved down gracefully with safe-area spacing */}
+      <div className={`text-center transition-all duration-700 flex-shrink-0 z-10 mt-[clamp(20px,5dvh,42px)] sm:mt-10 pt-[max(env(safe-area-inset-top,0px),0px)] ${isUnveiling ? 'opacity-0 transform -translate-y-2' : 'opacity-100'}`}>
+        <span className="text-[9.5px] sm:text-xs uppercase tracking-[0.28em] text-[#8C7A5E] font-semibold block mb-1 animate-header-pill">
           A Special Invitation
         </span>
-        <h2 className="text-script-headline text-[#2A2725] mt-0.5 leading-tight tracking-wide whitespace-nowrap overflow-hidden">
-          <span className="animate-cursive-write inline-block">
-            For Our Wedding Celebration
+        <h2 className="font-script text-[clamp(34px,5.2dvh,48px)] sm:text-5xl lg:text-6xl text-[#2A2725] mt-0.5 leading-[1.14] tracking-wide text-center">
+          <span className="animate-cursive-write-row1">
+            For Our Wedding
+          </span>
+          <span className="animate-cursive-write-row2">
+            Celebration
           </span>
         </h2>
       </div>
 
       {/* Envelope & Card Presentation Container - Centered vertically on the screen */}
-      <div className="relative w-[285px] xs:w-[325px] sm:w-[420px] h-[180px] xs:h-[200px] sm:h-[265px] my-auto">
+      <div className="relative w-[clamp(290px,85vw,360px)] sm:w-[420px] h-[clamp(185px,24dvh,225px)] sm:h-[265px] my-auto">
         {/* 1. ENVELOPE BACK (z-0) - Fades & blurs softly as the card zooms forward */}
         <div
           className={`absolute inset-0 bg-[#F4EFE6] rounded-2xl border border-[#DFD0B7] shadow-xl z-0 transition-all duration-800 ease-out ${
@@ -86,7 +89,7 @@ export const EnvelopeSplashScreen: React.FC<EnvelopeSplashScreenProps> = ({ onCo
 
         {/* 2. INVITATION CARD (z-10) - Sits INSIDE pocket, then smoothly rises and pushes forward into full view */}
         <div
-          className="absolute inset-x-2.5 xs:inset-x-3.5 top-2 h-[160px] xs:h-[180px] sm:h-[240px] bg-white rounded-xl border border-[#DFD0B7] p-2 xs:p-2.5 sm:p-3 flex flex-col items-center justify-center text-center z-10 overflow-hidden"
+          className="absolute inset-x-3 top-2 h-[clamp(165px,22dvh,205px)] sm:h-[240px] bg-white rounded-xl border border-[#DFD0B7] p-2 sm:p-3 flex flex-col items-center justify-center text-center z-10 overflow-hidden"
           style={{
             transition: isUnveiling
               ? 'transform 750ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 750ms ease-out, opacity 500ms ease-out'
@@ -110,18 +113,18 @@ export const EnvelopeSplashScreen: React.FC<EnvelopeSplashScreenProps> = ({ onCo
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent pointer-events-none animate-card-sheen" />
           )}
 
-          <div className="w-full h-full border border-[#DFD0B7] rounded-lg p-1.5 xs:p-2 flex flex-col items-center justify-center bg-[#FAF8F5] relative">
-            <span className="text-[8px] xs:text-[9px] uppercase tracking-[0.28em] font-semibold text-[#8C7A5E]">
+          <div className="w-full h-full border border-[#DFD0B7] rounded-lg p-2 flex flex-col items-center justify-center bg-[#FAF8F5] relative">
+            <span className="text-[8.5px] sm:text-[10px] uppercase tracking-[0.28em] font-semibold text-[#8C7A5E]">
               Save The Date
             </span>
-            <div className="font-script text-lg xs:text-xl sm:text-3xl text-[#B89B6D] my-0.5 leading-tight">
+            <div className="font-script text-xl sm:text-3xl text-[#B89B6D] my-0.5 leading-tight">
               {WEDDING_CONFIG.couple.partner1} & {WEDDING_CONFIG.couple.partner2}
             </div>
-            <div className="h-px w-12 bg-[#DFD0B7] my-0.5 xs:my-1" />
-            <div className="font-serif text-[9.5px] xs:text-[11px] sm:text-sm font-semibold text-[#2A2725]">
+            <div className="h-px w-12 bg-[#DFD0B7] my-0.5 sm:my-1" />
+            <div className="font-serif text-[10.5px] sm:text-sm font-semibold text-[#2A2725]">
               {WEDDING_CONFIG.date.display}
             </div>
-            <div className="text-[8px] xs:text-[9px] sm:text-xs text-[#736B63] mt-0.5">
+            <div className="text-[8.5px] sm:text-xs text-[#736B63] mt-0.5">
               {WEDDING_CONFIG.venue.name}
             </div>
           </div>
@@ -178,13 +181,13 @@ export const EnvelopeSplashScreen: React.FC<EnvelopeSplashScreenProps> = ({ onCo
           }`}
         >
           {/* Wax Seal Outer Oval */}
-          <div className="relative w-[86px] h-[58px] xs:w-[96px] xs:h-[64px] rounded-full bg-gradient-to-br from-[#CEB894] via-[#B89B6D] to-[#7E633C] p-1 shadow-2xl flex items-center justify-center border border-[#EFE4D2]/40 animate-pulse">
+          <div className="relative w-[92px] h-[62px] sm:w-[100px] sm:h-[68px] rounded-full bg-gradient-to-br from-[#CEB894] via-[#B89B6D] to-[#7E633C] p-1 shadow-2xl flex items-center justify-center border border-[#EFE4D2]/40 animate-pulse">
             {/* Wax Seal Inner Ring */}
             <div className="w-full h-full rounded-full border border-[#FAF8F5]/60 flex items-center justify-center bg-gradient-to-tr from-[#9E8052] to-[#B89B6D] shadow-inner px-3">
               {/* Monogram A & E */}
-              <div className="font-script text-white text-lg xs:text-xl font-normal drop-shadow-sm select-none flex items-center justify-center">
+              <div className="font-script text-white text-xl sm:text-2xl font-normal drop-shadow-sm select-none flex items-center justify-center">
                 <span>A</span>
-                <span className="text-sm xs:text-base mx-1 opacity-90 font-serif italic">&</span>
+                <span className="text-base sm:text-lg mx-1 opacity-90 font-serif italic">&</span>
                 <span>E</span>
               </div>
             </div>
@@ -194,7 +197,7 @@ export const EnvelopeSplashScreen: React.FC<EnvelopeSplashScreenProps> = ({ onCo
 
       {/* Tap Prompt */}
       <div className={`text-center flex-shrink-0 transition-opacity duration-300 ${isEmerging ? 'opacity-0' : 'opacity-100'}`}>
-        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-[#EAE2D8] text-[9.5px] xs:text-[10.5px] uppercase tracking-[0.22em] text-[#8C7A5E] font-semibold shadow-sm animate-bounce">
+        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-[#EAE2D8] text-[10px] sm:text-xs uppercase tracking-[0.22em] text-[#8C7A5E] font-semibold shadow-sm animate-bounce">
           Tap to open invitation
         </span>
       </div>
