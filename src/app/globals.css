@@ -686,7 +686,7 @@ html, body {
   }
 
   .ipad-venue-img-box {
-    width: 86px !important;
+    width: 115px !important;
     height: 50px !important;
     border-radius: 0.6rem !important;
   }
@@ -849,8 +849,9 @@ html, body {
   }
 
   .ipad-venue-img-box {
-    width: 90px !important;
+    width: 125px !important;
     height: 54px !important;
+    border-radius: 0.6rem !important;
   }
 
   /* Page 3: Extra-Tall Phones */

@@ -94,8 +94,8 @@ export const EventDetails: React.FC<EventDetailsProps> = ({ onNavigate, isActive
 
                 {/* Right Side: Venue Photo (TOP on XL) */}
                 <div className="ipad-venue-media flex flex-col items-end flex-shrink-0 xl:order-1 xl:w-full xl:items-stretch">
-                  {/* Venue Photo - Height-fluid sizing on mobile/tablet, Maximized on XL */}
-                  <div className="ipad-venue-img-box w-[clamp(68px,17vw,84px)] h-[clamp(38px,4.8dvh,48px)] sm:w-[84px] sm:h-[48px] xl:w-full xl:h-[110px] rounded-lg xl:rounded-xl overflow-hidden border border-[#DFD0B7]/60 shadow-2xs bg-[#EDE4D4]/30 relative mb-1 xl:mb-0 group-hover:border-[#B89B6D] transition-colors">
+                  {/* Venue Photo - Increased width only, preserved original height for top alignment */}
+                  <div className="ipad-venue-img-box w-[clamp(90px,25vw,125px)] h-[clamp(38px,4.8dvh,48px)] sm:w-[110px] sm:h-[48px] xl:w-full xl:h-[110px] rounded-lg xl:rounded-xl overflow-hidden border border-[#DFD0B7]/60 shadow-2xs bg-[#EDE4D4]/30 relative mb-1 xl:mb-0 group-hover:border-[#B89B6D] transition-colors">
                     <img
                       src={item.image}
                       alt={item.location}

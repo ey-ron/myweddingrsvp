@@ -88,6 +88,11 @@ export const WEDDING_CONFIG = {
       { ninong: "Mr. Obet Fajardo", ninang: "Mrs. Marieta Danlag" },
       { ninong: "Mr. Amado Bognot", ninang: "Mrs. Rosie Bognot" },
     ],
+    secondarySponsors: [
+      { role: "The Guiding Light", subtitle: "Candle · To Guide & Illuminate", pair: "AAA & BBB" },
+      { role: "The Sacred Mantle", subtitle: "Veil · To Shelter in Love", pair: "AAA & BBB" },
+      { role: "The Eternal Bond", subtitle: "Cord · To Unite in Eternity", pair: "AAA & BBB" },
+    ],
     honorAttendants: {
       bestMan: { name: "Avril Lennon Serrano", role: "Best Man" },
       matronOfHonor: { name: "Elaine Garde", role: "Matron of Honor" },
@@ -103,7 +108,7 @@ export const WEDDING_CONFIG = {
         "Euniece Ochengco",
         "Eddy Laine Sto Domingo",
         "Jae Pilante",
-        "Kaye Espirito Santo",
+        "Kaye Espiritu Santo",
         "Janina Medina",
         "Shane Pilante",
         "Judy Ann Benisano",
@@ -112,7 +117,7 @@ export const WEDDING_CONFIG = {
       ],
     },
     littleOnes: [
-      { role: "Coin Bearer", name: "Zimon Cauyao" },
+      { role: "Coin Bearer", name: "James Zimon Cauyao" },
       { role: "Ring Bearer", name: "Thomas Espiritu Santo" },
       { role: "Bible Bearer", name: "Czian De Lara" },
       { role: "Flower Girl", name: "Elle Naara Medina" },
