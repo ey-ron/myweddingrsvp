@@ -25,6 +25,33 @@ export default function Home() {
   const touchStartTime = useRef<number>(0);
   const isMultiTouch = useRef<boolean>(false);
 
+  // Silently preload all photos into browser memory during idle moments
+  useEffect(() => {
+    const imagesToPreload = [
+      '/IMG_1191.jpeg',
+      '/mtcarmel.jpeg',
+      '/riovilla.jpeg',
+      '/thechapter.jpeg',
+      '/greenery.jpeg',
+      '/river safari.jpeg',
+    ];
+
+    const preload = () => {
+      imagesToPreload.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+      });
+    };
+
+    if (typeof window !== 'undefined') {
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(preload);
+      } else {
+        setTimeout(preload, 800);
+      }
+    }
+  }, []);
+
   useEffect(() => {
     let wheelTimeout: ReturnType<typeof setTimeout> | null = null;
     let transitionUnlockTimeout: ReturnType<typeof setTimeout> | null = null;

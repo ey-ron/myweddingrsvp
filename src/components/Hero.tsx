@@ -266,6 +266,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
                   alt="Aaron & Eileen"
                   className="w-full h-auto object-cover max-h-[65dvh]"
                   loading="eager"
+                  decoding="async"
                 />
                 {/* Luxury sheen overlay on open */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none animate-photo-sheen" />

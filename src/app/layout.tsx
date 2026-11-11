@@ -57,6 +57,13 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
           rel="stylesheet"
         />
+        {/* Preload critical couple & venue photos for instant mobile display */}
+        <link rel="prefetch" href="/IMG_1191.jpeg" as="image" />
+        <link rel="prefetch" href="/mtcarmel.jpeg" as="image" />
+        <link rel="prefetch" href="/riovilla.jpeg" as="image" />
+        <link rel="prefetch" href="/thechapter.jpeg" as="image" />
+        <link rel="prefetch" href="/greenery.jpeg" as="image" />
+        <link rel="prefetch" href="/river%20safari.jpeg" as="image" />
         {/* Shield against Brave Wallet / Web3 extension injected errors */}
         <script
           dangerouslySetInnerHTML={{

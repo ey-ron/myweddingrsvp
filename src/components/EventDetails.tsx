@@ -100,7 +100,8 @@ export const EventDetails: React.FC<EventDetailsProps> = ({ onNavigate, isActive
                       src={item.image}
                       alt={item.location}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
+                      loading="eager"
+                      decoding="async"
                     />
                   </div>
 
