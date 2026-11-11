@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
-import { Calendar, MapPin, ChevronDown } from 'lucide-react';
+import React, { useRef, useEffect, useState } from 'react';
+import { Calendar, MapPin, ChevronDown, X, Heart, Sparkles } from 'lucide-react';
 import { WEDDING_CONFIG } from '../config/wedding';
 import { useCountdown } from '../hooks/useCountdown';
 
@@ -12,8 +12,24 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
   const { timeLeft } = useCountdown();
+  const [isPhotoOpen, setIsPhotoOpen] = useState(false);
   const mobileVideoRef = useRef<HTMLVideoElement>(null);
   const desktopVideoRef = useRef<HTMLVideoElement>(null);
+
+  // Close photo modal on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsPhotoOpen(false);
+      }
+    };
+    if (isPhotoOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isPhotoOpen]);
 
   // Play video only when Page 1 is visible
   useEffect(() => {
@@ -128,20 +144,32 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
               ))}
             </div>
 
-            {/* Couple Names - Grand, Stacked Script Typography with Gold Foil Shimmer */}
-            <div className="my-[clamp(6px,1.2dvh,14px)] sm:my-3 xl:my-2.5 flex flex-col justify-center">
-              <h2
-                key={`names-${isReady ? 'ready' : 'hidden'}`}
-                className={`flex flex-col items-center justify-center font-script text-[clamp(38px,5.8dvh,52px)] sm:text-[50px] xl:text-[48px] font-normal leading-[1.08] ${
-                  isReady ? 'animate-gold-shimmer' : 'text-[#B89B6D]'
-                }`}
+            {/* Couple Names - Clickable with Elegant Photo Reveal */}
+            <div className="my-[clamp(6px,1.2dvh,14px)] sm:my-3 xl:my-2.5 flex flex-col justify-center items-center">
+              <button
+                type="button"
+                onClick={() => setIsPhotoOpen(true)}
+                aria-label="View photo of Aaron & Eileen"
+                className="group cursor-pointer focus:outline-none transition-transform hover:scale-[1.02] active:scale-[0.98] text-center"
               >
-                <span>{WEDDING_CONFIG.couple.partner1}</span>
-                <span className="text-xl sm:text-2xl xl:text-xl leading-none inline-flex items-center justify-center my-0.5 sm:my-1">
-                  &
+                <h2
+                  key={`names-${isReady ? 'ready' : 'hidden'}`}
+                  className={`flex flex-col items-center justify-center font-script text-[clamp(38px,5.8dvh,52px)] sm:text-[50px] xl:text-[48px] font-normal leading-[1.08] ${
+                    isReady ? 'animate-gold-shimmer' : 'text-[#B89B6D]'
+                  }`}
+                >
+                  <span>{WEDDING_CONFIG.couple.partner1}</span>
+                  <span className="text-xl sm:text-2xl xl:text-xl leading-none inline-flex items-center justify-center my-0.5 sm:my-1">
+                    &
+                  </span>
+                  <span>{WEDDING_CONFIG.couple.partner2}</span>
+                </h2>
+                {/* Subtle Luxury Cue */}
+                <span className="inline-flex items-center gap-1 text-[clamp(8px,1dvh,9px)] sm:text-[9.5px] tracking-[0.16em] uppercase text-[#8C7A5E]/80 group-hover:text-[#B89B6D] transition-colors mt-0.5 font-medium">
+                  <Sparkles className="w-2.5 h-2.5 text-[#B89B6D]" />
+                  <span>Tap to see our photo</span>
                 </span>
-                <span>{WEDDING_CONFIG.couple.partner2}</span>
-              </h2>
+              </button>
             </div>
 
             {/* Divider Flourish */}
@@ -205,6 +233,59 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
         </span>
         <ChevronDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-bounce text-[#B89B6D]" />
       </button>
+
+      {/* Photo Modal - Elegant Overlay for Aaron & Eileen */}
+      {isPhotoOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Photo of Aaron and Eileen"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#1A1817]/80 backdrop-blur-md animate-photo-backdrop"
+          onClick={() => setIsPhotoOpen(false)}
+        >
+          {/* Card Container Wrapper - Stops click propagation */}
+          <div
+            className="relative w-full max-w-[390px] sm:max-w-[480px] animate-photo-card"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Elegant Close Button - Floating Outside the Card (Top-Right) */}
+            <button
+              onClick={() => setIsPhotoOpen(false)}
+              aria-label="Close photo"
+              className="absolute -top-11 right-1 sm:-top-12 sm:right-0 z-30 w-9 h-9 rounded-full bg-white/95 hover:bg-white text-[#2A2725] hover:text-[#B89B6D] hover:scale-110 active:scale-95 transition-all flex items-center justify-center shadow-xl border border-[#DFD0B7] cursor-pointer focus:outline-none"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            {/* The Luxury Card */}
+            <div className="w-full bg-[#FAF8F5] border border-[#DFD0B7] rounded-[1.75rem] sm:rounded-[2rem] p-3 sm:p-4.5 shadow-2xl overflow-hidden">
+              {/* Photo Container with subtle golden sheen */}
+              <div className="relative w-full rounded-2xl overflow-hidden border border-[#DFD0B7]/70 shadow-sm bg-[#EDE4D4]/30">
+                <img
+                  src="/IMG_1191.jpeg"
+                  alt="Aaron & Eileen"
+                  className="w-full h-auto object-cover max-h-[65dvh]"
+                  loading="eager"
+                />
+                {/* Luxury sheen overlay on open */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none animate-photo-sheen" />
+              </div>
+
+              {/* Caption & Romantic Flourish */}
+              <div className="pt-2.5 sm:pt-3.5 text-center">
+                <div className="flex items-center justify-center gap-1.5 font-script text-[clamp(24px,3.5dvh,32px)] text-[#2A2725] leading-tight">
+                  <span>{WEDDING_CONFIG.couple.partner1}</span>
+                  <Heart className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#B89B6D] fill-[#B89B6D]" />
+                  <span>{WEDDING_CONFIG.couple.partner2}</span>
+                </div>
+                <p className="font-serif italic text-[clamp(10px,1.3dvh,12px)] text-[#8C7A5E] mt-0.5">
+                  Forever & Always · {WEDDING_CONFIG.date.display}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

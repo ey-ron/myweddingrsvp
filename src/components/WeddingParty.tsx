@@ -332,10 +332,10 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
             {currentSlide === 2 && (
               <div className="flex-1 flex flex-col justify-between">
                 <div className="grid grid-cols-2 gap-2 sm:gap-4 xl:gap-6 flex-1">
-                  {/* Left Column: Groomsmen (Taller) + Bearers (3 Rows, Shorter) */}
+                  {/* Left Column: Groomsmen (Top) + Bearers (Bottom) */}
                   <div className="flex flex-col gap-1.5 sm:gap-2 xl:gap-3 flex-1 justify-between">
-                    {/* Groomsmen - Primary Card (Taller than Bearers) */}
-                    <div className="p-2 sm:p-2.5 xl:p-3.5 rounded-xl sm:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between animate-cascade-1 flex-[1.4] min-h-0">
+                    {/* Groomsmen - Primary Card */}
+                    <div className="p-2 sm:p-2.5 xl:p-3.5 rounded-xl sm:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between animate-cascade-1 flex-[1.05] min-h-0">
                       <div className="flex items-center justify-between pb-0.5 mb-1 xl:pb-1 xl:mb-1.5 border-b border-[#EAE2D8]/80 flex-shrink-0">
                         <span className="text-[clamp(9.5px,1.25dvh,11px)] sm:text-[11px] xl:text-sm uppercase tracking-wider font-bold text-[#8C7A5E]">
                           Groomsmen
@@ -359,15 +359,15 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
                       </div>
                     </div>
 
-                    {/* Little Attendants / Bearers (3 Rows, Compact, Shorter than Groomsmen) */}
-                    <div className="p-2 sm:p-2.5 xl:p-3 rounded-xl sm:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col justify-between animate-cascade-2 flex-[0.8] min-h-0">
+                    {/* Little Attendants / Bearers (Comfortable vertical separation between each bearer) */}
+                    <div className="p-2 sm:p-2.5 xl:p-3 rounded-xl sm:rounded-2xl bg-[#FAF8F5] border border-[#EAE2D8] flex flex-col animate-cascade-2 flex-1 min-h-0">
                       <div className="flex items-center justify-between pb-0.5 mb-0.5 xl:pb-1 xl:mb-1 border-b border-[#EAE2D8]/80 flex-shrink-0">
                         <span className="text-[clamp(8.5px,1.15dvh,10px)] sm:text-[10px] xl:text-xs uppercase tracking-wider font-bold text-[#8C7A5E]">
                           The Bearers
                         </span>
                         <span className="text-[clamp(8px,1.05dvh,8.5px)] sm:text-[9px] xl:text-[11px] text-[#A69781]">3 Bearers</span>
                       </div>
-                      <div className="space-y-1 sm:space-y-1.5 xl:space-y-2.5 my-auto py-0.5 text-center">
+                      <div className="flex-1 flex flex-col justify-around py-0.5 text-center">
                         {WEDDING_CONFIG.entourage.littleOnes.slice(0, 3).map((item, idx) => (
                           <div
                             key={`bearer-${idx}`}
@@ -406,17 +406,24 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
                       ))}
                     </div>
 
-                    {/* Flower Girl at bottom of Ladies' side */}
-                    <div className="pt-1 mt-0.5 xl:pt-1.5 xl:mt-1 border-t border-[#EAE2D8]/80 text-center">
+                    {/* Flower Girls at bottom of Ladies' side */}
+                    <div className="pt-1 mt-0.5 xl:pt-1.5 xl:mt-1 border-t border-[#EAE2D8]/80 text-center flex-shrink-0">
                       <div className="flex items-center justify-center gap-1 mb-0.5">
                         <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 xl:w-3.5 xl:h-3.5 text-[#B89B6D]" />
                         <span className="text-[clamp(8px,1.05dvh,8.5px)] sm:text-[9.5px] xl:text-xs uppercase tracking-wider font-bold text-[#8C7A5E]">
-                          Flower Girl
+                          {WEDDING_CONFIG.entourage.littleOnes.slice(3).length > 1 ? 'Flower Girls' : 'Flower Girl'}
                         </span>
                       </div>
-                      <p className="font-cormorant party-flowergirl-name text-[clamp(12px,1.6dvh,13px)] sm:text-[13px] xl:text-[16px] font-semibold text-[#2A2725] leading-none">
-                        {WEDDING_CONFIG.entourage.littleOnes[3]?.name || 'BBB'}
-                      </p>
+                      <div className="space-y-[clamp(1px,0.3dvh,3px)]">
+                        {WEDDING_CONFIG.entourage.littleOnes.slice(3).map((girl, idx) => (
+                          <p
+                            key={`flowergirl-${idx}`}
+                            className="font-cormorant party-flowergirl-name text-[clamp(12px,1.6dvh,13px)] sm:text-[13px] xl:text-[16px] font-semibold text-[#2A2725] leading-snug tracking-[0.01em]"
+                          >
+                            {girl.name}
+                          </p>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>

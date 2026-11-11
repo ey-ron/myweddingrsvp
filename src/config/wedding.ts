@@ -105,7 +105,6 @@ export const WEDDING_CONFIG = {
         "Jae Pilante",
         "Kaye Espirito Santo",
         "Janina Medina",
-        "Raine Mercado",
         "Shane Pilante",
         "Judy Ann Benisano",
         "Merlie Bulatao",
@@ -113,10 +112,11 @@ export const WEDDING_CONFIG = {
       ],
     },
     littleOnes: [
-      { role: "Coin Bearer", name: "AAA" },
-      { role: "Ring Bearer", name: "BBB" },
-      { role: "Bible Bearer", name: "AAA" },
-      { role: "Flower Girl", name: "BBB" },
+      { role: "Coin Bearer", name: "Zimon Cauyao" },
+      { role: "Ring Bearer", name: "Thomas Espiritu Santo" },
+      { role: "Bible Bearer", name: "Czian De Lara" },
+      { role: "Flower Girl", name: "Elle Naara Medina" },
+      { role: "Flower Girl", name: "Euna Ochengco" },
     ],
   },
 };
