@@ -391,7 +391,9 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
                       <span className="text-[clamp(9.5px,1.25dvh,11px)] sm:text-[11px] xl:text-sm uppercase tracking-wider font-bold text-[#8C7A5E]">
                         Bridesmaids
                       </span>
-                      <span className="text-[clamp(8px,1.05dvh,8.5px)] sm:text-[9.5px] xl:text-xs text-[#A69781]">7 Ladies</span>
+                      <span className="text-[clamp(8px,1.05dvh,8.5px)] sm:text-[9.5px] xl:text-xs text-[#A69781]">
+                        {WEDDING_CONFIG.entourage.bridalParty.bridesmaids.length} Ladies
+                      </span>
                     </div>
                     <div className="space-y-[clamp(1px,0.4dvh,4px)] xl:space-y-1 text-center my-auto py-0.5">
                       {WEDDING_CONFIG.entourage.bridalParty.bridesmaids.map((name, idx) => (
@@ -427,8 +429,13 @@ export const WeddingParty: React.FC<WeddingPartyProps> = ({ onNavigate, isActive
           </div>
         </div>
 
-        {/* 3 Interactive Progress Dots */}
-        <div className="flex items-center justify-center gap-2 mt-[clamp(6px,1dvh,10px)] mb-[clamp(4px,0.8dvh,8px)] flex-shrink-0">
+        {/* 3 Interactive Progress Dots - Animated entrance and comfortable spacing */}
+        <div
+          key={`dots-${isActive ? 'active' : 'inactive'}`}
+          className={`flex items-center justify-center gap-2 mt-[clamp(12px,1.8dvh,18px)] sm:mt-3.5 xl:mt-4 mb-[clamp(4px,0.8dvh,8px)] flex-shrink-0 transition-all ${
+            isActive ? 'animate-cascade-3' : 'opacity-0'
+          }`}
+        >
           {[0, 1, 2].map((index) => (
             <button
               key={`dot-${index}`}

@@ -749,8 +749,8 @@ html, body {
   }
 
   .party-bridesmaid-name {
-    font-size: 0.95rem !important;
-    line-height: 1.3 !important;
+    font-size: 0.85rem !important;
+    line-height: 1.25 !important;
   }
 
   .party-flowergirl-name {
@@ -875,7 +875,8 @@ html, body {
   }
 
   .party-bridesmaid-name {
-    font-size: 1rem !important;
+    font-size: 0.9rem !important;
+    line-height: 1.25 !important;
   }
 
   .party-flowergirl-name {
