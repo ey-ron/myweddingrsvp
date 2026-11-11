@@ -245,26 +245,26 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
         >
           {/* Card Container Wrapper - Stops click propagation */}
           <div
-            className="relative w-full max-w-[390px] sm:max-w-[480px] animate-photo-card"
+            className="relative w-full max-w-[390px] sm:max-w-[440px] md:max-w-[460px] animate-photo-card"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Elegant Close Button - Floating Outside the Card (Top-Right) */}
+            {/* Elegant Close Button - Top on mobile, right side outside card on laptop/desktop */}
             <button
               onClick={() => setIsPhotoOpen(false)}
               aria-label="Close photo"
-              className="absolute -top-11 right-1 sm:-top-12 sm:right-0 z-30 w-9 h-9 rounded-full bg-white/95 hover:bg-white text-[#2A2725] hover:text-[#B89B6D] hover:scale-110 active:scale-95 transition-all flex items-center justify-center shadow-xl border border-[#DFD0B7] cursor-pointer focus:outline-none"
+              className="absolute -top-11 right-1 sm:-top-12 sm:right-0 md:top-2 md:-right-13 lg:top-3 lg:-right-14 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/95 hover:bg-white text-[#2A2725] hover:text-[#B89B6D] hover:scale-110 active:scale-95 transition-all flex items-center justify-center shadow-xl border border-[#DFD0B7] cursor-pointer focus:outline-none"
             >
-              <X className="w-4 h-4" />
+              <X className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
             </button>
 
             {/* The Luxury Card */}
-            <div className="w-full bg-[#FAF8F5] border border-[#DFD0B7] rounded-[1.75rem] sm:rounded-[2rem] p-3 sm:p-4.5 shadow-2xl overflow-hidden">
+            <div className="w-full bg-[#FAF8F5] border border-[#DFD0B7] rounded-[1.75rem] sm:rounded-[2rem] p-3 sm:p-4 md:p-4.5 shadow-2xl overflow-hidden flex flex-col items-center">
               {/* Photo Container with subtle golden sheen */}
-              <div className="relative w-full rounded-2xl overflow-hidden border border-[#DFD0B7]/70 shadow-sm bg-[#EDE4D4]/30">
+              <div className="relative w-full rounded-2xl overflow-hidden border border-[#DFD0B7]/70 shadow-sm bg-[#EDE4D4]/30 flex items-center justify-center">
                 <img
                   src="/IMG_1191.jpeg"
                   alt="Aaron & Eileen"
-                  className="w-full h-auto object-cover max-h-[65dvh]"
+                  className="w-full h-auto object-contain max-h-[60dvh] md:max-h-[72dvh] mx-auto rounded-2xl"
                   loading="eager"
                   decoding="async"
                 />
@@ -273,8 +273,8 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, isReady = true }) => {
               </div>
 
               {/* Caption & Romantic Flourish */}
-              <div className="pt-2.5 sm:pt-3.5 text-center">
-                <div className="flex items-center justify-center gap-1.5 font-script text-[clamp(24px,3.5dvh,32px)] text-[#2A2725] leading-tight">
+              <div className="pt-2 sm:pt-3 text-center flex-shrink-0">
+                <div className="flex items-center justify-center gap-1.5 font-script text-[clamp(22px,3.2dvh,30px)] text-[#2A2725] leading-tight">
                   <span>{WEDDING_CONFIG.couple.partner1}</span>
                   <Heart className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#B89B6D] fill-[#B89B6D]" />
                   <span>{WEDDING_CONFIG.couple.partner2}</span>
