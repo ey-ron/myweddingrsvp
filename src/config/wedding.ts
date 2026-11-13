@@ -89,9 +89,9 @@ export const WEDDING_CONFIG = {
       { ninong: "Mr. Amado Bognot", ninang: "Mrs. Rosie Bognot" },
     ],
     secondarySponsors: [
-      { role: "The Guiding Light", subtitle: "Candle · To Guide & Illuminate", pair: "AAA & BBB" },
-      { role: "The Sacred Mantle", subtitle: "Veil · To Shelter in Love", pair: "AAA & BBB" },
-      { role: "The Eternal Bond", subtitle: "Cord · To Unite in Eternity", pair: "AAA & BBB" },
+      { role: "The Guiding Light", subtitle: "Candle · To Guide & Illuminate", pair: "Ryan Garde & Janella Tiongco" },
+      { role: "The Sacred Mantle", subtitle: "Veil · To Shelter in Love", pair: "John Gabriel Cauyao & BBB" },
+      { role: "The Eternal Bond", subtitle: "Cord · To Unite in Eternity", pair: "Richard Pilante & Ciselle Tiongson" },
     ],
     honorAttendants: {
       bestMan: { name: "Avril Lennon Serrano", role: "Best Man" },
